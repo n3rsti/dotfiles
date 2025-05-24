@@ -1,0 +1,97 @@
+[
+  {
+    "clock": {
+      "format": "{:%H:%M %d %B}",
+      "tooltip-format": "{:%H:%M %d %B %Y}",
+      "timezone": "Europe/Warsaw"
+    },
+    "layer": "top",
+    "modules-center": [
+      "clock"
+    ],
+    "modules-left": [
+      "custom/nixos",
+      "hyprland/workspaces"
+    ],
+    "modules-right": [
+      "disk",
+      "cpu",
+      "memory",
+      "hyprland/language",
+      "network",
+      "custom/vpn",
+      "pulseaudio",
+      "battery",
+      "custom/powermenu"
+    ],
+    "position": "top",
+    "pulseaudio": {
+      "format": "{icon}  {volume}%  {format_source}",
+      "format-icons": {
+        "default": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "format-source": " {volume}%",
+      "format-source-muted": "",
+      "on-click": "pavucontrol",
+      "max-volume": 150,
+    },
+    "custom/powermenu": {
+      "format": "⏻",
+      "tooltip-format": "Power Menu",
+      "on-click": "~/.config/rofi/applets/bin/powermenu.sh"
+    },
+    "network": {
+      "format-wifi": "  ({signalStrength}%)",
+      "format-ethernet": "  {ipaddr}/{cidr}",
+      "tooltip-format": "{ifname} via {gwaddr}",
+      "tooltip-format-wifi": "{essid}",
+      "format-linked": "{ifname} (No IP) ",
+      "format-disconnected": "Disconnected ⚠",
+    },
+    "custom/vpn": {
+      "exec": "~/.config/waybar/scripts/mullvad_status.sh",
+      "interval": 1,
+      "return-type": "json",
+      "on-click": "mullvad-vpn"
+    },
+    "hyprland/language": {
+      "format": "󰌌 {}",
+      "format-en": "us",
+      "format-pl": "pl",
+      "on-click": "hyprctl switchxkblayout current next"
+    },
+    "cpu" : {
+      "format": "  {usage}%",
+      "interval": 1
+    },
+    "memory": {
+      "format": "  {percentage}%",
+      "tooltip-format": "{used}/{total} GB | {swapUsed}/{swapTotal} GB",
+      "interval": 1
+    },
+"disk": {
+    "interval": 30,
+    "format": "  {percentage_used}%",
+    "tooltip-format": " {used}/{total} GB",
+    "path": "/"
+},
+"custom/nixos": {
+        "format": "󱄅",
+        "tooltip": true,
+        "tooltip-format": "btw"
+    },
+"battery": {
+    "interval": 60,
+    "states": {
+        "warning": 30,
+        "critical": 15
+    },
+    "format": "{capacity}% {icon}",
+    "format-icons": ["", "", "", "", ""],
+}
+  }
+]

@@ -1,0 +1,118 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: Open Default Keymap`
+// from the command palette.
+[
+  {
+    "bindings": {
+      "tab": "menu::SelectNext",
+      "shift-tab": "menu::SelectPrevious",
+      "ctrl-j": "workspace::ToggleBottomDock",
+      "ctrl-o": "projects::OpenRecent"
+    }
+  },
+  {
+    "context": "((vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu) || EmptyPane",
+    "bindings": {
+      "space s f": "file_finder::Toggle",
+      "space e": "pane::RevealInProjectPanel",
+      "space s g": "workspace::NewSearch",
+      "space space": "tab_switcher::Toggle",
+      "space j e": "editor::GoToDiagnostic"
+      // replace file_finder::Toggle
+      // "space s f": [
+      //   "task::Spawn",
+      //   { "task_name": "File Finder", "reveal_target": "center" }
+      // ],
+      // "space s g": [
+      //   "task::Spawn",
+      //   { "task_name": "Find in Files", "reveal_target": "center" }
+      // ]
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-b": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "J": "editor::MoveLineDown",
+      "K": "editor::MoveLineUp"
+    }
+  },
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "ctrl-l": "editor::MoveRight",
+      "ctrl-h": "editor::MoveLeft"
+    }
+  },
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "ctrl-k h": "pane::SplitLeft",
+      "ctrl-k l": "pane::SplitRight",
+      "ctrl-k k": "pane::SplitUp",
+      "ctrl-k j": "pane::SplitDown",
+      "space r n": "editor::Rename",
+      "ctrl-shift-down": "vim::ScrollDown",
+      "ctrl-shift-up": "vim::ScrollUp",
+      "ctrl-d": ["workspace::SendKeystrokes", "ctrl-shift-down z z"],
+      "ctrl-u": ["workspace::SendKeystrokes", "ctrl-shift-up z z"],
+      "space c a": "editor::ToggleCodeActions",
+      "space c d": "diagnostics::Deploy",
+      "space p": "outline::Toggle",
+      "space /": "pane::DeploySearch",
+      "ctrl-w h": "workspace::ActivatePaneLeft",
+      "ctrl-w l": "workspace::ActivatePaneRight",
+      "ctrl-w k": "workspace::ActivatePaneUp",
+      "ctrl-w j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-w": "pane::CloseActiveItem",
+      "ctrl-t": "workspace::NewTerminal",
+      "ctrl-l": "pane::ActivateNextItem",
+      "ctrl-h": "pane::ActivatePreviousItem"
+    }
+  },
+  {
+    "context": "Editor && (showing_code_actions || showing_completions)",
+    "bindings": {
+      "shift-tab": "editor::ContextMenuPrevious",
+      "tab": "editor::ContextMenuNext"
+    }
+  },
+  {
+    "context": "Search || ProjectSearch",
+    "bindings": {
+      "tab": "menu::SelectNext"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "A": "project_panel::NewDirectory",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Delete",
+      "x": "project_panel::Cut",
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste"
+    }
+  },
+  {
+    "context": "AgentPanel",
+    "bindings": {
+      "ctrl-?": "workspace::ToggleRightDock"
+    }
+  }
+]

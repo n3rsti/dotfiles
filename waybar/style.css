@@ -1,0 +1,66 @@
+* {
+    font-family: "FiraCode Nerd Font", "Font Awesome 5 Free", monospace;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+#waybar {
+    background: rgba(25, 27, 38, 0.75);
+    color: #c0caf5;
+}
+
+#clock,
+#network,
+#pulseaudio,
+#custom-powermenu,
+#language,
+#custom-vpn,
+#cpu,
+#memory,
+#disk,
+#battery {
+    padding: 0 10px;
+    border-radius: 15px;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    background: rgba(0, 0, 8, 0.7);
+    padding: 0 5px;
+    margin: 5px 10px;
+    border-radius: 15px;
+}
+
+.modules-left {
+    padding: 0;
+}
+
+#workspaces {
+    padding: 0 5px;
+}
+
+#workspaces button {
+    background: transparent;
+    font-weight: 900;
+    font-size: 13pt;
+    color: #c0caf5;
+    border: none;
+    border-radius: 15px;
+}
+
+#workspaces button.active {
+    background: #13131d;
+}
+
+#workspaces button:hover {
+    background: #11111b;
+    color: #cdd6f4;
+    box-shadow: none;
+}
+
+#custom-nixos {
+    margin-left: 5px;
+    padding: 0 10px;
+    font-size: 25px;
+}
