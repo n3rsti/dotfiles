@@ -18,9 +18,14 @@
 #cpu,
 #memory,
 #disk,
-#battery {
+#battery,
+#temperature {
     padding: 0 10px;
     border-radius: 15px;
+}
+
+#temperature {
+    padding-left: 0;
 }
 
 .modules-left,

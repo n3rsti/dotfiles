@@ -16,6 +16,7 @@
     "modules-right": [
       "disk",
       "cpu",
+      "temperature",
       "memory",
       "hyprland/language",
       "network",
@@ -36,6 +37,7 @@
       },
       "format-source": " {volume}%",
       "format-source-muted": "",
+      "format-muted": "   {format_source}",
       "on-click": "pavucontrol",
       "max-volume": 150,
     },
@@ -51,6 +53,7 @@
       "tooltip-format-wifi": "{essid}",
       "format-linked": "{ifname} (No IP) ",
       "format-disconnected": "Disconnected ⚠",
+      "on-click": "nm-connection-editor",
     },
     "custom/vpn": {
       "exec": "~/.config/waybar/scripts/mullvad_status.sh",
@@ -92,6 +95,13 @@
     },
     "format": "{capacity}% {icon}",
     "format-icons": ["", "", "", "", ""],
+},
+ "temperature": {
+    // "thermal-zone": 2,
+    // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    // "critical-threshold": 80,
+    // "format-critical": "{temperatureC}°C ",
+    "format": "({temperatureC}°C)",
 }
   }
 ]
