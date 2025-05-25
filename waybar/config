@@ -22,6 +22,7 @@
       "network",
       "custom/vpn",
       "pulseaudio",
+      "bluetooth",
       "battery",
       "custom/powermenu"
     ],
@@ -53,7 +54,7 @@
       "tooltip-format-wifi": "{essid}",
       "format-linked": "{ifname} (No IP) ",
       "format-disconnected": "Disconnected ⚠",
-      "on-click": "nm-connection-editor",
+      "on-click": "~/.config/rofi/applets/bin/network.sh",
     },
     "custom/vpn": {
       "exec": "~/.config/waybar/scripts/mullvad_status.sh",
@@ -97,11 +98,22 @@
     "format-icons": ["", "", "", "", ""],
 },
  "temperature": {
-    // "thermal-zone": 2,
+    "thermal-zone": 6,
     // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
     // "critical-threshold": 80,
     // "format-critical": "{temperatureC}°C ",
     "format": "({temperatureC}°C)",
+    "interval": 1,
+},
+"bluetooth": {
+	// "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+	"format": "󰂯",
+	"format-disabled": "󰂲", // an empty format will hide the module
+	"format-connected": "",
+	"tooltip-format": "{controller_alias}\t{controller_address}",
+	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+	"on-click": "blueberry"
 }
   }
 ]

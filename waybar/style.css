@@ -19,9 +19,14 @@
 #memory,
 #disk,
 #battery,
-#temperature {
+#temperature,
+#bluetooth {
     padding: 0 10px;
     border-radius: 15px;
+}
+
+#bluetooth {
+    font-size: 16px;
 }
 
 #temperature {
