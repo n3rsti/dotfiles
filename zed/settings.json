@@ -157,5 +157,11 @@
   "show_completion_documentation": true,
   "show_completions_on_input": true,
   "auto_signature_help": true,
-  "show_edit_predictions": false
+  "show_edit_predictions": false,
+  "search": {
+    "button": false
+  },
+  "git_panel": {
+    "button": false
+  }
 }
