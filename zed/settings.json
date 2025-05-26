@@ -156,7 +156,14 @@
   "selection_highlight": true,
   "show_completion_documentation": true,
   "show_completions_on_input": true,
-  "auto_signature_help": true
+  "auto_signature_help": true,
   // keep commented, this somehow lags the lsp autocompletion
   //"show_edit_predictions": false
+  "show_edit_predictions": false,
+  "search": {
+    "button": false
+  },
+  "git_panel": {
+    "button": false
+  }
 }
