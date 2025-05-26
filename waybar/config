@@ -53,7 +53,7 @@
       "tooltip-format": "{ifname} via {gwaddr}",
       "tooltip-format-wifi": "{essid}",
       "format-linked": "{ifname} (No IP) ",
-      "format-disconnected": "Disconnected ⚠",
+      "format-disconnected": "Disconnected 󰖪",
       "on-click": "~/.config/rofi/applets/bin/network.sh",
     },
     "custom/vpn": {
