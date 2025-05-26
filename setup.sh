@@ -15,6 +15,10 @@ ln -sf "$DOTFILES_DIR/waybar/scripts/brightness.sh" ~/.config/waybar/scripts/bri
 ln -sf "$DOTFILES_DIR/waybar/scripts/toggle_night_mode.sh" ~/.config/waybar/scripts/toggle_night_mode.sh
 
 mkdir -p ~/.config/hypr
+rm -rf ~/.config/nvim
+rm -rf ~/.config/dunst
+rm -rf ~/.config/ghostty
+
 ln -sf "$DOTFILES_DIR/hypr/hyprland.conf" ~/.config/hypr/hyprland.conf
 ln -sf "$DOTFILES_DIR/hypr/hyprpaper.conf" ~/.config/hypr/hyprpaper.conf
 
