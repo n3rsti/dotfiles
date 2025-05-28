@@ -16,5 +16,4 @@ mkdir -p ~/.config/hypr
 ln -sf "$DOTFILES_DIR/hypr/hyprland.conf" ~/.config/hypr/hyprland.conf
 ln -sf "$DOTFILES_DIR/hypr/hyprpaper.conf" ~/.config/hypr/hyprpaper.conf
 
-mkdir -p ~/.config/nvim
 ln -sf "$DOTFILES_DIR/nvim" ~/.config/nvim
