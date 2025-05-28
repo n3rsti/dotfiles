@@ -22,6 +22,7 @@ return {
 			clangd = {},
 			ts_ls = {},
 			nil_ls = {},
+			air = {},
 			--		stylua = {},
 		},
 	},

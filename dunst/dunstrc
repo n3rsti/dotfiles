@@ -1,0 +1,23 @@
+[global]
+monitor=0
+background="#191b26"
+frame_color="#7aa2f7"
+frame_width=2
+progress_bar_corner_radius=3
+highlight="#7aa2f7"
+corner_radius=3
+font="FiraCode Nerd Font 8"
+foreground="#c0caf5"
+padding=13
+offset=(10, 20)
+format = "<b>%a</b>\n%s\n%b"
+
+ # Message format:
+    # %a - appname
+    # %s - summary
+    # %b - body
+    # %i - iconname (with path)
+    # %I - iconname (without path)
+    # %p - progress value (if set)
+    # %n - progress value no extra characters
+    # %% - literal %

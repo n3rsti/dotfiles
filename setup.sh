@@ -17,3 +17,7 @@ ln -sf "$DOTFILES_DIR/hypr/hyprland.conf" ~/.config/hypr/hyprland.conf
 ln -sf "$DOTFILES_DIR/hypr/hyprpaper.conf" ~/.config/hypr/hyprpaper.conf
 
 ln -sf "$DOTFILES_DIR/nvim" ~/.config/nvim
+
+ln -sf "$DOTFILES_DIR/dunst" ~/.config/dunst
+
+ln -sf "$DOTFILES_DIR/tmux/.tmux.conf" ~/.tmux.conf
