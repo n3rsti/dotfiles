@@ -23,6 +23,7 @@ return {
 			ts_ls = {},
 			nil_ls = {},
 			air = {},
+			vhdl_ls = {},
 			--		stylua = {},
 		},
 	},
