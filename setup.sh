@@ -20,4 +20,4 @@ ln -sf "$DOTFILES_DIR/nvim" ~/.config/nvim
 
 ln -sf "$DOTFILES_DIR/dunst" ~/.config/dunst
 
-ln -sf "$DOTFILES_DIR/tmux/.tmux.conf" ~/.tmux.conf
+ln -sf "$DOTFILES_DIR/tmux/tmux.conf" ~/.tmux.conf
