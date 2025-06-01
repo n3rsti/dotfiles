@@ -1,5 +1,5 @@
 vim.opt.number = true
-
+vim.g.have_nerd_font = true
 vim.schedule(function()
 	vim.opt.clipboard = "unnamedplus"
 end)
@@ -36,3 +36,10 @@ vim.opt.undofile = true
 vim.opt.scrolloff = 10
 
 vim.api.nvim_set_hl(0, "LineNr", { fg = "#8a8c8e" })
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+	callback = function()
+		vim.hl.on_yank()
+	end,
+})
