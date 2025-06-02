@@ -11,7 +11,11 @@ return {
 		servers = {
 			lua_ls = {},
 			gopls = {},
-			clangd = {},
+			clangd = {
+				capabilities = {
+					offsetEncoding = { "utf-16" },
+				},
+			},
 			ts_ls = {},
 			nil_ls = {
 				settings = {
@@ -26,6 +30,7 @@ return {
 			},
 			air = {},
 			vhdl_ls = {},
+			glsl_analyzer = {},
 		},
 	},
 	config = function(_, opts)
