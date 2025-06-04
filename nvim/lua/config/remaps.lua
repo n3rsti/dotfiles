@@ -17,6 +17,12 @@ vim.keymap.set("i", "<C-l>", "<Right>")
 vim.keymap.set("n", "<leader>sa", ":Explore<CR>", { desc = "Open file explorer" })
 vim.keymap.set("n", "<leader>x", ":!go run .<CR>", { desc = "Execute file" })
 
+vim.keymap.set("i", "<C-j>", 'copilot#Accept("\\<CR>")', {
+	expr = true,
+	replace_keycodes = false,
+})
+vim.g.copilot_no_tab_map = true
+
 -- vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
@@ -43,7 +49,7 @@ map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
 -- Fuzzy find all the symbols in your current document.
 --  Symbols are things like variables, functions, types, etc.
-map("gO", require("telescope.builtin").lsp_document_symbols, "Open Document Symbols")
+map("C-p", require("telescope.builtin").lsp_document_symbols, "Open Document Symbols")
 
 -- Fuzzy find all the symbols in your current workspace.
 --  Similar to document symbols, except searches over your entire project.
