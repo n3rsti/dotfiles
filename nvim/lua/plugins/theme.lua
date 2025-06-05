@@ -38,6 +38,11 @@ return {
 						base = "#111111",
 					},
 				},
+
+				highlight_groups = {
+					TelescopeNormal = { bg = "base" },
+					TelescopeBorder = { fg = "highlight_high", bg = "base" }, -- Border color
+				},
 			})
 			vim.cmd.colorscheme("rose-pine")
 		end,
