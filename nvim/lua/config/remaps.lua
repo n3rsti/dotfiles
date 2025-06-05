@@ -14,16 +14,16 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("i", "<C-h>", "<Left>")
 vim.keymap.set("i", "<C-l>", "<Right>")
 
-vim.keymap.set("n", "<leader>sa", ":Explore<CR>", { desc = "Open file explorer" })
+-- vim.keymap.set("n", "<leader>sa", ":Explore<CR>", { desc = "Open file explorer" })
 vim.keymap.set("n", "<leader>x", ":!go run .<CR>", { desc = "Execute file" })
 
-vim.keymap.set("i", "<C-j>", 'copilot#Accept("\\<CR>")', {
-	expr = true,
-	replace_keycodes = false,
-})
-vim.g.copilot_no_tab_map = true
+-- vim.keymap.set("i", "<C-j>", 'copilot#Accept("\\<CR>")', {
+-- 	expr = true,
+-- 	replace_keycodes = false,
+-- })
+-- vim.g.copilot_no_tab_map = true
 
--- vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>/", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 local map = function(keys, func, desc, mode)
