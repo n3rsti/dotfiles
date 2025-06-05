@@ -38,7 +38,31 @@ return {
 		},
 
 		-- (Default) Only show the documentation popup when manually triggered
-		completion = { documentation = { auto_show = true, auto_show_delay_ms = 0 } },
+		completion = {
+			documentation = { auto_show = true, auto_show_delay_ms = 0 },
+			menu = {
+				-- Don't automatically show the completion menu
+				auto_show = true,
+
+				-- nvim-cmp style menu
+				draw = {
+					columns = {
+						{ "label", "label_description", gap = 1 },
+						{ "source_name", "kind", gap = 1 },
+					},
+					components = {
+
+						source_name = {
+							width = { max = 30 },
+							text = function(ctx)
+								return "[" .. ctx.source_name .. "]"
+							end,
+							highlight = "BlinkCmpSource",
+						},
+					},
+				},
+			},
+		},
 
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`

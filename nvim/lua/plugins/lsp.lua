@@ -31,6 +31,7 @@ return {
 			air = {},
 			vhdl_ls = {},
 			glsl_analyzer = {},
+			r_language_server = {},
 		},
 	},
 	config = function(_, opts)
