@@ -32,6 +32,8 @@ return {
 			vhdl_ls = {},
 			glsl_analyzer = {},
 			r_language_server = {},
+			glsl_ls = {},
+			jsonls = {},
 		},
 	},
 	config = function(_, opts)

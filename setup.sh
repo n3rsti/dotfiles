@@ -8,9 +8,11 @@ ln -sf "$DOTFILES_DIR/zed/keymap.json" ~/.config/zed/keymap.json
 ln -sf "$DOTFILES_DIR/zed/tasks.json" ~/.config/zed/tasks.json
 
 mkdir -p ~/.config/waybar/scripts
-ln -sf "$DOTFILES_DIR/waybar/config" ~/.config/waybar/config
+ln -sf "$DOTFILES_DIR/waybar/config.jsonc" ~/.config/waybar/config.jsonc
 ln -sf "$DOTFILES_DIR/waybar/style.css" ~/.config/waybar/style.css
 ln -sf "$DOTFILES_DIR/waybar/scripts/mullvad_status.sh" ~/.config/waybar/scripts/mullvad_status.sh
+ln -sf "$DOTFILES_DIR/waybar/scripts/brightness.sh" ~/.config/waybar/scripts/brightness.sh
+ln -sf "$DOTFILES_DIR/waybar/scripts/toggle_night_mode.sh" ~/.config/waybar/scripts/toggle_night_mode.sh
 
 mkdir -p ~/.config/hypr
 ln -sf "$DOTFILES_DIR/hypr/hyprland.conf" ~/.config/hypr/hyprland.conf

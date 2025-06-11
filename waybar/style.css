@@ -20,7 +20,8 @@
 #disk,
 #battery,
 #temperature,
-#bluetooth {
+#bluetooth,
+#custom-brightness{
     padding: 0 10px;
     border-radius: 15px;
 }
