@@ -8,6 +8,7 @@ return {
 				go = { "gofmt" },
 				json = { "fixjson" },
 				jsonc = { "fixjson" },
+				nix = { "nixfmt" },
 			},
 		})
 
