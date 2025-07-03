@@ -16,25 +16,42 @@ return {
 					offsetEncoding = { "utf-16" },
 				},
 			},
-			ts_ls = {},
-			nil_ls = {
-				settings = {
-					["nil"] = {
-						nix = {
-							flake = {
-								autoArchive = true,
-							},
+			ts_ls = {
+				init_options = {
+					plugins = {
+						{
+							name = "@vue/typescript-plugin",
+							location = "",
+							languages = { "javascript", "typescript", "vue" },
+						},
+					},
+				},
+				filetypes = {
+					"javascript",
+					"typescript",
+					"vue",
+				},
+			},
+		},
+		nil_ls = {
+			settings = {
+				["nil"] = {
+					nix = {
+						flake = {
+							autoArchive = true,
 						},
 					},
 				},
 			},
-			air = {},
-			vhdl_ls = {},
-			glsl_analyzer = {},
-			r_language_server = {},
-			glsl_ls = {},
-			jsonls = {},
 		},
+		air = {},
+		vhdl_ls = {},
+		glsl_analyzer = {},
+		r_language_server = {},
+		glsl_ls = {},
+		jsonls = {},
+		vue_ls = {},
+		tailwindcss = {},
 	},
 	config = function(_, opts)
 		for server, config in pairs(opts.servers) do
