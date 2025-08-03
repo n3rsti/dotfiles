@@ -21,7 +21,8 @@
 #battery,
 #temperature,
 #bluetooth,
-#custom-brightness{
+#custom-brightness,
+#tray{
     padding: 0 10px;
     border-radius: 15px;
 }
@@ -36,11 +37,41 @@
 
 .modules-left,
 .modules-center,
-.modules-right {
+.modules-right,
+#tray{
     background: rgba(0, 0, 8, 0.7);
     padding: 0 5px;
     margin: 5px 10px;
     border-radius: 15px;
+}
+
+#tray {
+    padding: 10px;
+    margin: 0;
+}
+
+.modules-left {
+    background: none;
+}
+
+#custom-nixos, #workspaces {
+    background: rgba(0, 0, 8, 0.7);
+}
+#custom-nixos {
+    /* lefr border radius */
+    border-radius:  15px 0 0 15px;
+    padding-left: 15px;
+    padding-right: 10px;
+    font-size: 25px;
+}
+
+#tray {
+    margin-left: 5px;
+}
+
+#workspaces {
+    /* right border radius */
+    border-radius: 0 15px 15px 0;
 }
 
 .modules-left {
@@ -70,8 +101,3 @@
     box-shadow: none;
 }
 
-#custom-nixos {
-    margin-left: 5px;
-    padding: 0 10px;
-    font-size: 25px;
-}

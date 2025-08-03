@@ -1,8 +1,16 @@
+local vue_language_server_path = "/home/n3rsti/.npm-global/lib/node_modules/@vue/language-server"
+local vue_plugin = {
+	name = "@vue/typescript-plugin",
+	location = vue_language_server_path,
+	languages = { "javascript", "typescript", "vue" },
+	configNamespace = "typescript",
+}
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		-- Useful status updates for LSP.
 		{ "j-hui/fidget.nvim", opts = {} },
+		"nvim-java/nvim-java",
 
 		-- -- Allows extra capabilities provided by blink.cmp
 		-- "saghen/blink.cmp",
@@ -17,41 +25,62 @@ return {
 				},
 			},
 			ts_ls = {
-				init_options = {
-					plugins = {
-						{
-							name = "@vue/typescript-plugin",
-							location = "",
-							languages = { "javascript", "typescript", "vue" },
-						},
-					},
-				},
+				-- init_options = {
+				-- 	plugins = {
+				-- 		{
+				-- 			name = "@vue/typescript-plugin",
+				-- 			location = "",
+				-- 			languages = { "javascript", "typescript", "vue" },
+				-- 		},
+				-- 	},
+				-- },
 				filetypes = {
 					"javascript",
 					"typescript",
-					"vue",
 				},
 			},
-		},
-		nil_ls = {
-			settings = {
-				["nil"] = {
-					nix = {
-						flake = {
-							autoArchive = true,
+			vtsls = {
+				settings = {
+					vtsls = {
+						tsserver = {
+							globalPlugins = {
+								vue_plugin,
+							},
+						},
+					},
+				},
+				filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+			},
+			nil_ls = {
+				settings = {
+					["nil"] = {
+						nix = {
+							flake = {
+								autoArchive = true,
+							},
 						},
 					},
 				},
 			},
+			air = {},
+			vhdl_ls = {},
+			glsl_analyzer = {},
+			r_language_server = {},
+			glsl_ls = {},
+			jsonls = {},
+			vue_ls = {},
+			tailwindcss = {},
+			rust_analyzer = {
+				settings = {
+					["rust-analyzer"] = {
+						diagnostics = {
+							enable = true,
+						},
+					},
+				},
+			},
+			jdtls = {},
 		},
-		air = {},
-		vhdl_ls = {},
-		glsl_analyzer = {},
-		r_language_server = {},
-		glsl_ls = {},
-		jsonls = {},
-		vue_ls = {},
-		tailwindcss = {},
 	},
 	config = function(_, opts)
 		for server, config in pairs(opts.servers) do

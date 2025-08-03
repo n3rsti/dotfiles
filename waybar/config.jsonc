@@ -11,7 +11,8 @@
     ],
     "modules-left": [
       "custom/nixos",
-      "hyprland/workspaces"
+      "hyprland/workspaces",
+      "tray"
     ],
     "modules-right": [
       "disk",
@@ -50,8 +51,8 @@
     },
     "network": {
       "format-wifi": "  ({signalStrength}%)",
-      "format-ethernet": "  {ipaddr}/{cidr}",
-      "tooltip-format": "{ifname} via {gwaddr}",
+      "format-ethernet": "  ",
+      "tooltip-format": "{ipaddr}/{cidr} on {ifname} via {gwaddr}",
       "tooltip-format-wifi": "{essid}",
       "format-linked": "{ifname} (No IP) ",
       "format-disconnected": "Disconnected 󰖪",
@@ -128,6 +129,9 @@
       "interval": 1,
       "return-type": "json",
       "smooth-scrolling-threshold": 1
+    },
+    "tray": {
+      "spacing": 13
     }
   }
 ]

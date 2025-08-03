@@ -26,6 +26,8 @@ vim.keymap.set("n", "<leader>x", ":!go run .<CR>", { desc = "Execute file" })
 vim.keymap.set("n", "<leader>/", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
+
 local map = function(keys, func, desc, mode)
 	mode = mode or "n"
 	vim.keymap.set(mode, keys, func, { desc = "LSP: " .. desc })

@@ -18,6 +18,10 @@ mkdir -p ~/.config/hypr
 ln -sf "$DOTFILES_DIR/hypr/hyprland.conf" ~/.config/hypr/hyprland.conf
 ln -sf "$DOTFILES_DIR/hypr/hyprpaper.conf" ~/.config/hypr/hyprpaper.conf
 
+rm -rf ~/.config/nvim
+rm -rf ~/.config/dunst
+rm -rf ~/.config/ghostty
+
 ln -sf "$DOTFILES_DIR/nvim" ~/.config/nvim
 
 ln -sf "$DOTFILES_DIR/dunst" ~/.config/dunst
