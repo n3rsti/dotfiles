@@ -103,7 +103,9 @@
         "",
         "",
         ""
-      ]
+      ],
+      "format-charging": "{capacity}% {icon}  (󱐋)",
+      "tooltip-format": "{timeTo}\nHealth: {health}%"
     },
     "temperature": {
       "thermal-zone": 6,
@@ -122,8 +124,8 @@
     },
     "custom/brightness": {
       "orientation": "horizontal",
-      "on-scroll-up": "hyprctl hyprsunset gamma +5",
-      "on-scroll-down": "hyprctl hyprsunset gamma -5",
+      "on-scroll-up": "brightnessctl set 5%+",
+      "on-scroll-down": "brightnessctl set 5%-",
       "exec": "~/.config/waybar/scripts/brightness.sh",
       "on-click": "~/.config/waybar/scripts/toggle_night_mode.sh",
       "interval": 1,

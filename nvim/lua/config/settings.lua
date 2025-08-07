@@ -24,6 +24,15 @@ vim.opt.softtabstop = 4 -- Number of visual spaces per TAB
 vim.opt.shiftwidth = 4 -- Number of spaces to use for each step of (auto)indent
 vim.opt.expandtab = true
 
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "nix",
+	callback = function()
+		vim.opt_local.shiftwidth = 2
+		vim.opt_local.tabstop = 2
+		vim.opt_local.expandtab = true
+	end,
+})
+
 vim.opt.cursorline = true
 
 vim.o.relativenumber = true
