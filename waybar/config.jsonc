@@ -47,7 +47,7 @@
     "custom/powermenu": {
       "format": "⏻",
       "tooltip-format": "Power Menu",
-      "on-click": "~/.config/rofi/applets/bin/powermenu.sh"
+      "on-click": "~/.config/rofi/bin/powermenu.sh"
     },
     "network": {
       "format-wifi": "  ({signalStrength}%)",
@@ -124,8 +124,8 @@
     },
     "custom/brightness": {
       "orientation": "horizontal",
-      "on-scroll-up": "brightnessctl set 5%+",
-      "on-scroll-down": "brightnessctl set 5%-",
+      "on-scroll-up": "~/.config/waybar/scripts/change_brightness.sh -i 5",
+      "on-scroll-down": "~/.config/waybar/scripts/change_brightness.sh -d 5",
       "exec": "~/.config/waybar/scripts/brightness.sh",
       "on-click": "~/.config/waybar/scripts/toggle_night_mode.sh",
       "interval": 1,
