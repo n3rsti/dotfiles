@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=NixOS Options
+Comment=NixOS Options
+Exec=setsid chromium --new-window -app="https://mynixos.com/options"
+Icon=~/.local/share/applications/dotfiles_icons/nixos-logo-white.png
+Terminal=false
+Type=Application

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Nix packages
+Comment=Nix packages
+Exec=setsid chromium --new-window -app="https://search.nixos.org/packages"
+Icon=~/.local/share/applications/dotfiles_icons/nixos-logo.png
+Terminal=false
+Type=Application

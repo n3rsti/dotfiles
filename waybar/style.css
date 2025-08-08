@@ -86,13 +86,14 @@
     background: transparent;
     font-weight: 900;
     font-size: 13pt;
-    color: #c0caf5;
+    color: #a0aad5;
     border: none;
     border-radius: 15px;
 }
 
 #workspaces button.active {
-    background: #13131d;
+    background: #17171f;
+    color: #d0daff;
 }
 
 #workspaces button:hover {

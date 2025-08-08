@@ -24,3 +24,10 @@ rm -rf ~/.config/rofi
 ln -sf "$DOTFILES_DIR/rofi" ~/.config/rofi
 
 ln -sf "$DOTFILES_DIR/tmux/tmux.conf" ~/.tmux.conf
+
+# symlink apps
+rm -rf ~/.local/share/applications/dotfiles_icons
+ln -sf "$DOTFILES_DIR/apps/icons" ~/.local/share/applications/dotfiles_icons
+ln -sf "$DOTFILES_DIR/apps/nix-packages.desktop" ~/.local/share/applications/nix-packages.desktop
+ln -sf "$DOTFILES_DIR/apps/nixos-options.desktop" ~/.local/share/applications/nixos-options.desktop
+ln -sf "$DOTFILES_DIR/apps/hyprland-wiki.desktop" ~/.local/share/applications/hyprland-wiki.desktop

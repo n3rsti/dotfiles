@@ -64,6 +64,11 @@
       "return-type": "json",
       "on-click": "mullvad-vpn"
     },
+    "hyprland/workspaces": {
+      "all-outputs": true,
+      "sort-by-name": false,
+      "sort-by-coordinates": true
+    },
     "hyprland/language": {
       "format": "󰌌 {}",
       "format-en": "us",
