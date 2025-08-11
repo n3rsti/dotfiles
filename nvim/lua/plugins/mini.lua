@@ -1,8 +1,11 @@
 return { -- Collection of various small independent plugins/modules
 	"echasnovski/mini.nvim",
+	version = false,
 	config = function()
 		local statusline = require("mini.statusline")
 		require("mini.pairs").setup()
+		require("mini.cursorword").setup()
+		require("mini.surround").setup()
 		-- set use_icons to true if you have a Nerd Font
 		-- statusline.setup({ use_icons = vim.g.have_nerd_font })
 

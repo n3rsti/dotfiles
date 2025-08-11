@@ -52,3 +52,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.hl.on_yank()
 	end,
 })
+
+vim.api.nvim_set_hl(0, "MiniCursorwordCurrent", {
+	link = "LspReferenceWrite",
+})
+
+vim.api.nvim_set_hl(0, "MiniCursorword", {
+	link = "LspReferenceWrite",
+})
