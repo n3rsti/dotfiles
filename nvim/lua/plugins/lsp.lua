@@ -83,6 +83,7 @@ return {
 				},
 			},
 			jdtls = {},
+			qmlls = {},
 		},
 	},
 	config = function(_, opts)
