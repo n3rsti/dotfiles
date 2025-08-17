@@ -9,6 +9,7 @@ return {
 				json = { "fixjson" },
 				jsonc = { "fixjson" },
 				nix = { "nixfmt" },
+				css = { "css_beautify" },
 			},
 		})
 

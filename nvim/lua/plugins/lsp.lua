@@ -84,6 +84,7 @@ return {
 			},
 			jdtls = {},
 			qmlls = {},
+			cssls = {},
 		},
 	},
 	config = function(_, opts)

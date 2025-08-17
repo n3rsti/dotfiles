@@ -1,15 +1,15 @@
 [global]
 monitor=0
 background="#191b26"
-frame_color="#7aa2f7"
-frame_width=2
+frame_color="#f7768e"
+frame_width=1
 progress_bar_corner_radius=3
 highlight="#7aa2f7"
 corner_radius=3
 font="FiraCode Nerd Font 8"
 foreground="#c0caf5"
 padding=13
-offset=(10, 20)
+offset=(10, 10)
 format = "<b>%a</b>\n%s\n%b"
 
  # Message format:

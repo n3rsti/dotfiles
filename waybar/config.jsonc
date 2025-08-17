@@ -12,25 +12,56 @@
     "modules-left": [
       "custom/nixos",
       "hyprland/workspaces",
-      "tray"
+      "tray",
+      "mpris"
     ],
     "modules-right": [
-      "disk",
-      "cpu",
-      "temperature",
-      "memory",
+      "group/usage",
+      "group/audio",
       "hyprland/language",
       "network",
-      "custom/vpn",
-      "custom/brightness",
-      "pulseaudio",
       "bluetooth",
+      "custom/brightness",
       "battery",
       "custom/powermenu"
     ],
     "position": "top",
+    "mpris": {
+      "format": "{status_icon} {dynamic}",
+      "format-paused": "{status_icon} <i>{dynamic}</i>",
+      "player-icons": {
+        "default": "▶",
+        "mpv": "🎵",
+        "firefox": "󰈹"
+      },
+      "status-icons": {
+        "playing": "⏸",
+        "paused": "▶"
+      },
+      "interval": 1,
+      "dynamic-order": [
+        "title",
+        "artist",
+        "position",
+        "length"
+      ],
+      "title-len": 12,
+      "artist-len": 12
+    },
+    "group/audio": {
+      "orientation": "inherit",
+      "modules": [
+        "pulseaudio",
+        "custom/microphone"
+      ],
+      "drawer": {
+        "transition-duration": 200,
+        "children-class": "audio",
+        "transition-left-to-right": false
+      }
+    },
     "pulseaudio": {
-      "format": "{icon}  {volume}%  {format_source}",
+      "format": "{icon}  {volume}%",
       "format-icons": {
         "default": [
           "",
@@ -38,11 +69,10 @@
           ""
         ]
       },
-      "format-source": " {volume}%",
-      "format-source-muted": "",
-      "format-muted": "   {format_source}",
+      "format-muted": "  {volume}%",
       "on-click": "pavucontrol",
-      "max-volume": 150
+      "max-volume": 150,
+      "on-click-right": "wpctl set-mute @DEFAULT_SINK@ toggle"
     },
     "custom/powermenu": {
       "format": "⏻",
@@ -50,13 +80,25 @@
       "on-click": "~/.config/rofi/bin/powermenu.sh"
     },
     "network": {
-      "format-wifi": "  ({signalStrength}%)",
+      "format-wifi": "{icon}",
+      "format-icons": [
+        "󰤟",
+        "󰤢",
+        "󰤥",
+        "󰤨"
+      ],
       "format-ethernet": "  ",
       "tooltip-format": "{ipaddr}/{cidr} on {ifname} via {gwaddr}",
-      "tooltip-format-wifi": "{essid}",
+      "tooltip-format-wifi": "{essid} ({signalStrength}%)",
       "format-linked": "{ifname} (No IP) ",
       "format-disconnected": "Disconnected 󰖪",
       "on-click": "~/.config/rofi/applets/bin/network.sh"
+    },
+    "custom/microphone": {
+      "exec": "~/repo/dotfiles/waybar/scripts/monitor_volume.sh",
+      "format": "{icon} {text}",
+      "return-type": "json",
+      "on-click-right": "wpctl set-mute @DEFAULT_SOURCE@ toggle"
     },
     "custom/vpn": {
       "exec": "~/.config/waybar/scripts/mullvad_status.sh",
@@ -75,9 +117,30 @@
       "format-pl": "pl",
       "on-click": "hyprctl switchxkblayout current next"
     },
+    "group/cpu": {
+      "orientation": "inherit",
+      "modules": [
+        "cpu",
+        "temperature"
+      ]
+    },
+    "group/usage": {
+      "orientation": "inherit",
+      "drawer": {
+        "transition-duration": 200,
+        "children-class": "usage",
+        "transition-left-to-right": false
+      },
+      "modules": [
+        "group/cpu",
+        "memory",
+        "disk"
+      ]
+    },
     "cpu": {
       "format": "  {usage}%",
-      "interval": 1
+      "interval": 1,
+      "on-click": "ghostty -e btop --preset 1"
     },
     "memory": {
       "format": "  {percentage}%",
@@ -101,7 +164,7 @@
         "warning": 30,
         "critical": 15
       },
-      "format": "{capacity}% {icon}",
+      "format": "{icon}  {capacity}%",
       "format-icons": [
         "",
         "",

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Change Wallpaper
+Comment=Change Wallpaper
+Exec=/home/n3rsti/repo/dotfiles/rofi/bin/filebrowser.sh /home/n3rsti/repo/dotfiles/wallpapers/
+Icon=~/repo/dotfiles/wallpapers/current.jpg
+Terminal=false
+Type=Application
