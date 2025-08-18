@@ -9,7 +9,7 @@
 
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "recursivebrowser";
+	modi:                       "filebrowser";
     show-icons:                 true;
     display-drun:               "";
     display-run:                "";
@@ -17,9 +17,6 @@ configuration {
     display-window:             "";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
-    recursivebrowser {
-        command: "/home/n3rsti/repo/dotfiles/scripts/change-wallpaper.sh";
-    }
 }
 
 /*****----- Global Properties -----*****/
@@ -93,7 +90,7 @@ mainbox {
     border-radius:               0px 0px 0px 0px;
     border-color:                @border-colour;
     background-color:            transparent;
-    children:                    [ "inputbar", "message", "listview" ];
+    children:                    [ "inputbar", "listview" ];
 }
 
 /*****----- Inputbar -----*****/
@@ -107,7 +104,7 @@ inputbar {
     border-color:                @border-colour;
     background-color:            transparent;
     text-color:                  @foreground-colour;
-    children:                    [ "textbox-prompt-colon", "entry", "mode-switcher" ];
+    children:                    [ "textbox-prompt-colon", "entry" ];
 }
 
 prompt {
@@ -129,7 +126,7 @@ entry {
     background-color:            inherit;
     text-color:                  inherit;
     cursor:                      text;
-    placeholder:                 "Search...";
+    placeholder:                 "Search wallpaper...";
     placeholder-color:           inherit;
 }
 num-filtered-rows {
