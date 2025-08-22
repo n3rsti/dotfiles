@@ -14,4 +14,4 @@ else
     icon=""
 fi
 
-echo "{\"text\": \"$icon $volume_int%\", \"tooltip\": \"Microphone volume: $volume_int%\"}"
+echo "{\"text\": \"$icon   $volume_int%\", \"tooltip\": \"Microphone volume: $volume_int%\"}"

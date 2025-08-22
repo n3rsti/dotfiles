@@ -21,7 +21,7 @@ configuration {
 
 /*****----- Global Properties -----*****/
 @import         "../../themes/custom.rasi"
-@import                          "../../fonts/default.rasi"
+@import                          "../../fonts/network.rasi"
 
 * {
     border-colour:               var(selected);
@@ -64,7 +64,7 @@ window {
     enabled:                     true;
     margin:                      0px;
     padding:                     0px;
-    border:                      1px solid;
+    border:                      0px solid;
     border-radius:               10px;
     border-color:                @border-colour;
     cursor:                      "default";
