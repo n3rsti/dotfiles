@@ -2,7 +2,7 @@
 
 theme='rofi_launcher'
 
-dir="$HOME/repo/dotfiles/rofi/styles/launcher"
+dir="$HOME/.config/dotfiles/rofi/styles/launcher"
 theme='rofi_launcher'
 
 rofi \

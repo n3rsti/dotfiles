@@ -9,7 +9,13 @@ return {
 				json = { "fixjson" },
 				jsonc = { "fixjson" },
 				nix = { "nixfmt" },
-				css = { "css_beautify" },
+				css = { "prettier" },
+				scss = { "prettier" },
+				typescript = { "deno_fmt" },
+			},
+			format_on_save = {
+				timeout_ms = 500,
+				lsp_format = "fallback",
 			},
 		})
 

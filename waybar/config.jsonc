@@ -3,7 +3,8 @@
     "clock": {
       "format": "{:%d %b   %H:%M}",
       "tooltip-format": "{:%H:%M %d %B %Y}",
-      "timezone": "Europe/Warsaw"
+      "timezone": "Europe/Warsaw",
+      "on-click": "gnome-calendar"
     },
     "layer": "top",
     "modules-center": [
@@ -13,7 +14,8 @@
     "modules-left": [
       "custom/nixos",
       "hyprland/workspaces",
-      "tray"
+      "tray",
+      "custom/weather"
     ],
     "modules-right": [
       "group/usage",
@@ -45,7 +47,8 @@
       ],
       "dynamic-len": 16,
       "artist-len": 16,
-      "title-len": 16
+      "title-len": 16,
+      "on-click": "swayosd-client --playerctl=play-pause"
     },
     "group/audio": {
       "orientation": "inherit",
@@ -71,7 +74,9 @@
       "format-muted": "    {volume}%",
       "on-click": "ghostty --class=Wiremix --title=Wiremix -e wiremix --tab output",
       "max-volume": 150,
-      "on-click-right": "wpctl set-mute @DEFAULT_SINK@ toggle"
+      "on-click-right": "swayosd-client --output-volume=mute-toggle",
+      "on-scroll-up": "swayosd-client --output-volume=raise",
+      "on-scroll-down": "swayosd-client --output-volume=lower"
     },
     "custom/powermenu": {
       "format": "⏻",
@@ -94,11 +99,18 @@
       "on-click": "~/.config/rofi/bin/network.sh"
     },
     "custom/microphone": {
-      "exec": "~/repo/dotfiles/waybar/scripts/monitor_volume.sh",
+      "exec": "~/.config/dotfiles/waybar/scripts/monitor_volume.sh",
       "format": "{text}",
       "return-type": "json",
-      "on-click-right": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
+      "on-click-right": "swayosd-client --input-volume=mute-toggle",
       "on-click": "ghostty --class=Wiremix --title=Wiremix -e wiremix --tab input"
+    },
+    "custom/weather": {
+      "exec": "~/.config/dotfiles/waybar/scripts/get_weather.sh",
+      "return-type": "json",
+      "format": "{}",
+      "tooltip": true,
+      "interval": 3600
     },
     "custom/vpn": {
       "exec": "~/.config/waybar/scripts/mullvad_status.sh",

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Change Wallpaper
 Comment=Change Wallpaper
-Exec=sh -c "~/repo/dotfiles/rofi/bin/filebrowser.sh ~/repo/dotfiles/wallpapers/"
-Icon=~/repo/dotfiles/wallpapers/current.jpg
+Exec=sh -c "~/.config/dotfiles/rofi/bin/filebrowser.sh ~/.config/dotfiles/wallpapers/"
+Icon=~/.config/dotfiles/wallpapers/current.jpg
 Terminal=false
 Type=Application

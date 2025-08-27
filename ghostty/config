@@ -43,4 +43,3 @@ font-family = Adwaita Mono
 # resize-overlay-duration = 4s 200ms
 confirm-close-surface = false
 theme = tokyonight_night
-# keybind = ctrl+o=text:~/repo/dotfiles/scripts/tmux-sessionizer.sh\n

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-DOTFILES_DIR="$(pwd)"
+DOTFILES_DIR="$HOME/.config/dotfiles"
+
 
 rm -rf ~/.config/hypr
 ln -sf "$DOTFILES_DIR/hypr" ~/.config/hypr

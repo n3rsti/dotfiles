@@ -9,7 +9,7 @@
 type="$HOME/.config/rofi/applets/type-1"
 style='style-2.rasi'
 
-theme="$HOME/repo/dotfiles/rofi/styles/powermenu/powermenu.rasi"
+theme="$HOME/.config/dotfiles/rofi/styles/powermenu/powermenu.rasi"
 
 # Theme Elements
 prompt="`hostname`"

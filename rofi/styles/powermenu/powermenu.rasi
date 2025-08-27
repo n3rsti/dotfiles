@@ -23,8 +23,8 @@ USE_ICON=NO
 /*****----- Main Window -----*****/
 window {
     transparency:                "real";
-    // location:                    center;
-    // anchor:                      center;
+    location:                    center;
+    anchor:                      center;
     fullscreen:                  false;
     width:                       400px;
     x-offset:                    -20px;
