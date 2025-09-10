@@ -1,12 +1,12 @@
 * {
-  font-family: "Adwaita Sans", "Font Awesome 5 Free", monospace;
-  font-size: 12px;
-  font-weight: 600;
+    font-family: "Adwaita Sans", "Font Awesome 5 Free", monospace;
+    font-size: 12px;
+    font-weight: 600;
 }
 
 #waybar {
-  background: rgba(25, 27, 38, 0.5);
-  color: #c0caf5;
+    background: rgba(25, 27, 38, 0.5);
+    color: #c0caf5;
 }
 
 /* Common widget styles */
@@ -33,9 +33,9 @@
 #custom-nixos,
 #workspaces,
 #custom-weather {
-  background: rgba(0, 0, 8, 0.5);
-  border-radius: 13px;
-  transition: color 0.1s linear;
+    background: rgba(0, 0, 8, 0.5);
+    border-radius: 13px;
+    transition: color 0.05s linear;
 }
 
 /* Hover states */
@@ -55,13 +55,12 @@
 #disk:hover,
 #mpris:hover,
 #custom-weather:hover {
-  color: #a0aad5;
+    color: #a0aad5;
 }
 
 /* Padding & margin adjustments */
 #clock,
 #network,
-#pulseaudio,
 #custom-powermenu,
 #language,
 #custom-vpn,
@@ -76,15 +75,19 @@
 #tray,
 #mpris,
 #custom-weather {
-  padding: 0 12px;
+    padding: 0 12px;
 }
 
 #bluetooth {
-  font-size: 16px;
+    font-size: 16px;
+}
+
+#pulseaudio {
+    padding: 0 15px;
 }
 
 #temperature {
-  padding-left: 0;
+    padding-left: 0;
 }
 
 #custom-brightness,
@@ -92,28 +95,28 @@
 #audio,
 #network,
 #clock {
-  margin-left: 5px;
+    margin-left: 5px;
 }
 
 #language {
-  font-size: 11px;
-  min-width: 30px;
+    font-size: 11px;
+    min-width: 30px;
 }
 
 #cpu {
-  padding-left: 5px;
-  padding-right: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 #disk,
 #memory,
 #custom-powermenu,
 #battery {
-  padding-right: 4px;
+    padding-right: 4px;
 }
 
 #usage {
-  padding-left: 5px;
+    padding-left: 5px;
 }
 
 /* Module containers */
@@ -121,9 +124,9 @@
 .modules-center,
 .modules-right,
 #tray {
-  background: rgba(0, 0, 8, 0.5);
-  padding: 0 5px;
-  margin: 5px;
+    background: rgba(0, 0, 8, 0.5);
+    padding: 0 5px;
+    margin: 5px;
 }
 
 .modules-left,
@@ -133,67 +136,68 @@
 #disk,
 #memory,
 #temperature,
-#pulseaudio,
 #custom-microphone {
-  background: none;
+    background: none;
 }
 
 #tray {
-  padding: 0 15px;
-  margin: 0 5px;
+    padding: 0 15px;
+    margin: 0 5px;
 }
 
 /* Special border radius overrides */
 #network,
 #battery {
-  border-radius: 0;
+    border-radius: 0;
 }
 
 #bluetooth,
 #custom-powermenu {
-  border-radius: 0 13px 13px 0;
-  padding-right: 15px;
+    border-radius: 0 13px 13px 0;
+    padding-right: 15px;
 }
 
 #network,
 #custom-brightness {
-  border-radius: 13px 0 0 13px;
-  padding-left: 15px;
+    border-radius: 13px 0 0 13px;
+    padding-left: 15px;
 }
 
 #custom-nixos {
-  border-radius: 13px 0 0 13px; /* left rounded */
-  padding-left: 15px;
-  padding-right: 10px;
-  font-size: 25px;
+    border-radius: 13px 0 0 13px;
+    /* left rounded */
+    padding-left: 15px;
+    padding-right: 10px;
+    font-size: 25px;
 }
 
 #workspaces {
-  border-radius: 0 13px 13px 0; /* right rounded */
-  padding: 0 5px;
+    border-radius: 0 13px 13px 0;
+    /* right rounded */
+    padding: 0 5px;
 }
 
 .modules-left {
-  padding: 0;
+    padding: 0;
 }
 
 /* Workspaces buttons */
 #workspaces button {
-  background: transparent;
-  font-weight: 600;
-  font-size: 13pt;
-  color: #a0aad5;
-  border: none;
-  border-radius: 13px;
+    background: transparent;
+    font-weight: 600;
+    font-size: 13pt;
+    color: #a0aad5;
+    border: none;
+    border-radius: 13px;
 }
 
 #workspaces button.active {
-  background: rgba(27, 27, 35, 0.8);
-  color: #d0daff;
+    background: rgba(27, 27, 35, 0.8);
+    color: #d0daff;
 }
 
 #workspaces button:hover {
-  background: #11111b;
-  color: #cdd6f4;
-  box-shadow: none;
+    background: #11111b;
+    color: #cdd6f4;
+    box-shadow: none;
 }

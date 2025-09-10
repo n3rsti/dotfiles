@@ -14,12 +14,10 @@
     "modules-left": [
       "custom/nixos",
       "hyprland/workspaces",
-      "tray",
-      "custom/weather"
+      "tray"
     ],
     "modules-right": [
-      "group/usage",
-      "group/audio",
+      "pulseaudio",
       "hyprland/language",
       "network",
       "bluetooth",
@@ -53,17 +51,14 @@
     "group/audio": {
       "orientation": "inherit",
       "modules": [
-        "pulseaudio",
-        "custom/microphone"
-      ],
-      "drawer": {
-        "transition-duration": 200,
-        "children-class": "audio",
-        "transition-left-to-right": false
-      }
+        "custom/microphone",
+        "pulseaudio"
+      ]
     },
     "pulseaudio": {
-      "format": "{icon}   {volume}%",
+      "format": "{icon}    {format_source}",
+      "format-source": "",
+      "format-source-muted": "󰍭",
       "format-icons": {
         "default": [
           "",
@@ -71,7 +66,7 @@
           ""
         ]
       },
-      "format-muted": "    {volume}%",
+      "format-muted": "    {format_source}",
       "on-click": "ghostty --class=Wiremix --title=Wiremix -e wiremix --tab output",
       "max-volume": 150,
       "on-click-right": "swayosd-client --output-volume=mute-toggle",
@@ -96,7 +91,7 @@
       "tooltip-format-wifi": "{essid} ({signalStrength}%)",
       "format-linked": "{ifname} (No IP) ",
       "format-disconnected": "Disconnected 󰖪",
-      "on-click": "~/.config/rofi/bin/network.sh"
+      "on-click": "ghostty --class=Impala --title=Impala -e impala"
     },
     "custom/microphone": {
       "exec": "~/.config/dotfiles/waybar/scripts/monitor_volume.sh",
