@@ -1,0 +1,19 @@
+close_when_open = true
+theme = "default"
+hotreload_theme = true
+force_keyboard_focus = true
+timeout = 60
+
+[keybinds]
+next = "Tab"
+previous = "ISO_Left_Tab"
+
+
+
+[providers]
+default = [
+  "desktopapplications",
+  "calc",
+  "menus",
+  "websearch",
+] 
