@@ -2,6 +2,6 @@
 Name=Hyprland wiki
 Comment=Hyprland wiki
 Exec=setsid chromium --new-window -app="https://wiki.hypr.land/"
-Icon=~/.local/share/applications/dotfiles_icons/hyprland-logo.png
+Icon=hyprland-logo
 Terminal=false
 Type=Application

@@ -9,6 +9,10 @@ ln -sf "$DOTFILES_DIR/hypr" ~/.config/hypr
 rm -rf ~/.config/nvim
 ln -sf "$DOTFILES_DIR/nvim" ~/.config/nvim
 
+
+rm -rf ~/.config/walker
+ln -sf "$DOTFILES_DIR/walker" ~/.config/walker
+
 rm -rf ~/.config/dunst
 ln -sf "$DOTFILES_DIR/dunst" ~/.config/dunst
 
@@ -31,8 +35,8 @@ ln -sf "$DOTFILES_DIR/swayosd" ~/.config/swayosd
 ln -sf "$DOTFILES_DIR/tmux/tmux.conf" ~/.tmux.conf
 
 # symlink apps
-rm -rf ~/.local/share/applications/dotfiles_icons
-ln -sf "$DOTFILES_DIR/apps/icons" ~/.local/share/applications/dotfiles_icons
+cp -f $DOTFILES_DIR/apps/icons/* ~/.local/share/icons/
+ln -sf "$DOTFILES_DIR/wallpapers/current.jpg" ~/.local/share/icons/current-wallpaper.png
 ln -sf "$DOTFILES_DIR/apps/nix-packages.desktop" ~/.local/share/applications/nix-packages.desktop
 ln -sf "$DOTFILES_DIR/apps/nixos-options.desktop" ~/.local/share/applications/nixos-options.desktop
 ln -sf "$DOTFILES_DIR/apps/hyprland-wiki.desktop" ~/.local/share/applications/hyprland-wiki.desktop

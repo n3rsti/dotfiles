@@ -2,6 +2,6 @@
 Name=Change Wallpaper
 Comment=Change Wallpaper
 Exec=sh -c "~/.config/dotfiles/rofi/bin/filebrowser.sh ~/.config/dotfiles/wallpapers/"
-Icon=~/.config/dotfiles/wallpapers/current.jpg
+Icon=current-wallpaper
 Terminal=false
 Type=Application

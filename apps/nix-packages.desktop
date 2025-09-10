@@ -2,6 +2,6 @@
 Name=Nix packages
 Comment=Nix packages
 Exec=ghostty --class=Impala --title=Impala -e ~/.config/dotfiles/scripts/pkg-install.sh
-Icon=~/.local/share/applications/dotfiles_icons/nixos-logo.png
+Icon=nixos-logo
 Terminal=false
 Type=Application
