@@ -85,6 +85,7 @@ return {
 			jdtls = {},
 			qmlls = {},
 			cssls = {},
+			pyright = {},
 		},
 	},
 	config = function(_, opts)

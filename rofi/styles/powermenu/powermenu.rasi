@@ -31,7 +31,7 @@ window {
     y-offset:                    20px;
     margin:                      0px;
     padding:                     0px;
-    border:                      1px solid;
+    border:                      2px solid;
     border-radius:               12px;
     border-color:                @selected;
     cursor:                      "default";
@@ -67,15 +67,15 @@ textbox-prompt-colon {
     str:                         "";
     padding:                     10px 13px;
     border-radius:               12px;
-    background-color:            @urgent;
-    text-color:                  @background;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
 }
 prompt {
     enabled:                     true;
     padding:                     10px;
     border-radius:               12px;
-    background-color:            @active;
-    text-color:                  @background;
+    background-color:            @selected;
+    text-color:                  @foreground;
 }
 
 /*****----- Message -----*****/
@@ -131,7 +131,6 @@ element-text {
 
 element normal.normal,
 element alternate.normal {
-    background-color:            var(background);
     text-color:                  var(foreground);
 }
 element normal.urgent,
@@ -148,5 +147,5 @@ element selected.urgent {
 }
 element selected.normal {
     background-color:            var(selected);
-    text-color:                  var(background);
+    text-color:                  var(foreground);
 }

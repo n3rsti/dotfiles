@@ -12,6 +12,7 @@ return {
 				css = { "prettier" },
 				scss = { "prettier" },
 				typescript = { "deno_fmt" },
+				python = { "black" },
 			},
 			format_on_save = {
 				timeout_ms = 500,
