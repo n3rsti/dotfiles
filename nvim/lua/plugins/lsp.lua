@@ -67,9 +67,7 @@ return {
 			},
 			air = {},
 			vhdl_ls = {},
-			glsl_analyzer = {},
 			r_language_server = {},
-			glsl_ls = {},
 			jsonls = {},
 			vue_ls = {},
 			tailwindcss = {},
@@ -83,9 +81,39 @@ return {
 				},
 			},
 			jdtls = {},
-			qmlls = {},
+			qmlls = {
+				cmd = { "qmlls" },
+			},
 			cssls = {},
-			pyright = {},
+			texlab = {
+				settings = {
+					texlab = {
+
+						bibtexFormatter = "texlab",
+						build = {
+							args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
+							executable = "latexmk",
+							forwardSearchAfter = false,
+							onSave = true,
+						},
+						chktex = {
+							onEdit = true,
+							onOpenAndSave = false,
+						},
+						diagnosticsDelay = 300,
+						formatterLineLength = 80,
+						forwardSearch = {
+							args = {},
+						},
+						latexFormatter = "latexindent",
+						latexindent = {
+							modifyLineBreaks = false,
+						},
+					},
+				},
+			},
+			basedpyright = {},
+			csharp_ls = {},
 		},
 	},
 	config = function(_, opts)

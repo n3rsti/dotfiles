@@ -5,6 +5,7 @@ pkgs.mkShell {
   packages = [
     pkgs.quickshell
     pkgs.kdePackages.qtdeclarative
+    pkgs.qt6.qtdeclarative
   ];
   shellHook = ''
     # Required for qmlls to find the correct type declarations

@@ -9,8 +9,6 @@ return {
 				json = { "fixjson" },
 				jsonc = { "fixjson" },
 				nix = { "nixfmt" },
-				css = { "prettier" },
-				scss = { "prettier" },
 				typescript = { "deno_fmt" },
 				python = { "black" },
 			},

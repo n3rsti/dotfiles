@@ -28,9 +28,11 @@ ln -sf "$DOTFILES_DIR/zed" ~/.config/zed
 rm -rf ~/.config/rofi
 ln -sf "$DOTFILES_DIR/rofi" ~/.config/rofi
 
-
 rm -rf ~/.config/swayosd
 ln -sf "$DOTFILES_DIR/swayosd" ~/.config/swayosd
+
+rm -rf ~/.config/quickshell
+ln -sf "$DOTFILES_DIR/quickshell" ~/.config/quickshell
 
 ln -sf "$DOTFILES_DIR/tmux/tmux.conf" ~/.tmux.conf
 

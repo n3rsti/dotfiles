@@ -20,9 +20,9 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 
-local copilot = require("CopilotChat")
-
-vim.keymap.set("n", "<leader>ch", copilot.open)
+-- local copilot = require("CopilotChat")
+--
+-- vim.keymap.set("n", "<leader>ch", copilot.open)
 
 local map = function(keys, func, desc, mode)
 	mode = mode or "n"
@@ -32,3 +32,33 @@ end
 map("rn", vim.lsp.buf.rename, "[R]e[n]ame")
 
 map("ca", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
+
+local harpoon = require("harpoon")
+
+vim.keymap.set("n", "<leader>a", function()
+	harpoon:list():add()
+end)
+vim.keymap.set("n", "<C-e>", function()
+	harpoon.ui:toggle_quick_menu(harpoon:list())
+end)
+
+vim.keymap.set("n", "<leader>1", function()
+	harpoon:list():select(1)
+end)
+vim.keymap.set("n", "<leader>2", function()
+	harpoon:list():select(2)
+end)
+vim.keymap.set("n", "<leader>3", function()
+	harpoon:list():select(3)
+end)
+vim.keymap.set("n", "<leader>4", function()
+	harpoon:list():select(4)
+end)
+
+-- Toggle previous & next buffers stored within Harpoon list
+vim.keymap.set("n", "<C-j>", function()
+	harpoon:list():prev()
+end)
+vim.keymap.set("n", "<C-k>", function()
+	harpoon:list():next()
+end)

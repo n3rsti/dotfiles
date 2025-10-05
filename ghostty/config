@@ -42,4 +42,4 @@ font-family = Adwaita Mono
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 confirm-close-surface = false
-theme = tokyonight_night
+theme = TokyoNight Night

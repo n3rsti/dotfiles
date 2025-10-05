@@ -17,20 +17,20 @@
   {
     "context": "((vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu) || EmptyPane",
     "bindings": {
-      // "space s f": "file_finder::Toggle",
+      "space s f": "file_finder::Toggle",
       "space e": "pane::RevealInProjectPanel",
-      // "space s g": "workspace::NewSearch",
+      "space s g": "workspace::NewSearch",
       "space space": "tab_switcher::Toggle",
-      "space j e": "editor::GoToDiagnostic",
+      "space j e": "editor::GoToDiagnostic"
       // replace file_finder::Toggle
-      "space s f": [
-        "task::Spawn",
-        { "task_name": "File Finder", "reveal_target": "center" }
-      ],
-      "space s g": [
-        "task::Spawn",
-        { "task_name": "Find in Files", "reveal_target": "center" }
-      ]
+      // "space s f": [
+      //   "task::Spawn",
+      //   { "task_name": "File Finder", "reveal_target": "center" }
+      // ],
+      // "space s g": [
+      //   "task::Spawn",
+      //   { "task_name": "Find in Files", "reveal_target": "center" }
+      // ]
     }
   },
   {
