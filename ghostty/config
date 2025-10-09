@@ -43,3 +43,5 @@ font-family = Adwaita Mono
 # resize-overlay-duration = 4s 200ms
 confirm-close-surface = false
 theme = TokyoNight Night
+mouse-hide-while-typing = true
+link-url = true

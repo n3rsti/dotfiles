@@ -10,7 +10,6 @@ return {
 	dependencies = {
 		-- Useful status updates for LSP.
 		{ "j-hui/fidget.nvim", opts = {} },
-		"nvim-java/nvim-java",
 
 		-- Allows extra capabilities provided by blink.cmp
 		"saghen/blink.cmp",
@@ -114,6 +113,7 @@ return {
 			},
 			basedpyright = {},
 			csharp_ls = {},
+			roslyn_ls = {},
 		},
 	},
 	config = function(_, opts)
