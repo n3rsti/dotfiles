@@ -28,7 +28,7 @@ return {
 
 		-- File and search keymaps
 		map("<leader>sf", function()
-			builtin.find_files({ no_ignore = true })
+			builtin.find_files({})
 		end, "Telescope find files")
 		map("<leader>sg", builtin.live_grep, "Telescope live grep")
 		map("<leader><leader>", builtin.buffers, "Telescope buffers")

@@ -33,7 +33,20 @@
       "show_edit_predictions": true
     },
     "Vue.js": {
-      "show_edit_predictions": false
+      "formatter": {
+        "external": {
+          "command": "prettierd",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      }
+    },
+    "JavaScript": {
+      "formatter": {
+        "external": {
+          "command": "prettierd",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      }
     }
   },
   "terminal": {

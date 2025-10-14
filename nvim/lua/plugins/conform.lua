@@ -11,6 +11,7 @@ return {
 				nix = { "nixfmt" },
 				typescript = { "deno_fmt" },
 				python = { "black" },
+				vue = { "prettierd" },
 			},
 			format_on_save = {
 				timeout_ms = 500,

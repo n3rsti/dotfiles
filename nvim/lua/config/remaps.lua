@@ -33,6 +33,8 @@ map("J", "mzJ`z", "Move line below up")
 map("<C-d>", "<C-d>zz", "Jump down")
 map("<C-u>", "<C-u>zz", "Jump up")
 
+map("<C-b>", require("oil").open, "Open oil")
+
 local harpoon = require("harpoon")
 
 map("<leader>a", function()

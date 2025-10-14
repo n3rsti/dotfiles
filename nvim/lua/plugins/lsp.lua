@@ -114,6 +114,7 @@ return {
 			basedpyright = {},
 			csharp_ls = {},
 			roslyn_ls = {},
+			eslint = {},
 		},
 	},
 	config = function(_, opts)
