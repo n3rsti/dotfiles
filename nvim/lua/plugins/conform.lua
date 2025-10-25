@@ -9,7 +9,7 @@ return {
 				json = { "fixjson" },
 				jsonc = { "fixjson" },
 				nix = { "nixfmt" },
-				typescript = { "deno_fmt" },
+				typescript = { "prettierd" },
 				python = { "black" },
 				vue = { "prettierd" },
 			},

@@ -115,6 +115,8 @@ return {
 			csharp_ls = {},
 			roslyn_ls = {},
 			eslint = {},
+			tinymist = {},
+			-- postgres_lsp = {},
 		},
 	},
 	config = function(_, opts)

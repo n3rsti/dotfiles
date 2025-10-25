@@ -10,8 +10,8 @@ rm -rf ~/.config/nvim
 ln -sf "$DOTFILES_DIR/nvim" ~/.config/nvim
 
 
-rm -rf ~/.config/walker
-ln -sf "$DOTFILES_DIR/walker" ~/.config/walker
+rm -rf ~/.config/walker/themes
+ln -sf "$DOTFILES_DIR/walker/themes" ~/.config/walker/themes
 
 rm -rf ~/.config/dunst
 ln -sf "$DOTFILES_DIR/dunst" ~/.config/dunst
