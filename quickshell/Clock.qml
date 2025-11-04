@@ -2,21 +2,20 @@
 import Quickshell
 import Quickshell.Io
 import QtQuick
+import "components/"
 
-Rectangle {
+Container {
     id: clock_container
     property var padding: 10
-    height: bar.height
     width: clock.width + padding * 2
     anchors {
         centerIn: parent
     }
     radius: 12
-    Text {
+    TextComponent {
         id: clock
         anchors.centerIn: parent
         text: root.time
-        color: "#fff"
     }
     Process {
         id: dateProc

@@ -9,6 +9,7 @@ Scope {
     property string bg: "#191b26"
     property string container_bg: "#000008"
     property string hover_bg: "#111111"
+    property string text_color: "#c0caf5"
     property int radius: 12
     property int padding: 10
     Variants {
@@ -25,56 +26,27 @@ Scope {
                 right: true
             }
 
-            color: root.bg
-            height: 45
+            color: "transparent"
 
-            Clock {
-                color: root.container_bg
+            Rectangle {
+                width: parent.width
+                height: parent.height
+                color: root.bg
+                opacity: 0.5
             }
 
             Rectangle {
-                id: utils
-                height: parent.height
-                width: audio.width + power_btn.width + root.padding
-                radius: root.radius
-                color: a.containsMouse ? root.hover_bg : root.container_bg
+                color: "transparent"
+                anchors.centerIn: parent
+                width: parent.width
+                height: parent.height - 3
 
-                anchors {
-                    right: parent.right
-                    rightMargin: root.padding
-                    verticalCenter: parent.verticalCenter
-                }
+                Clock {}
 
-                MouseArea {
-                    id: a
-                    hoverEnabled: true
-                    enabled: true
-                    anchors.fill: parent
-                    cursorShape: Qt.PointingHandCursor
-                }
-
-                Audio {
-                    id: audio
-                    height: parent.height
-                    color: "transparent"
-                    width: 60
-                    anchors {
-                        right: power_btn.left
-                    }
-                }
-
-                Text {
-                    id: power_btn
-                    text: "⏻"
-                    color: "#fff"
-                    width: 10
-                    anchors {
-                        right: parent.right
-                        verticalCenter: parent.verticalCenter
-                        rightMargin: root.padding
-                    }
-                }
+                Right {}
             }
+
+            height: 40
         }
     }
 }

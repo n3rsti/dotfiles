@@ -3,6 +3,7 @@ import QtQuick.Controls
 import Quickshell
 import Quickshell.Services.Pipewire
 import Quickshell.Io
+import "components/"
 
 Rectangle {
     id: audio_root
@@ -25,10 +26,9 @@ Rectangle {
         }
     }
 
-    Text {
+    TextComponent {
         text: `${sink?.audio?.muted ? "󰖁" : "󰕾"} ${Math.round(sink?.audio?.volume * 100)}%`
         anchors.centerIn: parent
-        color: "#fff"
     }
 
     Process {
