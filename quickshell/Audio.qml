@@ -28,16 +28,7 @@ Rectangle {
     Text {
         text: `${sink?.audio?.muted ? "󰖁" : "󰕾"} ${Math.round(sink?.audio?.volume * 100)}%`
         anchors.centerIn: parent
-    }
-
-    MouseArea {
-        anchors.fill: parent
-        onClicked: toggleMenu()
-        onWheel: function (event) {
-            if (sink?.audio) {
-                sink.audio.volume = Math.max(0, Math.min(1, sink.audio.volume + (event.angleDelta.y / 120) * 0.05));
-            }
-        }
+        color: "#fff"
     }
 
     Process {
@@ -51,10 +42,12 @@ Rectangle {
         width: 200
         height: 150
         visible: false
+        color: "transparent"
 
         anchor {
             window: audio_root.QsWindow?.window
             rect.y: audio_root.height
+            rect.x: audio_root.x
         }
 
         MouseArea {
@@ -80,9 +73,7 @@ Rectangle {
             Rectangle {
                 anchors.fill: parent
                 anchors.top: parent.bottom
-                color: "#2c2c2c"
-                border.color: "#3c3c3c"
-                border.width: 1
+                color: root.container_bg
                 radius: 4
 
                 Column {
