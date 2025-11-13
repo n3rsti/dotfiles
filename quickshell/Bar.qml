@@ -39,7 +39,9 @@ Scope {
                 color: "transparent"
                 anchors.centerIn: parent
                 width: parent.width
-                height: parent.height - 3
+                height: parent.height - 4
+
+                Left {}
 
                 Clock {}
 
