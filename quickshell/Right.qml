@@ -8,6 +8,7 @@ Container {
     height: parent.height
     width: audio.width + power_btn.width + root.padding
     clickHandler: function () {}
+    bgColor: root.container_bg
 
     anchors {
         right: parent.right

@@ -4,36 +4,34 @@ import QtQuick
 
 Rectangle {
     id: rec
+
     height: parent.height
     width: audio.width + power_btn.width + root.padding
     color: "transparent"
+
     property var clickHandler
+    property color bgColor: root.container_bg
+    property real bgOpacity: 0.5
+    property alias hovered: mouseArea.containsMouse
 
     Rectangle {
         id: bg_rec
         anchors.fill: parent
-        color: root.container_bg
         radius: root.radius
-        opacity: 0.5
+
+        color: rec.hovered ? root.hover_bg : rec.bgColor
+        opacity: rec.bgOpacity
     }
 
     MouseArea {
-        hoverEnabled: true
-        enabled: true
+        id: mouseArea
         anchors.fill: parent
+        hoverEnabled: true
         cursorShape: Qt.PointingHandCursor
-        onHoveredChanged: {
-            if (containsMouse) {
-                bg_rec.color = root.hover_bg;
-            } else {
-                bg_rec.color = root.container_bg;
-            }
-        }
 
         onClicked: {
-            if (parent.clickHandler) {
+            if (rec.clickHandler)
                 rec.clickHandler();
-            }
         }
     }
 }

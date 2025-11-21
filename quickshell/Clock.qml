@@ -7,6 +7,7 @@ import "components/"
 Container {
     id: clock_container
     property var padding: 10
+    bgColor: root.container_bg
     width: clock.width + padding * 2
     anchors {
         centerIn: parent

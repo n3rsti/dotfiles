@@ -7,8 +7,9 @@ Scope {
     id: root
     property string time
     property string bg: "#191b26"
+    property string focus_bg: "#1b1b23"
     property string container_bg: "#000008"
-    property string hover_bg: "#111111"
+    property string hover_bg: "#11111b"
     property string text_color: "#c0caf5"
     property int radius: 12
     property int padding: 10

@@ -27,7 +27,7 @@ Rectangle {
     }
 
     TextComponent {
-        text: `${sink?.audio?.muted ? "󰖁" : "󰕾"} ${Math.round(sink?.audio?.volume * 100)}%`
+        text: `${sink?.audio?.muted ? "󰖁" : "󰕾"}  ${Math.round(sink?.audio?.volume * 100)}%`
         anchors.centerIn: parent
     }
 
