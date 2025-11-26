@@ -56,3 +56,11 @@ end, "Harpoon: jump back")
 map("<C-k>", function()
 	harpoon:list():next()
 end, "Harpoon: jump forward")
+
+map("<C-t>", function()
+	local mode = vim.api.nvim_get_mode().mode
+	vim.cmd("Floaterminal")
+	if mode == "n" then
+		vim.cmd("startinsert")
+	end
+end, "Open floating terminal", { "n", "i", "t" })

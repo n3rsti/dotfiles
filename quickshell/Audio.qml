@@ -53,12 +53,12 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             hoverEnabled: true
-            // onExited: {
-            //     if (!containsMouse) {
-            //         closeTimer.start();
-            //     }
-            // }
-            // onEntered: closeTimer.stop()
+            onExited: {
+                if (!containsMouse) {
+                    closeTimer.start();
+                }
+            }
+            onEntered: closeTimer.stop()
 
             onPressed: {
                 menuWindow.visible = false;

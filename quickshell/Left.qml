@@ -12,5 +12,13 @@ Rectangle {
         leftMargin: root.padding
     }
 
-    Workspaces {}
+    Workspaces {
+        id: workspaces
+    }
+    Tray {
+        anchors {
+            left: workspaces.right
+            leftMargin: 10
+        }
+    }
 }

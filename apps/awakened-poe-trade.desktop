@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Awakened PoE Trade
+Exec=env XDG_SESSION_TYPE=x11 GDK_BACKEND=x11 ~/Downloads/Awakened-PoE-Trade-*.AppImage
+Icon=awakened
+Terminal=false
+Type=Application

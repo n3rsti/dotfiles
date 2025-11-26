@@ -43,3 +43,4 @@ ln -sf "$DOTFILES_DIR/apps/nix-packages.desktop" ~/.local/share/applications/nix
 ln -sf "$DOTFILES_DIR/apps/nixos-options.desktop" ~/.local/share/applications/nixos-options.desktop
 ln -sf "$DOTFILES_DIR/apps/hyprland-wiki.desktop" ~/.local/share/applications/hyprland-wiki.desktop
 ln -sf "$DOTFILES_DIR/apps/change-wallpaper.desktop" ~/.local/share/applications/change-wallpaper.desktop
+ln -sf "$DOTFILES_DIR/apps/awakened-poe-trade.desktop" ~/.local/share/applications/awakened-poe-trade.desktop

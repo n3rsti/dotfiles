@@ -13,13 +13,14 @@ Rectangle {
     property color bgColor: root.container_bg
     property real bgOpacity: 0.5
     property alias hovered: mouseArea.containsMouse
+    property color hoverBg: root.hover_bg
 
     Rectangle {
         id: bg_rec
         anchors.fill: parent
         radius: root.radius
 
-        color: rec.hovered ? root.hover_bg : rec.bgColor
+        color: rec.hovered ? rec.hoverBg : rec.bgColor
         opacity: rec.bgOpacity
     }
 

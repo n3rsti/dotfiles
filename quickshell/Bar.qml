@@ -13,6 +13,7 @@ Scope {
     property string text_color: "#c0caf5"
     property int radius: 12
     property int padding: 10
+
     Variants {
         model: Quickshell.screens
 
@@ -37,6 +38,7 @@ Scope {
             }
 
             Rectangle {
+                id: root_item
                 color: "transparent"
                 anchors.centerIn: parent
                 width: parent.width
