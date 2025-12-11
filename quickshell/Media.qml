@@ -9,6 +9,7 @@ Rectangle {
     color: "transparent"
 
     property var player: getPreferredPlayer()
+    property alias mediaPopup: mediaPopup
 
     function getPreferredPlayer() {
         const players = Mpris.players.values;
@@ -113,5 +114,11 @@ Rectangle {
             mediaText.text = mediaRoot.getMediaText();
             mediaIcon.text = mediaRoot.getPlayerIcon();
         }
+    }
+
+    MediaPopup {
+        id: mediaPopup
+        player: mediaRoot.player
+        parentWindow: mediaRoot.QsWindow?.window
     }
 }

@@ -51,7 +51,11 @@ Scope {
                         height: parent.height
                         width: media.implicitWidth + Theme.padding * 2
                         bgColor: Theme.containerBackground
-                        clickable: false
+                        clickable: true
+
+                        clickHandler: function () {
+                            media.mediaPopup.visible = !media.mediaPopup.visible;
+                        }
 
                         Media {
                             id: media
