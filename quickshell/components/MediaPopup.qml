@@ -41,7 +41,7 @@ PopupWindow {
         Rectangle {
             id: rec
             anchors.fill: parent
-            color: "#0C0D18"
+            color: Theme.containerBackground
             opacity: 1
             radius: Theme.radius
             border.color: Theme.surfaceColor
@@ -83,7 +83,6 @@ PopupWindow {
                     Column {
                         width: parent.width - 100 - parent.spacing
                         spacing: Theme.smallSpacing
-                        anchors.verticalCenter: parent.verticalCenter
 
                         Text {
                             width: parent.width

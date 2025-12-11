@@ -52,6 +52,7 @@ Scope {
                         width: media.implicitWidth + Theme.padding * 2
                         bgColor: Theme.containerBackground
                         clickable: true
+                        visible: media.player !== null
 
                         clickHandler: function () {
                             media.mediaPopup.visible = !media.mediaPopup.visible;
