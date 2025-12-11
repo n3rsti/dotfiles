@@ -12,10 +12,6 @@ Container {
     height: parent.height
     clickable: true
 
-    clickHandler: function () {
-        clockPopup.visible = !clockPopup.visible;
-    }
-
     TextComponent {
         id: clockText
         anchors.centerIn: parent
@@ -39,25 +35,5 @@ Container {
         running: true
         repeat: true
         onTriggered: dateProc.running = true
-    }
-
-    PopupWindow {
-        id: clockPopup
-        visible: false
-        width: 300
-        height: 200
-        color: "transparent"
-
-        anchor {
-            window: clockContainer.QsWindow?.window
-            rect.y: clockContainer.height
-            rect.x: clockContainer.x
-        }
-
-        Rectangle {
-            anchors.fill: parent
-            color: Theme.containerBackground
-            radius: Theme.smallRadius
-        }
     }
 }

@@ -101,18 +101,7 @@ Rectangle {
     Connections {
         target: mediaRoot.player
         function trackChanged() {
-            mediaText.text = mediaRoot.getMediaText();
-            mediaIcon.text = mediaRoot.getPlayerIcon();
-        }
-    }
-
-    Connections {
-        target: Mpris
-        function onPlayersChanged() {
-            console.log("Players changed, count:", Mpris.players.values.length);
-            mediaRoot.player = mediaRoot.getPreferredPlayer();
-            mediaText.text = mediaRoot.getMediaText();
-            mediaIcon.text = mediaRoot.getPlayerIcon();
+            mediaRoot.player.positionChanged();
         }
     }
 
@@ -120,5 +109,18 @@ Rectangle {
         id: mediaPopup
         player: mediaRoot.player
         parentWindow: mediaRoot.QsWindow?.window
+        sliderEnabled: !mediaRoot.player.identity.toLowerCase().includes("firefox")
+    }
+
+    Timer {
+        // only emit the signal when the position is actually changing.
+        running: mediaRoot.player.playbackState == MprisPlaybackState.Playing
+        // Make sure the position updates at least once per second.
+        interval: 1000
+        repeat: true
+        // emit the positionChanged signal every second.
+        onTriggered: function () {
+            mediaRoot.player.positionChanged();
+        }
     }
 }
