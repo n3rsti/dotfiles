@@ -8,13 +8,11 @@
 // from the command palette or from `Zed` application menu.
 {
   "agent": {
-    "always_allow_tool_actions": true,
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-3.7-sonnet"
+      "model": "claude-sonnet-4.5"
     },
-    "button": false,
-    "enabled": true
+    "model_parameters": []
   },
   "notification_panel": {
     "button": false

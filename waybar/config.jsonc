@@ -45,8 +45,7 @@
       ],
       "dynamic-len": 16,
       "artist-len": 16,
-      "title-len": 16,
-      "on-click": "swayosd-client --playerctl=play-pause"
+      "title-len": 16
     },
     "group/audio": {
       "orientation": "inherit",

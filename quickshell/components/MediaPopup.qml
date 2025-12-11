@@ -13,7 +13,7 @@ PopupWindow {
     property bool sliderEnabled: true
 
     width: 350
-    height: 200
+    height: 220
     visible: false
     color: "transparent"
 
@@ -39,6 +39,7 @@ PopupWindow {
         }
 
         Rectangle {
+            id: rec
             anchors.fill: parent
             color: "#0C0D18"
             opacity: 1
@@ -49,7 +50,7 @@ PopupWindow {
             Column {
                 anchors.centerIn: parent
                 width: parent.width - Theme.padding * 2
-                spacing: Theme.spacing
+                spacing: Theme.spacing * 2
 
                 Row {
                     width: parent.width
@@ -123,10 +124,17 @@ PopupWindow {
                         }
 
                         Slider {
+                            id: slider
                             width: parent.width - parent.children[0].width - parent.children[2].width - parent.spacing * 2
                             from: 0
                             value: popup.player.position
                             to: popup.player.length
+
+                            onPressedChanged: {
+                                if (!pressed) {
+                                    popup.player.seek(value - popup.player.position);
+                                }
+                            }
                         }
 
                         Text {

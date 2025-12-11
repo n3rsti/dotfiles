@@ -14,7 +14,6 @@ MouseArea {
     implicitWidth: Theme.iconSize + Theme.smallSpacing * 2
     height: parent.height
     hoverEnabled: true
-    cursorShape: Qt.PointingHandCursor
 
     onClicked: event => {
         if (event.button === Qt.LeftButton) {
