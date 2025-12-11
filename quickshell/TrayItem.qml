@@ -4,12 +4,14 @@ import QtQuick
 import Quickshell
 import Quickshell.Widgets
 import Quickshell.Services.SystemTray
+import "./components"
 import "./config"
 
 MouseArea {
     id: trayItem
 
     required property SystemTrayItem modelData
+    property bool useNativeMenu: false
 
     acceptedButtons: Qt.LeftButton | Qt.RightButton
     implicitWidth: Theme.iconSize + Theme.smallSpacing * 2
@@ -21,23 +23,30 @@ MouseArea {
             modelData.activate();
         } else if (event.button === Qt.RightButton) {
             if (modelData.hasMenu) {
-                // Update anchor position before opening
-                var pos = trayItem.mapToItem(hoverRect.QsWindow.contentItem, 0, 0);
-                menuAnchor.anchor.rect.x = pos.x;
-                menuAnchor.anchor.rect.y = pos.y + trayItem.height;
-                menuAnchor.menu = modelData.menu;
-                menuAnchor.open();
+                if (useNativeMenu) {
+                    nativeMenuAnchor.menu = modelData.menu;
+                    nativeMenuAnchor.open();
+                } else {
+                    var pos = trayItem.mapToItem(hoverRect.QsWindow.contentItem, 0, 0);
+                    trayMenu.anchor.rect.x = pos.x;
+                    trayMenu.anchor.rect.y = pos.y + trayItem.height;
+                    trayMenu.menuHandle = modelData.menu;
+                    trayMenu.visible = true;
+                }
             } else {
                 modelData.secondaryActivate();
             }
         }
     }
 
+    TrayMenu {
+        id: trayMenu
+        parentWindow: hoverRect.QsWindow.window
+    }
+
     QsMenuAnchor {
-        id: menuAnchor
+        id: nativeMenuAnchor
         anchor.window: hoverRect.QsWindow.window
-        anchor.rect.width: trayItem.width
-        anchor.rect.height: 0
     }
 
     Rectangle {
