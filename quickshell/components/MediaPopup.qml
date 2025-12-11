@@ -12,7 +12,7 @@ PopupWindow {
     property alias parentWindow: popup.anchor.window
     property bool sliderEnabled: true
 
-    width: 350
+    width: 380
     height: 220
     visible: false
     color: "transparent"
@@ -49,7 +49,7 @@ PopupWindow {
 
             Column {
                 anchors.centerIn: parent
-                width: parent.width - Theme.padding * 2
+                width: parent.width - Theme.padding * 4
                 spacing: Theme.spacing * 2
 
                 Row {

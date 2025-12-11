@@ -11,7 +11,7 @@ QtObject {
     readonly property color surfaceColor: "#3c3c3c"
 
     readonly property int padding: 10
-    readonly property int spacing: 10
+    readonly property int spacing: 8
     readonly property int smallSpacing: 4
 
     readonly property int radius: 12
