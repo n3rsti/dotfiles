@@ -1,38 +1,59 @@
-import Quickshell
-import Quickshell.Io
 import QtQuick
+import "../config"
 
 Rectangle {
-    id: rec
+    id: container
 
-    height: parent.height
-    width: audio.width + power_btn.width + root.padding
-    color: "transparent"
-
-    property var clickHandler
-    property color bgColor: root.container_bg
-    property real bgOpacity: 0.5
+    property alias bgColor: background.color
+    property alias bgOpacity: background.opacity
     property alias hovered: mouseArea.containsMouse
-    property color hoverBg: root.hover_bg
+    property color hoverBg: Theme.hoverBackground
+    property bool clickable: true
+    property var clickHandler: null
+
+    color: "transparent"
+    radius: Theme.radius
 
     Rectangle {
-        id: bg_rec
+        id: background
         anchors.fill: parent
-        radius: root.radius
+        radius: parent.radius
+        color: Theme.containerBackground
+        opacity: Theme.backgroundOpacity
 
-        color: rec.hovered ? rec.hoverBg : rec.bgColor
-        opacity: rec.bgOpacity
+        Behavior on color {
+            ColorAnimation {
+                duration: 150
+            }
+        }
+
+        Behavior on opacity {
+            NumberAnimation {
+                duration: 150
+            }
+        }
+    }
+
+    states: State {
+        name: "hovered"
+        when: container.hovered && container.clickable
+        PropertyChanges {
+            target: background
+            color: container.hoverBg
+        }
     }
 
     MouseArea {
         id: mouseArea
         anchors.fill: parent
-        hoverEnabled: true
-        cursorShape: Qt.PointingHandCursor
+        enabled: container.clickable
+        hoverEnabled: container.clickable
+        cursorShape: container.clickable ? Qt.PointingHandCursor : Qt.ArrowCursor
 
         onClicked: {
-            if (rec.clickHandler)
-                rec.clickHandler();
+            if (container.clickHandler) {
+                container.clickHandler();
+            }
         }
     }
 }

@@ -1,24 +1,28 @@
-import Quickshell
-import Quickshell.Io
 import QtQuick
+import "./config"
 
 Rectangle {
-    id: left
+    id: leftSection
     height: parent.height
+    width: workspaces.width + tray.width + Theme.spacing
     color: "transparent"
+
     anchors {
         left: parent.left
         verticalCenter: parent.verticalCenter
-        leftMargin: root.padding
+        leftMargin: Theme.padding
     }
 
-    Workspaces {
-        id: workspaces
-    }
-    Tray {
-        anchors {
-            left: workspaces.right
-            leftMargin: 10
+    Row {
+        height: parent.height
+        spacing: Theme.spacing
+
+        Workspaces {
+            id: workspaces
+        }
+
+        Tray {
+            id: tray
         }
     }
 }

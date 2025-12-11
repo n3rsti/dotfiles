@@ -1,18 +1,9 @@
-// Bar.qml
-import Quickshell
-import Quickshell.Io
 import QtQuick
+import Quickshell
+import "./config"
 
 Scope {
-    id: root
-    property string time
-    property string bg: "#191b26"
-    property string focus_bg: "#1b1b23"
-    property string container_bg: "#000008"
-    property string hover_bg: "#11111b"
-    property string text_color: "#c0caf5"
-    property int radius: 12
-    property int padding: 10
+    id: barScope
 
     Variants {
         model: Quickshell.screens
@@ -28,30 +19,34 @@ Scope {
                 right: true
             }
 
+            height: Theme.barHeight
             color: "transparent"
 
             Rectangle {
                 width: parent.width
                 height: parent.height
-                color: root.bg
-                opacity: 0.5
+                color: Theme.background
+                opacity: Theme.backgroundOpacity
             }
 
             Rectangle {
-                id: root_item
+                id: barContent
                 color: "transparent"
-                anchors.centerIn: parent
-                width: parent.width
-                height: parent.height - 4
+                anchors.fill: parent
+                anchors.margins: 2
 
-                Left {}
+                Left {
+                    id: leftSection
+                }
 
-                Clock {}
+                Clock {
+                    id: clockSection
+                }
 
-                Right {}
+                Right {
+                    id: rightSection
+                }
             }
-
-            height: 40
         }
     }
 }

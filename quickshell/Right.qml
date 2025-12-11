@@ -1,39 +1,54 @@
-import Quickshell
-import Quickshell.Io
 import QtQuick
-import "components/"
+import "./components/"
+import "./config"
 
-Container {
-    id: utils
+Rectangle {
+    id: rightSection
     height: parent.height
-    width: audio.width + power_btn.width + root.padding
-    clickHandler: function () {}
-    bgColor: root.container_bg
+    width: audioContainer.width + powerButton.width + Theme.spacing
+    color: "transparent"
 
     anchors {
         right: parent.right
-        rightMargin: root.padding
+        rightMargin: Theme.padding
         verticalCenter: parent.verticalCenter
     }
 
-    Audio {
-        id: audio
+    Row {
         height: parent.height
-        color: "transparent"
-        width: 60
-        anchors {
-            right: power_btn.left
-        }
-    }
+        spacing: Theme.spacing
+        anchors.right: parent.right
 
-    TextComponent {
-        id: power_btn
-        text: "⏻"
-        width: 10
-        anchors {
-            right: parent.right
-            verticalCenter: parent.verticalCenter
-            rightMargin: root.padding
+        Container {
+            id: audioContainer
+            height: parent.height
+            width: audio.width + Theme.padding * 2
+            bgColor: Theme.containerBackground
+            clickable: true
+            clickHandler: function () {
+                audio.audioPopup.visible = !audio.audioPopup.visible;
+            }
+
+            Audio {
+                id: audio
+                height: parent.height
+                width: 60
+                anchors.centerIn: parent
+            }
+        }
+
+        Container {
+            id: powerButton
+            height: parent.height
+            width: powerText.width + Theme.padding * 2
+            bgColor: Theme.containerBackground
+            clickable: true
+
+            TextComponent {
+                id: powerText
+                text: "⏻"
+                anchors.centerIn: parent
+            }
         }
     }
 }

@@ -1,17 +1,20 @@
 pragma ComponentBehavior: Bound
 
+import QtQuick
 import Quickshell.Widgets
 import Quickshell.Services.SystemTray
-import QtQuick
+import "./config"
 
 MouseArea {
-    id: root
+    id: trayItem
 
     required property SystemTrayItem modelData
 
     acceptedButtons: Qt.LeftButton | Qt.RightButton
-    implicitWidth: 10 * 2
-    implicitHeight: 10 * 2
+    implicitWidth: Theme.iconSize + Theme.smallSpacing * 2
+    height: parent.height
+    hoverEnabled: true
+    cursorShape: Qt.PointingHandCursor
 
     onClicked: event => {
         if (event.button === Qt.LeftButton) {
@@ -21,9 +24,23 @@ MouseArea {
         }
     }
 
+    Rectangle {
+        anchors.fill: parent
+        color: Theme.hoverBackground
+        opacity: parent.containsMouse ? 0.3 : 0
+        radius: Theme.smallRadius
+
+        Behavior on opacity {
+            NumberAnimation {
+                duration: 150
+            }
+        }
+    }
+
     IconImage {
-        source: modelData.icon
-        implicitSize: 16
+        source: trayItem.modelData.icon
+        width: Theme.iconSize
+        height: Theme.iconSize
         anchors.centerIn: parent
     }
 }

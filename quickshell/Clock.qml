@@ -1,31 +1,40 @@
-// Bar.qml
 import Quickshell
 import Quickshell.Io
 import QtQuick
-import "components/"
+import "./components/"
+import "./config"
 
 Container {
-    id: clock_container
-    property var padding: 10
-    bgColor: root.container_bg
-    width: clock.width + padding * 2
+    id: clockContainer
+
+    bgColor: Theme.containerBackground
+    width: clockText.width + Theme.padding * 2
+    height: parent.height
+    clickable: true
+
+    clickHandler: function () {
+        clockPopup.visible = !clockPopup.visible;
+    }
+
     anchors {
         centerIn: parent
     }
-    radius: 12
+
     TextComponent {
-        id: clock
+        id: clockText
         anchors.centerIn: parent
-        text: root.time
+        text: timeString
     }
+
+    property string timeString: ""
+
     Process {
         id: dateProc
         command: ["date", "+%d %b %H:%M"]
-
         running: true
 
         stdout: StdioCollector {
-            onStreamFinished: root.time = this.text
+            onStreamFinished: clockContainer.timeString = text.trim()
         }
     }
 
@@ -37,11 +46,22 @@ Container {
     }
 
     PopupWindow {
-        anchor.window: clock_container
-        anchor.rect.x: parentWindow.width / 2 - width / 2
-        anchor.rect.y: parentWindow.height
-        width: 500
-        height: 500
-        visible: true
+        id: clockPopup
+        visible: false
+        width: 300
+        height: 200
+        color: "transparent"
+
+        anchor {
+            window: clockContainer.QsWindow?.window
+            rect.y: clockContainer.height
+            rect.x: clockContainer.x
+        }
+
+        Rectangle {
+            anchors.fill: parent
+            color: Theme.containerBackground
+            radius: Theme.smallRadius
+        }
     }
 }

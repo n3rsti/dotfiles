@@ -1,25 +1,24 @@
-import Quickshell
-import QtQuick.Layouts
-import Quickshell.Services.SystemTray
 import QtQuick
-import Quickshell.Widgets
-import QtQuick.Controls
+import Quickshell.Services.SystemTray
 import "./components/"
+import "./config"
 
 Container {
-    width: row.implicitWidth + 10
+    id: trayContainer
+
+    width: trayRow.implicitWidth + Theme.padding
     height: parent.height
+    clickable: false
 
     Row {
-        id: row
+        id: trayRow
         height: parent.height
         anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
+        spacing: Theme.smallSpacing
 
         Repeater {
-            id: items
-
             model: SystemTray.items
-
             TrayItem {}
         }
     }
