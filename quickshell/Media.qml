@@ -8,7 +8,42 @@ Rectangle {
     id: mediaRoot
     color: "transparent"
 
-    property var player: Mpris.players.values.length > 0 ? Mpris.players.values[0] : null
+    property var player: getPreferredPlayer()
+
+    function getPreferredPlayer() {
+        const players = Mpris.players.values;
+        if (players.length === 0)
+            return null;
+
+        for (let i = 0; i < players.length; i++) {
+            const identity = players[i].identity.toLowerCase();
+            if (identity.includes("spotify")) {
+                return players[i];
+            }
+        }
+
+        for (let i = 0; i < players.length; i++) {
+            const identity = players[i].identity.toLowerCase();
+            if (identity.includes("firefox")) {
+                return players[i];
+            }
+        }
+
+        return players[0];
+    }
+
+    function getPlayerIcon() {
+        if (!player)
+            return "󰎈";
+        const identity = player.identity.toLowerCase();
+        if (identity.includes("spotify")) {
+            return " ";
+        } else if (identity.includes("firefox") || identity.includes("mozilla")) {
+            return "󰈹 ";
+        } else {
+            return "󰎈";
+        }
+    }
 
     Component.onCompleted: {
         console.log("MPRIS players count:", Mpris.players.values.length);
@@ -24,26 +59,49 @@ Rectangle {
             return "No media playing";
         const title = player.trackTitle || "";
         const artist = player.trackArtist || "";
+        let text = "";
         if (title && artist) {
-            return `${artist} - ${title}`;
+            text = `${artist} - ${title}`;
         } else if (title) {
-            return title;
+            text = title;
         } else if (artist) {
-            return artist;
+            text = artist;
+        } else {
+            return "No media playing";
         }
-        return "No media playing";
+
+        if (text.length > 30) {
+            return text.substring(0, 30) + "...";
+        }
+        return text;
     }
 
-    TextComponent {
-        id: mediaText
-        text: mediaRoot.getMediaText()
+    implicitWidth: mediaRow.implicitWidth
+    implicitHeight: mediaRow.implicitHeight
+
+    Row {
+        id: mediaRow
+        spacing: Theme.smallSpacing * 2
         anchors.centerIn: parent
+
+        TextComponent {
+            id: mediaIcon
+            text: mediaRoot.getPlayerIcon()
+            anchors.verticalCenter: parent.verticalCenter
+        }
+
+        TextComponent {
+            id: mediaText
+            text: mediaRoot.getMediaText()
+            anchors.verticalCenter: parent.verticalCenter
+        }
     }
 
     Connections {
         target: mediaRoot.player
-        function onTrackChanged() {
+        function trackChanged() {
             mediaText.text = mediaRoot.getMediaText();
+            mediaIcon.text = mediaRoot.getPlayerIcon();
         }
     }
 
@@ -51,8 +109,9 @@ Rectangle {
         target: Mpris
         function onPlayersChanged() {
             console.log("Players changed, count:", Mpris.players.values.length);
-            mediaRoot.player = Mpris.players.values.length > 0 ? Mpris.players.values[0] : null;
+            mediaRoot.player = mediaRoot.getPreferredPlayer();
             mediaText.text = mediaRoot.getMediaText();
+            mediaIcon.text = mediaRoot.getPlayerIcon();
         }
     }
 }

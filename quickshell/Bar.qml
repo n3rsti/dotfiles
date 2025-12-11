@@ -49,14 +49,13 @@ Scope {
                     Container {
                         id: mediaContainer
                         height: parent.height
-                        width: media.width + Theme.padding * 2
+                        width: media.implicitWidth + Theme.padding * 2
                         bgColor: Theme.containerBackground
                         clickable: false
 
                         Media {
                             id: media
                             height: parent.height
-                            width: 200
                             anchors.centerIn: parent
                         }
                     }
