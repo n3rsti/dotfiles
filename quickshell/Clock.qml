@@ -16,10 +16,6 @@ Container {
         clockPopup.visible = !clockPopup.visible;
     }
 
-    anchors {
-        centerIn: parent
-    }
-
     TextComponent {
         id: clockText
         anchors.centerIn: parent

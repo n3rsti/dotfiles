@@ -1,5 +1,6 @@
 import QtQuick
 import Quickshell
+import "./components/"
 import "./config"
 
 Scope {
@@ -39,8 +40,30 @@ Scope {
                     id: leftSection
                 }
 
-                Clock {
-                    id: clockSection
+                Row {
+                    id: centerSection
+                    height: parent.height
+                    spacing: Theme.spacing
+                    anchors.centerIn: parent
+
+                    Container {
+                        id: mediaContainer
+                        height: parent.height
+                        width: media.width + Theme.padding * 2
+                        bgColor: Theme.containerBackground
+                        clickable: false
+
+                        Media {
+                            id: media
+                            height: parent.height
+                            width: 200
+                            anchors.centerIn: parent
+                        }
+                    }
+
+                    Clock {
+                        id: clockSection
+                    }
                 }
 
                 Right {
