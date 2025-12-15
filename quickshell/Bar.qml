@@ -34,7 +34,7 @@ Scope {
                 id: barContent
                 color: "transparent"
                 anchors.fill: parent
-                anchors.margins: 2
+                anchors.margins: 4
 
                 Left {
                     id: leftSection

@@ -14,10 +14,37 @@ Rectangle {
         verticalCenter: parent.verticalCenter
     }
 
+    NetworkPopup {
+        id: networkPopup
+        parentWindow: bar
+        networks: networking.availableNetworks
+        connectionType: networking.connectionType
+        wifiEnabled: networking.wifiEnabled
+        activeSSID: networking.activeSSID
+        signalStrength: networking.signalStrength
+        bluetoothAdapter: networking.adapter
+    }
+
     Row {
         height: parent.height
         spacing: Theme.spacing
         anchors.right: parent.right
+
+        Container {
+            height: parent.height
+            bgColor: Theme.containerBackground
+            width: networking.implicitWidth
+            clickable: true
+            clickHandler: function () {
+                networkPopup.visible = !networkPopup.visible;
+            }
+
+            Networking {
+                id: networking
+                height: parent.height
+                anchors.centerIn: parent
+            }
+        }
 
         Container {
             id: audioContainer

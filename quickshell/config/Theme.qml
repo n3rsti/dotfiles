@@ -24,7 +24,7 @@ QtObject {
     readonly property int fontSize: 12
     readonly property int fontWeight: 500
 
-    readonly property int barHeight: 40
+    readonly property int barHeight: 42
     readonly property int iconSize: 16
     readonly property int workspaceButtonWidth: 40
 }
