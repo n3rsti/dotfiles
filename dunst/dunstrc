@@ -1,14 +1,14 @@
 [global]
 monitor=0
 background="#191b26"
-frame_color="#f7768e"
+frame_color="#74748d"
 frame_width=1
 progress_bar_corner_radius=3
 highlight="#7aa2f7"
-corner_radius=5
+corner_radius=10
 font="Adwaita Sans 8"
 foreground="#c0caf5"
-padding=13
+padding=15
 offset=(10, 10)
 format = "<b>%a</b>\n%s\n%b"
 

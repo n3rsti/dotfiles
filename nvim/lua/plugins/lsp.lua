@@ -18,7 +18,13 @@ return {
 	opts = {
 		servers = {
 			lua_ls = {},
-			gopls = {},
+			gopls = {
+				settings = {
+					gopls = {
+						usePlaceholders = true,
+					},
+				},
+			},
 			clangd = {
 				capabilities = {
 					offsetEncoding = { "utf-16" },

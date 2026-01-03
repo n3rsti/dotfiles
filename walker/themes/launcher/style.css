@@ -139,3 +139,11 @@ child:selected .item-box {
 .preview .large-icons {
     -gtk-icon-size: 64px;
 }
+
+.keybind {
+    color: @theme_fg_color;
+}
+
+.keybind-bind {
+    font-weight: bold;
+}

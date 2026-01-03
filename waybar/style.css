@@ -26,7 +26,6 @@
 #custom-microphone,
 #tray,
 #mpris,
-.modules-center,
 #pulseaudio,
 #audio,
 #usage,
@@ -35,7 +34,21 @@
 #custom-weather {
     background: rgba(0, 0, 8, 0.5);
     border-radius: 13px;
+    border: 1px solid #34344d;
     transition: color 0.05s linear;
+    box-shadow: rgba(0, 0, 0, 0.116) 2 2 5 2px;
+}
+
+#custom-nixos,
+#custom-brightness,
+#battery {
+    border-right: 0px;
+}
+
+#battery,
+#custom-powermenu,
+#workspaces {
+    border-left: 0px;
 }
 
 /* Hover states */
@@ -94,6 +107,7 @@
 #language,
 #audio,
 #network,
+#bluetooth,
 #clock {
     margin-left: 5px;
 }
@@ -146,18 +160,15 @@
 }
 
 /* Special border radius overrides */
-#network,
 #battery {
     border-radius: 0;
 }
 
-#bluetooth,
 #custom-powermenu {
     border-radius: 0 13px 13px 0;
     padding-right: 15px;
 }
 
-#network,
 #custom-brightness {
     border-radius: 13px 0 0 13px;
     padding-left: 15px;

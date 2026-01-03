@@ -79,7 +79,7 @@
       "on-click": "~/.config/rofi/bin/powermenu.sh"
     },
     "network": {
-      "format-wifi": "{icon}",
+      "format-wifi": "{icon}\t{essid}",
       "format-icons": [
         "󰤟",
         "󰤢",
@@ -91,7 +91,7 @@
       "tooltip-format-wifi": "{essid} ({signalStrength}%)",
       "format-linked": "{ifname} (No IP) ",
       "format-disconnected": "Disconnected 󰖪",
-      "on-click": "ghostty --class=Impala --title=Impala -e impala"
+      "on-click": "nmgui"
     },
     "custom/microphone": {
       "exec": "~/.config/dotfiles/waybar/scripts/monitor_volume.sh",
