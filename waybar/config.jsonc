@@ -23,7 +23,8 @@
       "bluetooth",
       "custom/brightness",
       "battery",
-      "custom/powermenu"
+      "custom/powermenu",
+      "custom/notifications"
     ],
     "position": "top",
     "mpris": {
@@ -32,7 +33,8 @@
       "player-icons": {
         "default": "▶",
         "mpv": "🎵",
-        "firefox": "󰈹"
+        "firefox": "󰈹",
+        "spotify": ""
       },
       "status-icons": {
         "playing": "⏸",
@@ -211,6 +213,26 @@
     "tray": {
       "spacing": 13,
       "icon-size": 17
+    },
+    "custom/notifications": {
+      "tooltip": true,
+      "format": "{icon}",
+      "format-icons": {
+        "notification": "󱅫 ",
+        "none": "󰂜",
+        "dnd-notification": "󰂠",
+        "dnd-none": "󰪓",
+        "inhibited-notification": "󰂛",
+        "inhibited-none": "󰪑",
+        "dnd-inhibited-notification": "󰂛",
+        "dnd-inhibited-none": "󰪑"
+      },
+      "return-type": "json",
+      "exec-if": "which swaync-client",
+      "exec": "swaync-client -swb",
+      "on-click": "swaync-client -R -rs -t -sw ",
+      "on-click-right": "swaync-client -d -sw",
+      "escape": true
     }
   }
 ]

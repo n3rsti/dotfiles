@@ -31,7 +31,8 @@
 #usage,
 #custom-nixos,
 #workspaces,
-#custom-weather {
+#custom-weather,
+#custom-notifications {
     background: rgba(0, 0, 8, 0.5);
     border-radius: 13px;
     border: 1px solid #34344d;
@@ -39,15 +40,21 @@
     box-shadow: rgba(0, 0, 0, 0.116) 2 2 5 2px;
 }
 
+#custom-notifications {
+    padding: 0 15px;
+}
+
 #custom-nixos,
 #custom-brightness,
-#battery {
+#battery,
+#network {
     border-right: 0px;
 }
 
 #battery,
 #custom-powermenu,
-#workspaces {
+#workspaces,
+#bluetooth {
     border-left: 0px;
 }
 
@@ -99,7 +106,8 @@
     padding: 0 15px;
 }
 
-#temperature {
+#temperature,
+#bluetooth {
     padding-left: 0;
 }
 
@@ -107,8 +115,8 @@
 #language,
 #audio,
 #network,
-#bluetooth,
-#clock {
+#clock,
+#custom-notifications {
     margin-left: 5px;
 }
 
@@ -186,6 +194,14 @@
     border-radius: 0 13px 13px 0;
     /* right rounded */
     padding: 0 5px;
+}
+
+#bluetooth {
+    border-radius: 0 13px 13px 0;
+}
+
+#network {
+    border-radius: 13px 0 0 13px;
 }
 
 .modules-left {
