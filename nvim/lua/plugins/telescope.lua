@@ -29,7 +29,7 @@ return {
 		-- File and search keymaps
 		map("<leader>sf", function()
 			builtin.find_files({
-				hidden = true,
+				hidden = false,
 			})
 		end, "Telescope find files")
 		map("<leader>sg", builtin.live_grep, "Telescope live grep")
