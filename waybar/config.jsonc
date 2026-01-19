@@ -21,9 +21,7 @@
       "hyprland/language",
       "network",
       "bluetooth",
-      "custom/brightness",
       "battery",
-      "custom/powermenu",
       "custom/notifications"
     ],
     "position": "top",
@@ -88,7 +86,7 @@
         "󰤥",
         "󰤨"
       ],
-      "format-ethernet": "  ",
+      "format-ethernet": "    Ethernet",
       "tooltip-format": "{ipaddr}/{cidr} on {ifname} via {gwaddr}",
       "tooltip-format-wifi": "{essid} ({signalStrength}%)",
       "format-linked": "{ifname} (No IP) ",
@@ -192,13 +190,19 @@
       "on-click": "ghostty --class=Btop --title=Btop -e btop -l --preset 1"
     },
     "bluetooth": {
-      "format": "󰂯",
-      "format-disabled": "󰂲",
-      "format-connected": "",
+      "format": "󰂯   Disconnected",
+      "format-disabled": "󰂲   Off",
+      "format-connected": "   {device_alias}",
+      "format-connected-battery": "   {device_alias} ({device_battery_percentage}%)",
       "tooltip-format": "{controller_alias}\t{controller_address}",
       "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
       "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-      "on-click": "blueberry"
+      "on-click": "blueberry",
+      "format-device-preference": [
+        "LE_WH-1000XM3",
+        "WH-1000XM3",
+        "pc"
+      ]
     },
     "custom/brightness": {
       "orientation": "horizontal",
@@ -216,9 +220,9 @@
     },
     "custom/notifications": {
       "tooltip": true,
-      "format": "{icon}",
+      "format": "{icon}    ⏻",
       "format-icons": {
-        "notification": "󱅫 ",
+        "notification": "󱅫",
         "none": "󰂜",
         "dnd-notification": "󰂠",
         "dnd-none": "󰪓",
@@ -230,7 +234,7 @@
       "return-type": "json",
       "exec-if": "which swaync-client",
       "exec": "swaync-client -swb",
-      "on-click": "swaync-client -R -rs -t -sw ",
+      "on-click": "swaync-client -t -sw",
       "on-click-right": "swaync-client -d -sw",
       "escape": true
     }

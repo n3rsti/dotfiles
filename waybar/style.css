@@ -37,7 +37,7 @@
     border-radius: 13px;
     border: 1px solid #34344d;
     transition: color 0.05s linear;
-    box-shadow: rgba(0, 0, 0, 0.116) 2 2 5 2px;
+    box-shadow: rgba(0, 0, 0, 0.116) 2px 2px 5px 2px;
 }
 
 #custom-notifications {
@@ -45,13 +45,10 @@
 }
 
 #custom-nixos,
-#custom-brightness,
-#battery,
 #network {
     border-right: 0px;
 }
 
-#battery,
 #custom-powermenu,
 #workspaces,
 #bluetooth {
@@ -74,7 +71,8 @@
 #memory:hover,
 #disk:hover,
 #mpris:hover,
-#custom-weather:hover {
+#custom-weather:hover,
+#custom-notifications:hover {
     color: #a0aad5;
 }
 
@@ -99,7 +97,7 @@
 }
 
 #bluetooth {
-    font-size: 16px;
+    padding-left: 8px;
 }
 
 #pulseaudio {
@@ -116,6 +114,7 @@
 #audio,
 #network,
 #clock,
+#battery,
 #custom-notifications {
     margin-left: 5px;
 }
@@ -132,8 +131,7 @@
 
 #disk,
 #memory,
-#custom-powermenu,
-#battery {
+#custom-powermenu {
     padding-right: 4px;
 }
 
@@ -147,7 +145,6 @@
 .modules-right,
 #tray {
     background: rgba(0, 0, 8, 0.5);
-    padding: 0 5px;
     margin: 5px;
 }
 
@@ -162,15 +159,19 @@
     background: none;
 }
 
+.modules-left {
+    margin-left: 15px;
+}
+
+.modules-right {
+    margin-right: 15px;
+}
+
 #tray {
     padding: 0 15px;
     margin: 0 5px;
 }
 
-/* Special border radius overrides */
-#battery {
-    border-radius: 0;
-}
 
 #custom-powermenu {
     border-radius: 0 13px 13px 0;
@@ -178,7 +179,6 @@
 }
 
 #custom-brightness {
-    border-radius: 13px 0 0 13px;
     padding-left: 15px;
 }
 
