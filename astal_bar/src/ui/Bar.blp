@@ -5,15 +5,26 @@ template $Bar: Astal.Window {
     CenterBox centerbox {
         start-widget: Box {
             Box workspaces {
-                spacing: 4;
+                styles [
+                    "traybox",
+                    "workspaces",
+                ]
+
+                spacing: 1;
             }
 
             Box traybox {
-                spacing: 4;
+                styles [
+                    "traybox",
+                ]
+
+                spacing: 1;
             }
         };
 
         center-widget: Box {
+            spacing: 5;
+
             MenuButton {
                 Label {
                     label: bind template.clock;
@@ -29,14 +40,22 @@ template $Bar: Astal.Window {
             }
 
             Box {
-                visible: bind template.mpris-visible;
+                visible: bind template.mpris-available;
 
-                Image {
-                    file: bind template.mpris-art;
+                styles [
+                    "mpris",
+                ]
+
+                spacing: 10;
+
+                Label {
+                    label: bind template.mpris-icon;
                 }
 
                 Label {
-                    label: bind template.mpris-label;
+                    label: bind template.mpris-title;
+                    max-width-chars: 20;
+                    ellipsize: end;
                 }
             }
         };
@@ -46,7 +65,10 @@ template $Bar: Astal.Window {
 
             MenuButton {
                 Box {
+                    spacing: 10;
+
                     Image {
+                        pixel-size: 12;
                         icon-name: bind template.volume-icon;
                     }
 
@@ -58,14 +80,17 @@ template $Bar: Astal.Window {
                 popover: Popover {
                     Box {
                         orientation: vertical;
+                        spacing: 5;
 
                         Box {
+                            spacing: 5;
+
                             Image {
                                 icon-name: bind template.volume-icon;
                             }
 
                             Scale {
-                                width-request: 100;
+                                width-request: 150;
                                 change-value => $change_volume();
 
                                 adjustment: Adjustment {
@@ -77,12 +102,14 @@ template $Bar: Astal.Window {
                         }
 
                         Box {
+                            spacing: 5;
+
                             Image {
                                 icon-name: bind template.mic-volume-icon;
                             }
 
                             Scale {
-                                width-request: 100;
+                                width-request: 150;
                                 change-value => $change_mic_volume();
 
                                 adjustment: Adjustment {
@@ -103,6 +130,8 @@ template $Bar: Astal.Window {
 
             Button {
                 Box {
+                    spacing: 10;
+
                     Image {
                         icon-name: bind template.network-icon;
                     }
@@ -117,6 +146,8 @@ template $Bar: Astal.Window {
 
             Button {
                 Box {
+                    spacing: 10;
+
                     Image {
                         icon-name: "bluetooth-symbolic";
                     }
@@ -142,7 +173,7 @@ template $Bar: Astal.Window {
             }
 
             Button {
-                label: "⏻";
+                label: "⏻ ";
                 clicked => $open_notifications();
             }
         };

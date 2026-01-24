@@ -39,8 +39,10 @@ export default class Bar extends Astal.Window {
                     ...number("volume", 0, 1.5),
                     ...number("mic-volume", 0, 1.5),
                     ...string("network-icon"),
-                    ...boolean("mpris-visible"),
+                    ...boolean("mpris_available"),
                     ...string("mpris-label"),
+                    ...string("mpris-title"),
+                    ...string("mpris-icon"),
                     ...string("mpris-art"),
                     ...string("power-profile-icon"),
                     ...string("ssid"),
@@ -55,9 +57,11 @@ export default class Bar extends Astal.Window {
     declare clock: string;
     declare battery_label: string;
     declare mpris_label: string;
+    declare mpris_available: boolean;
     declare bluetooth_visible: string;
     declare bluetooth_label: string;
     declare ssid: string;
+    declare mpris_icon: string;
 
     declare _popover: Gtk.Popover;
     declare _calendar: Gtk.Calendar;
@@ -72,31 +76,44 @@ export default class Bar extends Astal.Window {
             cssClasses: ["Bar"],
         });
 
-        // clock
+        this.setupClock();
+        this.setupCalendar();
+        this.setupNetwork();
+        this.setupBattery();
+        this.setupAudio();
+        this.setupMpris();
+        this.setupPowerProfiles();
+        this.setupWorkspaces();
+        this.setupTray();
+        this.setupBluetooth();
+    }
+
+    private setupClock() {
         const timer = AstalIO.Time.interval(1000, () => {
             this.clock = GLib.DateTime.new_now_local().format("%e %b %H:%M")!;
         });
         this.connect("destroy", () => timer.cancel());
+    }
 
-        // everytime popover is opened, select current day
+    private setupCalendar() {
         this._popover.connect("notify::visible", ({ visible }) => {
             if (visible) {
                 this._calendar.select_day(GLib.DateTime.new_now_local());
             }
         });
+    }
 
-        // network
+    private setupNetwork() {
         const nw = AstalNetwork.get_default();
         this.ssid = nw.get_wifi()?.ssid || "Ethernet";
-        nw.connect("notify::state", (network, a) => {
-            console.log(a);
+
+        nw.connect("notify::state", (network) => {
             const wifi = network.get_wifi();
             this.ssid = wifi?.ssid || "Ethernet";
         });
 
         let networkBinding: GObject.Binding;
 
-        // @ts-expect-error mistyped
         nw.bind_property_full(
             "primary",
             this,
@@ -128,8 +145,9 @@ export default class Bar extends Astal.Window {
             },
             null,
         );
+    }
 
-        // battery
+    private setupBattery() {
         const bat = AstalBattery.get_default();
 
         bat.bind_property("is-present", this, "battery-visible", SYNC);
@@ -140,8 +158,9 @@ export default class Bar extends Astal.Window {
             this.battery_label = `${Math.floor(bat.percentage * 100)}%`;
         });
         this.connect("destroy", () => bat.disconnect(batteryId));
+    }
 
-        // volume
+    private setupAudio() {
         const speaker = AstalWp.get_default()!.defaultSpeaker;
         speaker.bind_property("volume-icon", this, "volume-icon", SYNC);
         speaker.bind_property("volume", this, "volume", SYNC);
@@ -149,19 +168,88 @@ export default class Bar extends Astal.Window {
         const mic = AstalWp.get_default()!.default_microphone;
         mic.bind_property("volume-icon", this, "mic-volume-icon", SYNC);
         mic.bind_property("volume", this, "mic-volume", SYNC);
+    }
 
-        // mpris
-        const player = AstalMpris.Player.new("spotify");
-        player.bind_property("available", this, "mpris-visible", SYNC);
-        player.bind_property("cover-art", this, "mpris-art", SYNC);
+    private setupMpris() {
+        const mpris = AstalMpris.get_default();
+        let currentPlayer: AstalMpris.Player | undefined;
 
-        this.mpris_label = `${player.artist} - ${player.title}`;
-        const playerId = player.connect("notify::metadata", () => {
-            this.mpris_label = `${player.artist} - ${player.title}`;
+        interface PlayerConnection {
+            player: AstalMpris.Player;
+            connection: number;
+        }
+
+        const players = new Map<string, PlayerConnection>();
+
+        mpris.connect("player-added", (source, player) => {
+            if (!currentPlayer && player.get_available()) {
+                this.mpris_available = true;
+
+                currentPlayer = player;
+                currentPlayer.bind_property("title", this, "mpris-title", SYNC);
+                this.mpris_icon = this.getPlayerIcon(currentPlayer);
+            }
+            const connection = player.connect(
+                "notify::playback-status",
+                (player) => {
+                    if (
+                        player.get_playback_status() ===
+                        AstalMpris.PlaybackStatus.PLAYING
+                    ) {
+                        currentPlayer = player;
+                        currentPlayer.bind_property(
+                            "title",
+                            this,
+                            "mpris-title",
+                            SYNC,
+                        );
+                        this.mpris_icon = this.getPlayerIcon(currentPlayer);
+                    } else {
+                        for (const p of players.values()) {
+                            if (
+                                p.player.get_playback_status() ===
+                                AstalMpris.PlaybackStatus.PLAYING
+                            ) {
+                                currentPlayer = p.player;
+                                currentPlayer.bind_property(
+                                    "title",
+                                    this,
+                                    "mpris-title",
+                                    SYNC,
+                                );
+
+                                this.mpris_icon =
+                                    this.getPlayerIcon(currentPlayer);
+
+                                break;
+                            }
+                        }
+                    }
+                },
+            );
+            players.set(player.get_bus_name(), { player, connection });
         });
-        this.connect("destroy", () => player.disconnect(playerId));
 
-        // powerprofiles
+        mpris.connect("player-closed", (_, player) => {
+            const connection = players.get(player.get_bus_name())?.connection;
+            if (connection) {
+                player.disconnect(connection);
+            }
+            players.delete(player.get_bus_name());
+        });
+    }
+
+    private getPlayerIcon(player: AstalMpris.Player) {
+        const name = player.get_bus_name();
+        if (name.includes("playerctld") && this.mpris_icon != "")
+            return this.mpris_icon;
+        if (name.includes("spotify")) return "";
+        if (name.includes("firefox")) return "󰈹";
+
+        return "";
+    }
+
+    private setupPowerProfiles() {
         const powerprofile = AstalPowerProfiles.get_default();
         powerprofile.bind_property(
             "icon-name",
@@ -169,9 +257,12 @@ export default class Bar extends Astal.Window {
             "power-profile-icon",
             SYNC,
         );
+    }
 
+    private setupWorkspaces() {
         const hyprland = Hyprland.get_default();
         const workspaceItems = new Map<number, Gtk.MenuButton>();
+
         const workspaces = hyprland.get_workspaces();
         for (const workspace of workspaces.sort(
             (a, b) => a.get_id() - b.get_id(),
@@ -188,12 +279,15 @@ export default class Bar extends Astal.Window {
                 const label = new Gtk.Label({ label: workspace.get_name() });
                 const newButton = new Gtk.MenuButton({ child: label });
                 workspaceItems.set(workspace.get_id(), newButton);
-                for (let i = workspace.get_id(); i > 0; i--) {
+
+                for (let i = workspace.get_id() - 1; i > 0; i--) {
                     const w = workspaceItems.get(i);
                     if (w) {
                         this._workspaces.insert_child_after(newButton, w);
+                        return;
                     }
                 }
+                this._workspaces.prepend(newButton);
             },
         );
 
@@ -213,14 +307,12 @@ export default class Bar extends Astal.Window {
             hyprland.disconnect(workspaceId1);
             hyprland.disconnect(workspaceId2);
         });
+    }
 
-        for (const client of hyprland.get_workspaces()) {
-            print(client.get_id());
-        }
-
-        // tray
+    private setupTray() {
         const tray = AstalTray.get_default();
         const trayItems = new Map<string, Gtk.MenuButton>();
+
         const trayId1 = tray.connect("item-added", (_, id) => {
             const item = tray.get_item(id);
             const popover = Gtk.PopoverMenu.new_from_model(item.menu_model);
@@ -250,26 +342,28 @@ export default class Bar extends Astal.Window {
             tray.disconnect(trayId1);
             tray.disconnect(trayId2);
         });
+    }
 
-        // bluetooth
+    private setupBluetooth() {
         const bt = AstalBluetooth.get_default();
         bt.bind_property("is-connected", this, "bluetooth-visible", SYNC);
 
-        this.bluetooth_label = this.get_bluetooth_name(bt);
-        bt.connect("device-added", (source, _) => {
-            this.bluetooth_label = this.get_bluetooth_name(source);
+        this.bluetooth_label = this.getBluetoothName(bt);
+
+        bt.connect("device-added", (source) => {
+            this.bluetooth_label = this.getBluetoothName(source);
         });
 
-        bt.connect("notify::is-connected", (source, _) => {
-            this.bluetooth_label = this.get_bluetooth_name(source);
+        bt.connect("notify::is-connected", (source) => {
+            this.bluetooth_label = this.getBluetoothName(source);
         });
 
-        bt.connect("device-removed", (source, _) => {
-            this.bluetooth_label = this.get_bluetooth_name(source);
+        bt.connect("device-removed", (source) => {
+            this.bluetooth_label = this.getBluetoothName(source);
         });
     }
 
-    get_bluetooth_name(source: AstalBluetooth.Bluetooth) {
+    private getBluetoothName(source: AstalBluetooth.Bluetooth): string {
         for (const dev of source.get_devices()) {
             if (dev.get_connected()) {
                 return dev.get_alias();

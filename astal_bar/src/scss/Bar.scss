@@ -3,17 +3,76 @@ $fg-color: #{"@theme_fg_color"};
 $bg-color: #{"@theme_bg_color"};
 
 window.Bar {
+
+  font-family: "Adwaita Sans", "Font Awesome 5 Free", monospace;
+  font-size: 12px;
+
   >box {
-    background: $bg-color;
-    color: $fg-color;
-    font-weight: bold;
+    background: rgba(25, 27, 38, 0.5);
+    color: #c0caf5;
+    padding: 5px 15px;
   }
 
-  button {
+
+  image {
+    -gtk-icon-size: 12px;
+  }
+
+  button,
+  .mpris {
+    color: #c0caf5;
     min-height: 0;
     min-width: 0;
-    border-radius: 8px;
-    margin: 4px;
-    padding: 4px 8px;
+    padding: 4px 10px;
+    background: rgba(0, 0, 8, 0.5);
+    border-radius: 13px;
+    border: 1px solid #34344d;
+    transition: color 0.05s linear;
+    box-shadow: rgba(0, 0, 0, 0.116) 2px 2px 5px 2px;
+    font-weight: 600;
+    outline: none;
+    text-align: center;
+
+    &:hover {
+      color: #a0aad5;
+    }
+
+
   }
+
+  popover {
+
+    box {
+      padding: 4px;
+
+    }
+  }
+
+  .traybox {
+    background: rgba(0, 0, 8, 0.5);
+    border-radius: 13px;
+
+    padding: 4px 8px;
+    border: 1px solid #34344d;
+    transition: color 0.05s linear;
+    box-shadow: rgba(0, 0, 0, 0.116) 2px 2px 5px 2px;
+
+    button {
+      border: 0;
+      background: transparent;
+      padding: 6px;
+    }
+
+
+    image {
+      -gtk-icon-size: 16px;
+    }
+  }
+
+  .workspaces {
+    button {
+      padding: 4px 12px;
+    }
+  }
+
 }
