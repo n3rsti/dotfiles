@@ -44,6 +44,7 @@ export default class Bar extends Astal.Window {
                     ...string("mpris-art"),
                     ...string("power-profile-icon"),
                     ...string("ssid"),
+                    ...string("bluetooth_label"),
                     ...boolean("bluetooth-visible"),
                 },
             },
@@ -55,6 +56,7 @@ export default class Bar extends Astal.Window {
     declare battery_label: string;
     declare mpris_label: string;
     declare bluetooth_visible: string;
+    declare bluetooth_label: string;
     declare ssid: string;
 
     declare _popover: Gtk.Popover;
@@ -252,6 +254,28 @@ export default class Bar extends Astal.Window {
         // bluetooth
         const bt = AstalBluetooth.get_default();
         bt.bind_property("is-connected", this, "bluetooth-visible", SYNC);
+
+        this.bluetooth_label = this.get_bluetooth_name(bt);
+        bt.connect("device-added", (source, _) => {
+            this.bluetooth_label = this.get_bluetooth_name(source);
+        });
+
+        bt.connect("notify::is-connected", (source, _) => {
+            this.bluetooth_label = this.get_bluetooth_name(source);
+        });
+
+        bt.connect("device-removed", (source, _) => {
+            this.bluetooth_label = this.get_bluetooth_name(source);
+        });
+    }
+
+    get_bluetooth_name(source: AstalBluetooth.Bluetooth) {
+        for (const dev of source.get_devices()) {
+            if (dev.get_connected()) {
+                return dev.get_alias();
+            }
+        }
+        return "Disconnected";
     }
 
     change_volume(_scale: Gtk.Scale, _type: Gtk.ScrollType, value: number) {
@@ -270,5 +294,13 @@ export default class Bar extends Astal.Window {
 
     open_network_settings() {
         GLib.spawn_command_line_async("nmgui");
+    }
+
+    open_bluetooth_settings() {
+        GLib.spawn_command_line_async("blueberry");
+    }
+
+    open_notifications() {
+        GLib.spawn_command_line_async("swaync-client -t -sw");
     }
 }

@@ -115,16 +115,23 @@ template $Bar: Astal.Window {
                 clicked => $open_network_settings();
             }
 
-            Image {
-                visible: bind template.bluetooth-visible;
-                icon-name: "bluetooth-symbolic";
-            }
+            Button {
+                Box {
+                    Image {
+                        icon-name: "bluetooth-symbolic";
+                    }
 
-            Image {
-                icon-name: bind template.power-profile-icon;
+                    Label {
+                        label: bind template.bluetooth_label;
+                    }
+                }
+
+                clicked => $open_bluetooth_settings();
             }
 
             Box {
+                visible: bind template.battery-visible;
+
                 Image {
                     icon-name: bind template.battery-icon;
                 }
@@ -132,6 +139,11 @@ template $Bar: Astal.Window {
                 Label {
                     label: bind template.battery-label;
                 }
+            }
+
+            Button {
+                label: "⏻";
+                clicked => $open_notifications();
             }
         };
     }
