@@ -9,9 +9,9 @@
   "layer-shell-cover-screen": true,
   "cssPriority": "user",
   "control-center-margin-top": 0,
-  "control-center-margin-bottom": 450,
-  "control-center-margin-right": 0,
+  "control-center-margin-right": 15,
   "control-center-margin-left": 0,
+  "control-center-margin-bottom": 15,
   "notification-2fa-action": true,
   "notification-inline-replies": false,
   "notification-body-image-height": 100,
@@ -22,8 +22,7 @@
   "fit-to-screen": true,
   "relative-timestamps": true,
   "control-center-width": 400,
-  "control-center-height": 1000,
-  "notification-window-width": 370,
+  "notification-window-width": 350,
   "keyboard-shortcuts": true,
   "notification-grouping": true,
   "image-visibility": "when-available",
@@ -88,7 +87,7 @@
       "loop-carousel": false
     },
     "volume": {
-      "label": "󰕾",
+      "label": "  󰕾",
       "show-per-app-icon": true,
       "show-per-app": true
     },
@@ -99,26 +98,31 @@
       "min": 5
     },
     "buttons-grid": {
-      "buttons-per-row": 4,
+      "buttons-per-row": 5,
       "actions": [
         {
-          "label": "󰍁",
-          "type": "command",
+          "label": "",
+          "type": "normal",
           "command": "hyprlock"
         },
         {
-          "label": "󰗼",
-          "type": "command",
+          "label": "󰤄",
+          "type": "normal",
+          "command": "systemctl suspend"
+        },
+        {
+          "label": "",
+          "type": "normal",
           "command": "hyprctl dispatch exit"
         },
         {
-          "label": "󰜉",
-          "type": "command",
+          "label": "",
+          "type": "normal",
           "command": "systemctl reboot"
         },
         {
-          "label": "󰐥",
-          "type": "command",
+          "label": "⏻",
+          "type": "normal",
           "command": "systemctl poweroff"
         }
       ]

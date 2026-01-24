@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Nix packages
 Comment=Nix packages
-Exec=ghostty --class=Impala --title=Impala -e ~/.config/dotfiles/scripts/pkg-install.sh
+Exec=xdg-open https://search.nixos.org/packages
 Icon=nixos-logo
 Terminal=false
 Type=Application
