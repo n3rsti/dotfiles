@@ -4,8 +4,7 @@ using Astal 4.0;
 template $Bar: Astal.Window {
     CenterBox centerbox {
         start-widget: Box {
-
-            Box workspaces{
+            Box workspaces {
                 spacing: 4;
             }
 
@@ -45,23 +44,60 @@ template $Bar: Astal.Window {
         end-widget: Box {
             spacing: 4;
 
+            MenuButton {
+                Box {
+                    Image {
+                        icon-name: bind template.volume-icon;
+                    }
 
-
-            Box {
-                Image {
-                    icon-name: bind template.volume-icon;
+                    Image {
+                        icon-name: bind template.mic-volume-icon;
+                    }
                 }
 
-                Scale {
-                    width-request: 100;
-                    change-value => $change_volume();
+                popover: Popover {
+                    Box {
+                        orientation: vertical;
 
-                    adjustment: Adjustment {
-                        value: bind template.volume;
-                        lower: 0;
-                        upper: 1;
-                    };
-                }
+                        Box {
+                            Image {
+                                icon-name: bind template.volume-icon;
+                            }
+
+                            Scale {
+                                width-request: 100;
+                                change-value => $change_volume();
+
+                                adjustment: Adjustment {
+                                    value: bind template.volume;
+                                    lower: 0;
+                                    upper: 1.5;
+                                };
+                            }
+                        }
+
+                        Box {
+                            Image {
+                                icon-name: bind template.mic-volume-icon;
+                            }
+
+                            Scale {
+                                width-request: 100;
+                                change-value => $change_mic_volume();
+
+                                adjustment: Adjustment {
+                                    value: bind template.mic-volume;
+                                    lower: 0;
+                                    upper: 1.5;
+                                };
+                            }
+                        }
+
+                        Label {
+                            label: "More settings";
+                        }
+                    }
+                };
             }
 
             Image {
@@ -86,7 +122,6 @@ template $Bar: Astal.Window {
                     label: bind template.battery-label;
                 }
             }
-
         };
     }
 }

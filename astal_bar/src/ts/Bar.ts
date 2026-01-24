@@ -32,10 +32,12 @@ export default class Bar extends Astal.Window {
                 Properties: {
                     ...string("clock"),
                     ...string("volume-icon"),
+                    ...string("mic-volume-icon"),
                     ...boolean("battery-visible"),
                     ...string("battery-label"),
                     ...string("battery-icon"),
-                    ...number("volume", 0, 1),
+                    ...number("volume", 0, 1.5),
+                    ...number("mic-volume", 0, 1.5),
                     ...string("network-icon"),
                     ...boolean("mpris-visible"),
                     ...string("mpris-label"),
@@ -132,6 +134,10 @@ export default class Bar extends Astal.Window {
         const speaker = AstalWp.get_default()!.defaultSpeaker;
         speaker.bind_property("volume-icon", this, "volume-icon", SYNC);
         speaker.bind_property("volume", this, "volume", SYNC);
+
+        const mic = AstalWp.get_default()!.default_microphone;
+        mic.bind_property("volume-icon", this, "mic-volume-icon", SYNC);
+        mic.bind_property("volume", this, "mic-volume", SYNC);
 
         // mpris
         const player = AstalMpris.Player.new("spotify");
@@ -241,5 +247,9 @@ export default class Bar extends Astal.Window {
 
     change_volume(_scale: Gtk.Scale, _type: Gtk.ScrollType, value: number) {
         AstalWp.get_default()?.defaultSpeaker.set_volume(value);
+    }
+
+    change_mic_volume(_scale: Gtk.Scale, _type: Gtk.ScrollType, value: number) {
+        AstalWp.get_default()?.defaultMicrophone.set_volume(value);
     }
 }
