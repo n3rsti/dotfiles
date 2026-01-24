@@ -93,11 +93,26 @@ template $Bar: Astal.Window {
                             }
                         }
 
-                        Label {
+                        Button {
                             label: "More settings";
+                            clicked => $open_volume_settings();
                         }
                     }
                 };
+            }
+
+            Button {
+                Box {
+                    Image {
+                        icon-name: bind template.network-icon;
+                    }
+
+                    Label {
+                        label: bind template.ssid;
+                    }
+                }
+
+                clicked => $open_network_settings();
             }
 
             Image {
@@ -107,10 +122,6 @@ template $Bar: Astal.Window {
 
             Image {
                 icon-name: bind template.power-profile-icon;
-            }
-
-            Image {
-                icon-name: bind template.network-icon;
             }
 
             Box {

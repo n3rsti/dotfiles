@@ -43,6 +43,7 @@ export default class Bar extends Astal.Window {
                     ...string("mpris-label"),
                     ...string("mpris-art"),
                     ...string("power-profile-icon"),
+                    ...string("ssid"),
                     ...boolean("bluetooth-visible"),
                 },
             },
@@ -54,6 +55,7 @@ export default class Bar extends Astal.Window {
     declare battery_label: string;
     declare mpris_label: string;
     declare bluetooth_visible: string;
+    declare ssid: string;
 
     declare _popover: Gtk.Popover;
     declare _calendar: Gtk.Calendar;
@@ -83,6 +85,13 @@ export default class Bar extends Astal.Window {
 
         // network
         const nw = AstalNetwork.get_default();
+        this.ssid = nw.get_wifi()?.ssid || "Ethernet";
+        nw.connect("notify::state", (network, a) => {
+            console.log(a);
+            const wifi = network.get_wifi();
+            this.ssid = wifi?.ssid || "Ethernet";
+        });
+
         let networkBinding: GObject.Binding;
 
         // @ts-expect-error mistyped
@@ -251,5 +260,15 @@ export default class Bar extends Astal.Window {
 
     change_mic_volume(_scale: Gtk.Scale, _type: Gtk.ScrollType, value: number) {
         AstalWp.get_default()?.defaultMicrophone.set_volume(value);
+    }
+
+    open_volume_settings() {
+        GLib.spawn_command_line_async(
+            "ghostty --class=Wiremix --title=Wiremix -e wiremix --tab output",
+        );
+    }
+
+    open_network_settings() {
+        GLib.spawn_command_line_async("nmgui");
     }
 }
