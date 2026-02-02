@@ -7,7 +7,6 @@ return {
 	config = function()
 		local telescope = require("telescope")
 		local builtin = require("telescope.builtin")
-		local themes = require("telescope.themes")
 
 		local function map(keys, func, desc, mode)
 			mode = mode or "n"

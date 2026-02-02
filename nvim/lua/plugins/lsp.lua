@@ -104,11 +104,10 @@ return {
 				},
 			},
 			basedpyright = {},
-			-- csharp_ls = {},
 			roslyn_ls = {},
 			eslint = {},
 			tinymist = {},
-			-- postgres_lsp = {},
+			blueprint_ls = {},
 		},
 	},
 	config = function(_, opts)

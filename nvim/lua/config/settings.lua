@@ -1,4 +1,13 @@
 vim.o.number = true
+vim.o.relativenumber = true
+
+vim.cmd.colorscheme("rose-pine")
+
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+
 vim.g.have_nerd_font = true
 vim.schedule(function()
 	vim.o.clipboard = "unnamedplus"
@@ -19,14 +28,7 @@ vim.o.smartcase = true
 
 vim.o.timeoutlen = 300
 
-vim.o.tabstop = 4
-vim.o.softtabstop = 4
-vim.o.shiftwidth = 4
-vim.o.expandtab = true
-
 vim.o.cursorline = true
-
-vim.o.relativenumber = true
 
 vim.o.swapfile = false
 vim.o.backup = false
@@ -40,14 +42,15 @@ vim.o.wrap = false
 
 vim.api.nvim_set_hl(0, "LineNr", { fg = "#8a8c8e" })
 
+-- Highlight selection
 vim.api.nvim_set_hl(0, "MiniCursorwordCurrent", {
 	link = "LspReferenceWrite",
 })
-
 vim.api.nvim_set_hl(0, "MiniCursorword", {
 	link = "LspReferenceWrite",
 })
 
+-- Highlight yank (copy)
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
 	callback = function()

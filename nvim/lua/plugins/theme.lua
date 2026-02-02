@@ -33,8 +33,6 @@ return {
 					BlinkCmpDocBorder = { bg = "base" },
 				},
 			})
-
-			vim.cmd.colorscheme("rose-pine")
 		end,
 	},
 }
