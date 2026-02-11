@@ -236,6 +236,12 @@ export default class Bar extends Astal.Window {
                 player.disconnect(connection);
             }
             players.delete(player.get_bus_name());
+            for (const p of players.values()) {
+                if (p.player.get_available()) {
+                    return;
+                }
+            }
+            this.mpris_available = false;
         });
     }
 

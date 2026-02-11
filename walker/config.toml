@@ -1,1 +1,12 @@
-/nix/store/wbnwy8llybpig8zfwpafcjqwk5bp1b93-home-manager-files/.config/walker/config.toml
+debug = true
+force_keyboard_focus = true
+hotreload_theme = true
+theme = "default"
+timeout = 60
+
+[keybinds]
+next = ["Tab"]
+previous = ["shift ISO_Left_Tab"]
+
+[providers]
+default = ["desktopapplications", "calc", "menus"]
