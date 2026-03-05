@@ -5,7 +5,7 @@
 }
 
 #waybar {
-    background: rgba(25, 27, 38, 0.5);
+    background: none;
     color: #c0caf5;
 }
 
@@ -32,7 +32,8 @@
 #custom-nixos,
 #workspaces,
 #custom-weather,
-#custom-notifications {
+#custom-notifications,
+#privacy-item {
     background: rgba(0, 0, 8, 0.5);
     border-radius: 13px;
     border: 1px solid #34344d;
@@ -96,6 +97,11 @@
     padding: 0 12px;
 }
 
+#privacy-item {
+    padding: 0 8px;
+    color: #ff5555;
+}
+
 #bluetooth {
     padding-left: 8px;
 }
@@ -117,6 +123,10 @@
 #battery,
 #custom-notifications {
     margin-left: 5px;
+}
+
+#privacy {
+    margin-left: 3px;
 }
 
 #language {

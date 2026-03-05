@@ -9,7 +9,8 @@
     "layer": "top",
     "modules-center": [
       "mpris",
-      "clock"
+      "clock",
+      "privacy"
     ],
     "modules-left": [
       "custom/nixos",
@@ -238,6 +239,24 @@
       "on-click": "swaync-client -t -sw",
       "on-click-right": "swaync-client -d -sw",
       "escape": true
+    },
+    "privacy": {
+      "icon-spacing": 4,
+      "icon-size": 12,
+      "transition-duration": 250,
+      "modules": [
+        {
+          "type": "screenshare",
+          "tooltip": true,
+          "tooltip-icon-size": 24
+        },
+        {
+          "type": "audio-in",
+          "tooltip": true,
+          "tooltip-icon-size": 24
+        }
+      ],
+      "ignore-monitor": true
     }
   }
 ]
