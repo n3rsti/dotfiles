@@ -12,6 +12,7 @@ return {
 				typescript = { "prettierd" },
 				python = { "black" },
 				vue = { "prettierd" },
+				kotlin = { "ktlint" },
 			},
 			format_on_save = {
 				timeout_ms = 500,

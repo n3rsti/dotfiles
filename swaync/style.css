@@ -81,6 +81,7 @@ blankwindow {
 .notification-row {
     background: none;
     outline: none;
+    margin-bottom: 3px;
 }
 
 .notification-row:focus {

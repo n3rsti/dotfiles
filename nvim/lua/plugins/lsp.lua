@@ -108,6 +108,11 @@ return {
 			eslint = {},
 			tinymist = {},
 			blueprint_ls = {},
+			kotlin_language_server = {
+				init_options = {
+					storagePath = vim.fn.stdpath("cache") .. "/kotlin-language-server",
+				},
+			},
 		},
 	},
 	config = function(_, opts)
