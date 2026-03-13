@@ -24,6 +24,7 @@
       "bluetooth",
       "battery",
       "custom/brightness",
+      "idle_inhibitor",
       "custom/notifications"
     ],
     "position": "top",
@@ -257,6 +258,13 @@
         }
       ],
       "ignore-monitor": true
+    },
+    "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+        "activated": "",
+        "deactivated": " "
+      }
     }
   }
 ]
