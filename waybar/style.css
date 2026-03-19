@@ -5,7 +5,7 @@
 }
 
 #waybar {
-    background: none;
+    background: transparent;
     color: #c0caf5;
 }
 
@@ -35,7 +35,7 @@
 #custom-notifications,
 #privacy-item,
 #idle_inhibitor {
-    background: rgba(0, 0, 8, 0.5);
+    background: rgba(0, 0, 8, 0.6);
     border-radius: 13px;
     border: 1px solid #34344d;
     transition: color 0.05s linear;
@@ -207,7 +207,7 @@
 #workspaces {
     border-radius: 0 13px 13px 0;
     /* right rounded */
-    padding: 0 5px;
+    padding-left: 5px;
 }
 
 #bluetooth {
@@ -230,11 +230,13 @@
     color: #a0aad5;
     border: none;
     border-radius: 13px;
+    transition: background .1s ease-in-out;
 }
 
 #workspaces button.active {
-    background: rgba(27, 27, 35, 0.8);
+    background: rgba(37, 37, 45, 0.8);
     color: #d0daff;
+    font-weight: 700;
 }
 
 #workspaces button:hover {

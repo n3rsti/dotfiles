@@ -58,8 +58,8 @@
       ]
     },
     "pulseaudio": {
-      "format": "{icon}    {format_source}",
-      "format-source": "",
+      "format": "{icon}    {volume}%",
+      "format-source": "  {volume}%",
       "format-source-muted": "󰍭",
       "format-icons": {
         "default": [
