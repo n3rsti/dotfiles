@@ -47,12 +47,16 @@
     padding: 0 15px;
 }
 
-#custom-nixos {
+#custom-nixos,
+#network,
+#custom-tailscale {
     border-right: 0px;
 }
 
 #custom-powermenu,
-#workspaces {
+#workspaces,
+#network,
+#bluetooth {
     border-left: 0px;
 }
 
@@ -99,7 +103,9 @@
 #idle_inhibitor,
 #custom-tailscale {
     padding: 0 12px;
-    transition: all ease-in-out .3s;
+    transition-property: color, background;
+    transition-duration: .3s;
+    transition-timing-function: ease-in-out;
 }
 
 #privacy-item {
@@ -119,13 +125,11 @@
 #custom-brightness,
 #pulseaudio,
 #audio,
-#network,
 #clock,
 #battery,
 #custom-notifications,
-#idle_inhibitor,
 #custom-tailscale,
-#bluetooth {
+#idle_inhibitor {
     margin-left: 5px;
 }
 
@@ -145,8 +149,13 @@
 
 #disk,
 #memory,
-#custom-powermenu {
+#custom-powermenu,
+#network {
     padding-right: 4px;
+}
+
+#network {
+    padding-left: 4px;
 }
 
 #usage {
@@ -186,6 +195,18 @@
     margin: 0 5px;
 }
 
+#custom-tailscale {
+    border-radius: 13px 0 0 13px;
+}
+
+#network {
+    border-radius: 0;
+}
+
+#bluetooth {
+    border-radius: 0 13px 13px 0;
+
+}
 
 #custom-powermenu {
     border-radius: 0 13px 13px 0;
@@ -241,7 +262,12 @@
 #idle_inhibitor.activated,
 #custom-brightness.enabled,
 #bluetooth.connected {
-    color: rgba(0, 0, 8, 0.9);
+    font-weight: 800;
+}
+
+#idle_inhibitor.activated,
+#custom-brightness.enabled {
     background: #c0caf5;
-    border: 1px solid rgba(0, 0, 8, 0.9);
+    color: rgba(0, 0, 8, 0.8);
+    border: 0px solid #c0caf5;
 }

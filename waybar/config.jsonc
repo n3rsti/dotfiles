@@ -264,7 +264,7 @@
       "format": "{icon}",
       "format-icons": {
         "activated": "",
-        "deactivated": ""
+        "deactivated": " "
       }
     },
     "custom/tailscale": {
