@@ -26,7 +26,7 @@ vim.o.showmode = false
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
-vim.o.timeoutlen = 300
+vim.o.timeoutlen = 1000
 
 vim.o.cursorline = true
 

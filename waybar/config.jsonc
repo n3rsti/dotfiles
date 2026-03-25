@@ -20,6 +20,7 @@
     "modules-right": [
       "pulseaudio",
       "hyprland/language",
+      "custom/tailscale",
       "network",
       "bluetooth",
       "battery",
@@ -200,7 +201,7 @@
       "tooltip-format": "{controller_alias}\t{controller_address}",
       "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
       "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-      "on-click": "blueberry",
+      "on-click": "overskride",
       "format-device-preference": [
         "LE_WH-1000XM3",
         "WH-1000XM3",
@@ -265,6 +266,13 @@
         "activated": "",
         "deactivated": " "
       }
+    },
+    "custom/tailscale": {
+      "exec": "~/.config/waybar/scripts/tailscale_status.sh",
+      "format": "{}",
+      "interval": 1,
+      "return-type": "json",
+      "on-click": "~/.config/waybar/scripts/tailscale_toggle_exit_node.sh"
     }
   }
 ]

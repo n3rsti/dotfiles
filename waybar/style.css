@@ -34,7 +34,8 @@
 #custom-weather,
 #custom-notifications,
 #privacy-item,
-#idle_inhibitor {
+#idle_inhibitor,
+#custom-tailscale {
     background: rgba(0, 0, 8, 0.6);
     border-radius: 13px;
     border: 1px solid #34344d;
@@ -75,7 +76,8 @@
 #mpris:hover,
 #custom-weather:hover,
 #custom-notifications:hover,
-#idle_inhibitor:hover {
+#idle_inhibitor:hover,
+#custom-tailscale:hover {
     color: #a0aad5;
 }
 
@@ -96,7 +98,8 @@
 #tray,
 #mpris,
 #custom-weather,
-#idle_inhibitor {
+#idle_inhibitor,
+#custom-tailscale {
     padding: 0 12px;
 }
 
@@ -125,7 +128,8 @@
 #clock,
 #battery,
 #custom-notifications,
-#idle_inhibitor {
+#idle_inhibitor,
+#custom-tailscale {
     margin-left: 5px;
 }
 
@@ -243,4 +247,10 @@
     background: #11111b;
     color: #cdd6f4;
     box-shadow: none;
+}
+
+#custom-tailscale.connected {
+    color: rgba(0, 0, 8, 0.9);
+    background: #c0caf5;
+    border: none;
 }
