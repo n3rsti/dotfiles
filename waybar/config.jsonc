@@ -18,8 +18,8 @@
       "tray"
     ],
     "modules-right": [
-      "pulseaudio",
       "hyprland/language",
+      "pulseaudio",
       "custom/tailscale",
       "network",
       "bluetooth",
@@ -264,7 +264,7 @@
       "format": "{icon}",
       "format-icons": {
         "activated": "",
-        "deactivated": " "
+        "deactivated": ""
       }
     },
     "custom/tailscale": {
@@ -272,7 +272,8 @@
       "format": "{}",
       "interval": 1,
       "return-type": "json",
-      "on-click": "~/.config/waybar/scripts/tailscale_toggle_exit_node.sh"
+      "on-click": "~/.config/waybar/scripts/tailscale_toggle_exit_node.sh toggle",
+      "on-click-right": "~/.config/waybar/scripts/tailscale_toggle_exit_node.sh select"
     }
   }
 ]

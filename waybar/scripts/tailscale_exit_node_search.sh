@@ -3,7 +3,7 @@
 chosen_host=$(
     tailscale exit-node list \
     | awk '$1 ~ /^[0-9]+\./' \
-    | fzf \
+    | walker --dmenu --theme=launcher --width=1000\
     | awk '{print $2}'
 )
 if [[ -n "$chosen_host" ]]; then
