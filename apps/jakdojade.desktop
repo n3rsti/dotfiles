@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Jakdojade
+Comment=Jakdojade
+Exec=xdg-open https://jakdojade.pl/
+Icon=jakdojade
+Terminal=false
+Type=Application
