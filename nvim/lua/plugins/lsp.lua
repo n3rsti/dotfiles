@@ -113,6 +113,7 @@ return {
 					storagePath = vim.fn.stdpath("cache") .. "/kotlin-language-server",
 				},
 			},
+			emmet_language_server = {},
 		},
 	},
 	config = function(_, opts)
