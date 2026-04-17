@@ -70,7 +70,7 @@
         ]
       },
       "format-muted": "    {volume}%",
-      "on-click": "ghostty --class=Wiremix --title=Wiremix -e wiremix --tab output",
+      "on-click": "pavucontrol",
       "max-volume": 150,
       "on-click-middle": "swayosd-client --output-volume=mute-toggle",
       "on-click-right": "swayosd-client --input-volume=mute-toggle",
@@ -166,6 +166,7 @@
     },
     "custom/nixos": {
       "format": "󱄅",
+      "on-click": "walker -t launcher",
       "tooltip": true,
       "tooltip-format": "btw"
     },
@@ -201,7 +202,7 @@
       "tooltip-format": "{controller_alias}\t{controller_address}",
       "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
       "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-      "on-click": "overskride",
+      "on-click": "blueman-manager",
       "format-device-preference": [
         "LE_WH-1000XM3",
         "WH-1000XM3",
