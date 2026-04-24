@@ -272,9 +272,7 @@
       "exec": "~/.config/waybar/scripts/tailscale_status.sh",
       "format": "{}",
       "interval": 1,
-      "return-type": "json",
-      "on-click": "~/.config/waybar/scripts/tailscale_toggle_exit_node.sh toggle",
-      "on-click-right": "~/.config/waybar/scripts/tailscale_toggle_exit_node.sh select"
+      "return-type": "json"
     }
   }
 ]

@@ -1,11 +1,3 @@
-local vue_language_server_path = vim.fn.expand("~/.npm-global/lib/node_modules/@vue/language-server")
-local tsserver_filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
-local vue_plugin = {
-	name = "@vue/typescript-plugin",
-	location = vue_language_server_path,
-	languages = { "javascript", "typescript", "vue" },
-	configNamespace = "typescript",
-}
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
@@ -18,102 +10,30 @@ return {
 	opts = {
 		servers = {
 			lua_ls = {},
-			gopls = {
-				settings = {
-					gopls = {
-						usePlaceholders = true,
-					},
-				},
-			},
-			clangd = {
-				capabilities = {
-					offsetEncoding = { "utf-16" },
-				},
-			},
-			vtsls = {
-				settings = {
-					vtsls = {
-						tsserver = {
-							globalPlugins = {
-								vue_plugin,
-							},
-						},
-					},
-				},
-				filetypes = tsserver_filetypes,
-			},
+			gopls = {},
+			clangd = {},
+			vtsls = {},
 			vue_ls = {},
-			nil_ls = {
-				settings = {
-					["nil"] = {
-						formatting = {
-							command = { "nixfmt" }, -- or "nixfmt" or "alejandra"
-						},
-						nix = {
-							flake = {
-								autoArchive = true,
-							},
-						},
-					},
-				},
-			},
+			nil_ls = {},
 			air = {},
 			vhdl_ls = {},
 			r_language_server = {},
 			jsonls = {},
 			tailwindcss = {},
-			rust_analyzer = {
-				settings = {
-					["rust-analyzer"] = {
-						diagnostics = {
-							enable = true,
-						},
-					},
-				},
-			},
+			rust_analyzer = {},
 			jdtls = {},
-			qmlls = {
-				cmd = { "qmlls" },
-			},
+			qmlls = {},
 			cssls = {},
-			texlab = {
-				settings = {
-					texlab = {
-
-						bibtexFormatter = "texlab",
-						build = {
-							args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
-							executable = "latexmk",
-							forwardSearchAfter = false,
-							onSave = true,
-						},
-						chktex = {
-							onEdit = true,
-							onOpenAndSave = false,
-						},
-						diagnosticsDelay = 300,
-						formatterLineLength = 80,
-						forwardSearch = {
-							args = {},
-						},
-						latexFormatter = "latexindent",
-						latexindent = {
-							modifyLineBreaks = false,
-						},
-					},
-				},
-			},
+			texlab = {},
 			basedpyright = {},
 			roslyn_ls = {},
 			eslint = {},
 			tinymist = {},
 			blueprint_ls = {},
-			kotlin_language_server = {
-				init_options = {
-					storagePath = vim.fn.stdpath("cache") .. "/kotlin-language-server",
-				},
-			},
+			kotlin_language_server = {},
 			emmet_language_server = {},
+			angularls = {},
+			html = {},
 		},
 	},
 	config = function(_, opts)
