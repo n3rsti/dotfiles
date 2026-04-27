@@ -1,6 +1,9 @@
 vim.pack.add({
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
+	"https://github.com/j-hui/fidget.nvim",
 })
+
+require("fidget").setup({})
 
 local servers = {
 	lua_ls = {},
