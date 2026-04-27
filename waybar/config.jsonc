@@ -211,8 +211,8 @@
     },
     "custom/brightness": {
       "orientation": "horizontal",
-      "on-scroll-up": "~/.config/waybar/scripts/change_brightness.sh -i 5",
-      "on-scroll-down": "~/.config/waybar/scripts/change_brightness.sh -d 5",
+      "on-scroll-up": "~/.config/waybar/scripts/change_brightness.sh -i 1",
+      "on-scroll-down": "~/.config/waybar/scripts/change_brightness.sh -d 1",
       "exec": "~/.config/waybar/scripts/brightness.sh",
       "on-click": "~/.config/waybar/scripts/toggle_night_mode.sh",
       "interval": 1,
