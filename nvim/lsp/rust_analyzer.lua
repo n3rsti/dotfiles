@@ -4,6 +4,9 @@ return {
 			diagnostics = {
 				enable = true,
 			},
+			check = {
+				allTargets = false,
+			},
 		},
 	},
 }
