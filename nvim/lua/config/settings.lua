@@ -1,8 +1,6 @@
 vim.o.number = true
 vim.o.relativenumber = true
 
-vim.cmd.colorscheme("rose-pine")
-
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
@@ -36,6 +34,15 @@ vim.o.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.o.undofile = true
 
 vim.o.winborder = "rounded"
+
+vim.o.list = true
+vim.opt.listchars = {
+	tab = "» ",
+	trail = "·",
+	extends = "›",
+	precedes = "‹",
+	nbsp = "␣",
+}
 
 vim.o.scrolloff = 10
 vim.o.wrap = false
