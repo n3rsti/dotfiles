@@ -7,6 +7,9 @@ end
 map("J", ":m '>+1<CR>gv=gv", "Visual: move line down", "v")
 map("K", ":m '<-2<CR>gv=gv", "Visual: move line up", "v")
 
+vim.keymap.set("x", "<", "<gv", { noremap = true, silent = true })
+vim.keymap.set("x", ">", ">gv", { noremap = true, silent = true })
+
 map("J", "mzJ`z", "Move line below up")
 
 map("<C-d>", "<C-d>zz", "Jump down and center")
