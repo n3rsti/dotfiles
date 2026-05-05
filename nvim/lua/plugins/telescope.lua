@@ -23,6 +23,7 @@ telescope.setup({
 })
 
 telescope.load_extension("fzy_native")
+require("telescope").load_extension("remote-sshfs")
 
 -- File and search keymaps
 map("<leader>sf", function()
