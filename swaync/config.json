@@ -103,27 +103,27 @@
         {
           "label": "",
           "type": "normal",
-          "command": "hyprlock"
+          "command": "~/.config/dotfiles/swaync/scripts/confirm.sh lock"
         },
         {
           "label": "󰤄",
           "type": "normal",
-          "command": "systemctl suspend"
+          "command": "~/.config/dotfiles/swaync/scripts/confirm.sh suspend"
         },
         {
           "label": "",
           "type": "normal",
-          "command": "hyprctl dispatch exit"
+          "command": "~/.config/dotfiles/swaync/scripts/confirm.sh logout"
         },
         {
           "label": "",
           "type": "normal",
-          "command": "systemctl reboot"
+          "command": "~/.config/dotfiles/swaync/scripts/confirm.sh reboot"
         },
         {
           "label": "⏻",
           "type": "normal",
-          "command": "systemctl poweroff"
+          "command": "~/.config/dotfiles/swaync/scripts/confirm.sh shutdown"
         }
       ]
     }
