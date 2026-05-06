@@ -31,6 +31,7 @@ local servers = {
 	emmet_language_server = {},
 	angularls = {},
 	html = {},
+	bashls = {},
 }
 
 for server, config in pairs(servers) do
