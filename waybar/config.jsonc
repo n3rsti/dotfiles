@@ -10,7 +10,8 @@
     "modules-center": [
       "mpris",
       "clock",
-      "privacy"
+      "privacy",
+      "custom/recording"
     ],
     "modules-left": [
       "custom/nixos",
@@ -273,6 +274,12 @@
       "format": "{}",
       "interval": 1,
       "return-type": "json"
+    },
+    "custom/recording": {
+      "hide-empty-text": false,
+      "exec": "~/.config/dotfiles/waybar/scripts/get_recording_status.sh",
+      "interval": 1,
+      "on-click": "pkill -INT -x wf-recorder"
     }
   }
 ]

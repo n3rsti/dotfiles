@@ -35,7 +35,8 @@
 #custom-notifications,
 #privacy-item,
 #idle_inhibitor,
-#custom-tailscale {
+#custom-tailscale,
+#custom-recording {
     background: rgba(0, 0, 8, 0.6);
     border-radius: 13px;
     border: 1px solid #34344d;
@@ -101,16 +102,23 @@
 #mpris,
 #custom-weather,
 #idle_inhibitor,
-#custom-tailscale {
+#custom-tailscale,
+#custom-recording {
     padding: 0 12px;
     transition-property: color, background;
     transition-duration: .3s;
     transition-timing-function: ease-in-out;
 }
 
-#privacy-item {
+#privacy-item,
+#custom-recording {
     padding: 0 8px;
     color: #ff5555;
+}
+
+#custom-recording {
+    padding: 0 12px;
+    font-size: 15px;
 }
 
 
@@ -129,7 +137,8 @@
 #battery,
 #custom-notifications,
 #custom-tailscale,
-#idle_inhibitor {
+#idle_inhibitor,
+#custom-recording {
     margin-left: 5px;
 }
 
