@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Screen Tools
+Comment=Monitor, Screen, Clone tools
+Exec=sh -c "~/.config/dotfiles/scripts/monitor-settings.sh"
+Icon=monitor
+Terminal=false
+Type=Application
+Categories=Utility;System;
