@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Color picker
+Comment=Pick a color and copy to clipboard
+Exec=sh -c "~/.config/dotfiles/scripts/color-picker.sh"
+Icon=eye-dropper-solid
+Terminal=false
+Type=Application
+Categories=Utility;System;
