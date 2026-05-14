@@ -13,7 +13,6 @@ require("conform").setup({
 		typescript = { "prettierd" },
 		python = { "black" },
 		vue = { "prettierd" },
-		kotlin = { "ktlint" },
 		bash = { "beautysh" },
 		sh = { "beautysh" },
 	},
