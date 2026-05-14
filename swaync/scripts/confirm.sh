@@ -5,17 +5,17 @@ action="${1:-}"
 
 case "$action" in
     lock)
-        label="Lock"
+        label="   Lock"
         cmd=(hyprlock)
         ;;
 
     logout|exit)
-        label="Logout"
+        label="   Logout"
         cmd=(hyprctl dispatch exit)
         ;;
 
     suspend)
-        label="Suspend"
+        label="󰤄   Suspend"
         cmd=(systemctl suspend)
         ;;
 
@@ -25,12 +25,12 @@ case "$action" in
         ;;
 
     reboot)
-        label="Reboot"
+        label="   Reboot"
         cmd=(systemctl reboot)
         ;;
 
     shutdown|poweroff)
-        label="Shutdown"
+        label="⏻   Shutdown"
         cmd=(systemctl poweroff)
         ;;
 
