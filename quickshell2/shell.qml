@@ -100,7 +100,7 @@ ShellRoot {
         actionIconsSupported: true
         inlineReplySupported: false
 
-        onNotification: function(notification) {
+        onNotification: function (notification) {
             notification.tracked = true;
             shell.pushToast(notification);
         }
@@ -131,17 +131,15 @@ ShellRoot {
                 anchors.fill: parent
 
                 NotificationToasts {
-                    anchors.top: parent.top
-                    anchors.right: parent.right
-
+                    anchorWindow: bar
                     toastEnabled: Quickshell.screens.length > 0 && bar.screen === Quickshell.screens[0]
                     toastEntries: shell.notificationToasts
 
-                    onDismissToastRequested: function(toastId) {
+                    onDismissToastRequested: function (toastId) {
                         shell.removeToast(toastId);
                     }
 
-                    onDismissNotificationRequested: function(notification) {
+                    onDismissNotificationRequested: function (notification) {
                         if (notification)
                             notification.dismiss();
                     }
@@ -175,6 +173,17 @@ ShellRoot {
                     anchors.rightMargin: Style.edgeMargin
                     anchors.verticalCenter: parent.verticalCenter
 
+                    SoundModule {
+                        inputMode: false
+                    }
+                    SoundModule {
+                        inputMode: true
+                    }
+
+                    NetworkModule {}
+
+                    BluetoothModule {}
+
                     NotificationsModule {
                         notificationServer: notificationServer
                         dnd: shell.notificationsDnd
@@ -183,18 +192,6 @@ ShellRoot {
                             shell.notificationsDnd = !shell.notificationsDnd;
                         }
                     }
-
-                    BluetoothModule {}
-
-                    SoundModule {
-                        inputMode: true
-                    }
-
-                    SoundModule {
-                        inputMode: false
-                    }
-
-                    NetworkModule {}
 
                     PowerMenuModule {}
                 }

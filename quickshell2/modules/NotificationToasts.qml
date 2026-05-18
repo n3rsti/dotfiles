@@ -9,6 +9,7 @@ import ".."
 Item {
     id: toastRoot
 
+    required property var anchorWindow
     required property var toastEntries
     property bool toastEnabled: true
 
@@ -105,16 +106,38 @@ Item {
         return notification.body;
     }
 
+    function primaryAction(notification) {
+        if (!notification || !notification.actions)
+            return null;
+
+        const actions = notification.actions;
+
+        for (let i = 0; i < actions.length; i++) {
+            const action = actions[i];
+
+            if (action && action.identifier === "default")
+                return action;
+        }
+
+        return actions.length > 0 ? actions[0] : null;
+    }
+
+    function activateNotification(notification) {
+        const action = primaryAction(notification);
+
+        if (!action)
+            return false;
+
+        action.invoke();
+        return true;
+    }
+
     PopupWindow {
         id: toastWindow
 
-        anchor {
-            item: toastRoot
-            edges: Edges.Top | Edges.Right
-            gravity: Edges.Top | Edges.Right
-            margins.top: Style.barHeight + Style.popupGap
-            margins.right: Style.edgeMargin
-        }
+        anchor.window: toastRoot.anchorWindow
+        anchor.rect.x: anchorWindow.width - width - Style.edgeMargin
+        anchor.rect.y: anchorWindow.height + Style.popupGap
 
         width: Style.notificationToastWidth
         height: toastBackground.implicitHeight
@@ -178,17 +201,9 @@ Item {
         width: toastColumn.width
         height: Math.max(72, toastContent.implicitHeight + Style.notificationToastPadding * 2)
         opacity: 1
-        scale: toastHover.hovered ? 1.01 : 1.0
 
         HoverHandler {
             id: toastHover
-        }
-
-        Behavior on scale {
-            NumberAnimation {
-                duration: 120
-                easing.type: Easing.OutCubic
-            }
         }
 
         Timer {
@@ -218,9 +233,12 @@ Item {
         MouseArea {
             anchors.fill: parent
             acceptedButtons: Qt.LeftButton
-            cursorShape: Qt.PointingHandCursor
+            cursorShape: toastRoot.primaryAction(notification) !== null ? Qt.PointingHandCursor : Qt.ArrowCursor
 
-            onClicked: toastRoot.dismissToastRequested(toastEntry.toastId)
+            onClicked: {
+                if (toastRoot.activateNotification(notification))
+                    toastRoot.dismissToastRequested(toastEntry.toastId);
+            }
         }
 
         Row {

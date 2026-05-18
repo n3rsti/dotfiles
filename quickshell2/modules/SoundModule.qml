@@ -437,15 +437,6 @@ Item {
 
         width: parent ? parent.width : (soundRoot.inputMode ? Style.inputPopupMinWidth : Style.audioPopupMinWidth)
         height: soundRoot.inputMode ? Style.inputSourceRowHeight : Style.audioOutputRowHeight
-        scale: deviceMouseArea.containsMouse ? 1.01 : 1.0
-
-        Behavior on scale {
-            NumberAnimation {
-                duration: 120
-                easing.type: Easing.OutCubic
-            }
-        }
-
         Rectangle {
             anchors.fill: parent
 

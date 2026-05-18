@@ -14,12 +14,6 @@ Item {
     signal pressed()
 
     height: buttonHeight
-    scale: pillMouseArea.containsMouse && usable ? 1.01 : 1.0
-
-    Behavior on scale {
-        NumberAnimation { duration: 120; easing.type: Easing.OutCubic }
-    }
-
     Rectangle {
         anchors.fill: parent
         radius: height / 2

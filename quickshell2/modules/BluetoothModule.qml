@@ -481,15 +481,6 @@ Item {
         signal pressed
 
         height: Style.bluetoothToggleButtonHeight
-        scale: actionMouseArea.containsMouse && usable ? 1.01 : 1.0
-
-        Behavior on scale {
-            NumberAnimation {
-                duration: 120
-                easing.type: Easing.OutCubic
-            }
-        }
-
         Rectangle {
             anchors.fill: parent
 
@@ -558,15 +549,6 @@ Item {
 
         width: parent ? parent.width : Style.bluetoothPopupMinWidth
         height: Style.bluetoothDeviceRowHeight
-        scale: deviceMouseArea.containsMouse ? 1.01 : 1.0
-
-        Behavior on scale {
-            NumberAnimation {
-                duration: 120
-                easing.type: Easing.OutCubic
-            }
-        }
-
         Rectangle {
             anchors.fill: parent
 
@@ -697,15 +679,6 @@ Item {
         signal pressed
 
         height: Style.bluetoothSettingsButtonHeight
-        scale: settingsMouseArea.containsMouse ? 1.01 : 1.0
-
-        Behavior on scale {
-            NumberAnimation {
-                duration: 120
-                easing.type: Easing.OutCubic
-            }
-        }
-
         Rectangle {
             anchors.fill: parent
 

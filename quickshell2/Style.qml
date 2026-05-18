@@ -13,7 +13,7 @@ QtObject {
     // Module geometry
     property int moduleHeight: 35
     property int moduleRadius: 13
-    property int modulePaddingX: 12
+    property int modulePaddingX: 14
     property int trayPaddingX: 15
     property int moduleContentYOffset: 0
     property int trayIconYOffset: 0
@@ -23,7 +23,7 @@ QtObject {
     property bool workspaceShowNamed: false
     property bool workspaceUseNames: false
     property int workspaceButtonMinWidth: 24
-    property int workspaceButtonPaddingX: 12
+    property int workspaceButtonPaddingX: 14
     property int workspaceButtonGap: 0
     property int workspaceModulePaddingX: 5
     property int workspaceFontSize: 13

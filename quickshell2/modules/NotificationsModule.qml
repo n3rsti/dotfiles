@@ -88,6 +88,32 @@ Item {
             notification.dismiss();
     }
 
+    function primaryAction(notification) {
+        if (!notification || !notification.actions)
+            return null;
+
+        const actions = notification.actions;
+
+        for (let i = 0; i < actions.length; i++) {
+            const action = actions[i];
+
+            if (action && action.identifier === "default")
+                return action;
+        }
+
+        return actions.length > 0 ? actions[0] : null;
+    }
+
+    function activateNotification(notification) {
+        const action = primaryAction(notification);
+
+        if (!action)
+            return false;
+
+        action.invoke();
+        return true;
+    }
+
     function directImageSource(value) {
         if (!value || value.length === 0)
             return "";
@@ -403,17 +429,8 @@ Item {
         width: parent ? parent.width : Style.notificationPopupMinWidth
         height: Math.max(Style.notificationCardMinHeight, notificationContent.implicitHeight + Style.notificationCardPadding * 2)
 
-        scale: cardHover.hovered ? 1.01 : 1.0
-
         HoverHandler {
             id: cardHover
-        }
-
-        Behavior on scale {
-            NumberAnimation {
-                duration: 120
-                easing.type: Easing.OutCubic
-            }
         }
 
         Rectangle {
@@ -431,6 +448,17 @@ Item {
                     duration: 120
                     easing.type: Easing.OutCubic
                 }
+            }
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            acceptedButtons: Qt.LeftButton
+            cursorShape: notificationRoot.primaryAction(notification) !== null ? Qt.PointingHandCursor : Qt.ArrowCursor
+
+            onClicked: {
+                if (notificationRoot.activateNotification(notification))
+                    notificationPopup.visible = false;
             }
         }
 
@@ -622,15 +650,6 @@ Item {
         signal pressed
 
         height: Style.notificationActionButtonHeight
-        scale: pillMouseArea.containsMouse && usable ? 1.01 : 1.0
-
-        Behavior on scale {
-            NumberAnimation {
-                duration: 120
-                easing.type: Easing.OutCubic
-            }
-        }
-
         Rectangle {
             anchors.fill: parent
 
@@ -690,15 +709,6 @@ Item {
         id: dndSwitch
 
         height: Style.notificationActionButtonHeight
-
-        scale: dndMouseArea.containsMouse ? 1.01 : 1.0
-
-        Behavior on scale {
-            NumberAnimation {
-                duration: 120
-                easing.type: Easing.OutCubic
-            }
-        }
 
         Rectangle {
             anchors.fill: parent

@@ -15,12 +15,6 @@ Item {
 
     width: primary ? Style.playerPrimaryControlButtonSize : buttonSize
     height: width
-    scale: roundMouseArea.containsMouse && usable ? 1.07 : 1.0
-
-    Behavior on scale {
-        NumberAnimation { duration: 120; easing.type: Easing.OutCubic }
-    }
-
     Rectangle {
         anchors.fill: parent
         radius: width / 2

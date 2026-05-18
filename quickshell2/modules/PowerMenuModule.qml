@@ -284,15 +284,6 @@ Item {
 
         width: parent ? parent.width : Style.powerPopupMinWidth - Style.powerPopupPadding * 2
         height: Style.powerRowHeight
-        scale: rowMouseArea.containsMouse ? 1.01 : 1.0
-
-        Behavior on scale {
-            NumberAnimation {
-                duration: 120
-                easing.type: Easing.OutCubic
-            }
-        }
-
         Rectangle {
             anchors.fill: parent
 

@@ -665,15 +665,6 @@ Item {
         width: primary ? Style.playerPrimaryControlButtonSize : Style.playerControlButtonSize
         height: width
 
-        scale: controlMouseArea.containsMouse && usable ? 1.07 : 1.0
-
-        Behavior on scale {
-            NumberAnimation {
-                duration: 120
-                easing.type: Easing.OutCubic
-            }
-        }
-
         Rectangle {
             anchors.fill: parent
 
@@ -736,15 +727,6 @@ Item {
         width: Math.min(Style.playerSourceChipMaxWidth, Math.max(Style.playerSourceChipMinWidth, sourceIconText.implicitWidth + sourceNameText.implicitWidth + Style.playerSourceChipPaddingX * 2 + 8))
 
         height: Style.playerSourceChipHeight
-        scale: sourceChipMouseArea.containsMouse ? 1.03 : 1.0
-
-        Behavior on scale {
-            NumberAnimation {
-                duration: 120
-                easing.type: Easing.OutCubic
-            }
-        }
-
         Rectangle {
             anchors.fill: parent
 
