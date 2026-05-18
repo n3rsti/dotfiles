@@ -10,6 +10,8 @@ import "../common"
 Item {
     id: playerRoot
 
+    property bool useBackground: true
+
     readonly property var players: Mpris.players.values || []
     property string selectedPlayerDbusName: ""
     readonly property var selectedPlayer: playerForDbusName(selectedPlayerDbusName)
@@ -176,6 +178,7 @@ Item {
         height: Style.moduleHeight
         paddingX: Style.modulePaddingX
         contentSpacing: 8
+        useBackground: playerRoot.useBackground
 
         width: Math.min(Style.playerButtonMaxWidth, Math.max(Style.playerButtonMinWidth, Style.modulePaddingX * 2 + playerSourceIcon.implicitWidth + contentSpacing + playerBarText.width))
 

@@ -12,6 +12,7 @@ Item {
     id: soundRoot
 
     property bool inputMode: false
+    property bool useBackground: true
 
     readonly property var activeNode: inputMode ? Pipewire.defaultAudioSource : Pipewire.defaultAudioSink
     readonly property var devices: filteredDevices()
@@ -172,6 +173,7 @@ Item {
         height: Style.moduleHeight
         paddingX: Style.modulePaddingX
         contentSpacing: 7
+        useBackground: soundRoot.useBackground
 
         width: Math.max(soundRoot.inputMode ? Style.inputButtonMinWidth : Style.audioButtonMinWidth, Style.modulePaddingX * 2 + buttonIcon.implicitWidth + contentSpacing + buttonText.implicitWidth)
 

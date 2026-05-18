@@ -10,6 +10,8 @@ import "../common"
 Item {
     id: networkRoot
 
+    property bool useBackground: true
+
     readonly property var wifiDevice: firstDevice(DeviceType.Wifi)
     readonly property var wiredDevice: firstDevice(DeviceType.Wired)
     readonly property var connectedWifiNetwork: firstConnectedWifiNetwork()
@@ -295,6 +297,7 @@ Item {
         width: Style.networkButtonWidth
         height: Style.moduleHeight
         paddingX: 0
+        useBackground: networkRoot.useBackground
 
         BarText {
             icon: true

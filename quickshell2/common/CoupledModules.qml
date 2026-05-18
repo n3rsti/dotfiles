@@ -3,32 +3,51 @@ import QtQml
 import ".."
 
 Rectangle {
-    id: box
+    id: group
 
     default property alias content: contentRow.data
     property alias contentSpacing: contentRow.spacing
 
     property int paddingX: Style.modulePaddingX
-    property bool hovered: hoverHandler.hovered
-    property bool useBackground: true
+    property bool autoStripChildBackgrounds: true
+    property bool useHoverOverlay: false
+
+    function syncChildBackgrounds() {
+        if (!autoStripChildBackgrounds)
+            return;
+
+        const children = contentRow.children;
+
+        for (let i = 0; i < children.length; i++) {
+            const child = children[i];
+
+            if (!child)
+                continue;
+
+            if (child.hasOwnProperty("useBackground"))
+                child.useBackground = false;
+        }
+    }
 
     implicitWidth: contentRow.implicitWidth + paddingX * 2
     implicitHeight: Style.moduleHeight
 
     radius: Style.moduleRadius
-    color: useBackground ? Style.moduleBackground : "transparent"
-    border.color: useBackground ? Style.moduleBorder : "transparent"
-    border.width: useBackground ? Style.borderWidth : 0
+    color: Style.moduleBackground
+    border.color: Style.moduleBorder
+    border.width: Style.borderWidth
 
     HoverHandler {
         id: hoverHandler
     }
 
+    Component.onCompleted: syncChildBackgrounds()
+
     Rectangle {
         anchors.fill: parent
         radius: parent.radius
         color: Style.moduleHoverOverlay
-        opacity: box.hovered ? 1 : 0
+        opacity: group.useHoverOverlay && hoverHandler.hovered ? 1 : 0
 
         Behavior on opacity {
             NumberAnimation {
@@ -48,6 +67,8 @@ Rectangle {
         }
 
         height: parent.height
-        spacing: Style.moduleGap
+        spacing: 0
+
+        onChildrenChanged: group.syncChildBackgrounds()
     }
 }

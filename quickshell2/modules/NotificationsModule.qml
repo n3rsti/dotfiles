@@ -13,6 +13,7 @@ Item {
 
     required property var notificationServer
     property bool dnd: false
+    property bool useBackground: true
 
     signal dndToggleRequested
 
@@ -239,6 +240,7 @@ Item {
         width: Style.notificationButtonWidth
         height: Style.moduleHeight
         paddingX: 0
+        useBackground: notificationRoot.useBackground
 
         BarText {
             icon: true

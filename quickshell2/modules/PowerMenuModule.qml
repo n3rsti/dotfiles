@@ -9,6 +9,7 @@ import "../common"
 Item {
     id: powerRoot
 
+    property bool useBackground: true
     property string pendingAction: ""
 
     width: powerButton.width
@@ -87,6 +88,7 @@ Item {
         width: Style.powerButtonWidth
         height: Style.moduleHeight
         paddingX: 0
+        useBackground: powerRoot.useBackground
 
         Item {
             width: powerButton.width

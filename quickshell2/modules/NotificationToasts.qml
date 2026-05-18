@@ -262,6 +262,7 @@ Item {
 
                 Image {
                     anchors.fill: parent
+                    anchors.margins: Style.notificationToastImagePadding
                     source: previewSource
                     fillMode: Image.PreserveAspectCrop
                     asynchronous: true

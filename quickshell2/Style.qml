@@ -89,8 +89,9 @@ QtObject {
     property int notificationToastImageSize: 52
     property int notificationToastAppIconSize: 30
     property int notificationToastMaxVisible: 4
-    property int notificationToastDurationMs: 5000
+    property int notificationToastDurationMs: 8000
     property int notificationToastHoverMargin: 4
+    property int notificationToastImagePadding: 4
 
     // Bluetooth module
     property int bluetoothButtonWidth: 42
@@ -161,12 +162,44 @@ QtObject {
     property int powerRowHeight: 42
     property int powerConfirmWidth: 104
 
+    // Recording module
+    property int recordingIconSize: 14
+    property color recordingForeground: "#ff5555"
+
+    // Brightness module
+    property int brightnessIconSize: 20
+    property color brightnessNightForeground: "#ffb86c"
+    property color brightnessActiveBackground: "#c0caf5"
+    property color brightnessActiveForeground: "#cc000008"
+    property color brightnessActiveHoverForeground: "#99000008"
+    property color brightnessActiveBorder: "#c0caf5"
+    property int brightnessActiveFontWeight: 700
+    property int brightnessPopupMinWidth: 280
+    property int brightnessPopupMaxWidth: 340
+    property int brightnessPopupPadding: 14
+    property int brightnessPopupSectionGap: 12
+    property int brightnessButtonHeight: 36
+    property int brightnessSecondaryButtonHeight: 36
+    property color brightnessToggleActiveBackground: "#c0caf5"
+    property color brightnessToggleActiveHoverBackground: "#b4bfe8"
+    property color brightnessToggleActiveForeground: "#cc000008"
+    property color brightnessToggleActiveHoverForeground: "#99000008"
+
+    // Battery module
+    property int batteryIconSize: 18
+    property int batteryButtonMinWidth: 74
+    property int batteryPopupMinWidth: 300
+    property int batteryPopupMaxWidth: 360
+    property int batteryPopupPadding: 14
+    property int batteryPopupSectionGap: 12
+    property int batteryStatRowHeight: 34
+
     // Network popup
     property int popupGap: 8
     property int networkPopupMinWidth: 300
     property int networkPopupMaxWidth: 420
-    property int networkPopupPadding: 14
-    property int networkPopupHeaderSpacing: 10
+    property int networkPopupPadding: 18
+    property int networkPopupHeaderSpacing: 15
     property int networkListMaxHeight: 340
     property int networkEmptyStateMinHeight: 76
     property int networkEmptyStatePaddingY: 18
@@ -210,7 +243,7 @@ QtObject {
     property string fontFamily: "Adwaita Sans"
     property string iconFontFamily: "Symbols Nerd Font Mono"
     property int fontSize: 12
-    property int fontWeight: 600
+    property int fontWeight: 500
     property int popupTitleFontSize: 13
     property int popupSmallFontSize: 11
 
@@ -275,6 +308,18 @@ QtObject {
     property string powerLogoutIcon: "󰍃"
     property string powerSleepIcon: "󰤄"
     property string powerConfirmIcon: "󰄬"
+    property string recordingIcon: "󰑊"
+    property string brightnessLowIcon: "󰃞"
+    property string brightnessMediumIcon: "󰃟"
+    property string brightnessHighIcon: "󰃠"
+    property string brightnessNightIcon: "󰃝"
+    property string caffeineIcon: "󰅶"
+    property string batteryChargingIcon: "󰂄"
+    property string batteryFullIcon: "󰁹"
+    property string batteryHighIcon: "󰂂"
+    property string batteryMediumIcon: "󰁿"
+    property string batteryLowIcon: "󰁼"
+    property string batteryEmptyIcon: "󰂎"
 
     // Clock
     property string clockFormat: "dd MMM   hh:mm"

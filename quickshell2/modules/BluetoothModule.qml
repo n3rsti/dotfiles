@@ -12,6 +12,8 @@ import "../common"
 Item {
     id: bluetoothRoot
 
+    property bool useBackground: true
+
     readonly property var adapter: Bluetooth.defaultAdapter
     readonly property var devices: sortedDevices()
     readonly property var connectedDevices: connectedDeviceList()
@@ -244,6 +246,7 @@ Item {
         width: Style.bluetoothButtonWidth
         height: Style.moduleHeight
         paddingX: 0
+        useBackground: bluetoothRoot.useBackground
 
         BarText {
             icon: true

@@ -166,6 +166,8 @@ ShellRoot {
                     ClockModule {
                         clock: clock
                     }
+
+                    RecordingModule {}
                 }
 
                 BarSection {
@@ -173,11 +175,21 @@ ShellRoot {
                     anchors.rightMargin: Style.edgeMargin
                     anchors.verticalCenter: parent.verticalCenter
 
-                    SoundModule {
-                        inputMode: false
+                    BrightnessModule {
+                        inhibitorWindow: bar
                     }
-                    SoundModule {
-                        inputMode: true
+
+                    CoupledModules {
+                        paddingX: 0
+                        contentSpacing: -10
+
+                        SoundModule {
+                            inputMode: false
+                        }
+
+                        SoundModule {
+                            inputMode: true
+                        }
                     }
 
                     NetworkModule {}
@@ -192,6 +204,8 @@ ShellRoot {
                             shell.notificationsDnd = !shell.notificationsDnd;
                         }
                     }
+
+                    BatteryModule {}
 
                     PowerMenuModule {}
                 }
