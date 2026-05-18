@@ -6,12 +6,12 @@ import QtQml
 QtObject {
 
     // Bar geometry
-    property int barHeight: 38
+    property int barHeight: 45
     property int edgeMargin: 15
     property int moduleGap: 5
 
     // Module geometry
-    property int moduleHeight: 35
+    property int moduleHeight: 36
     property int moduleRadius: 13
     property int modulePaddingX: 14
     property int trayPaddingX: 15
@@ -37,7 +37,7 @@ QtObject {
     // Player module
     property int playerButtonMinWidth: 0
     property int playerButtonMaxWidth: 200
-    property int playerIconSize: 20
+    property int playerIconSize: 16
     property int playerTextMaxChars: 42
 
     // Player popup
