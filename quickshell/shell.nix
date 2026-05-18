@@ -1,5 +1,5 @@
 {
-  pkgs ? import <nixpkgs> { },
+  pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz") { },
 }:
 pkgs.mkShell {
   packages = [
@@ -7,6 +7,7 @@ pkgs.mkShell {
     pkgs.kdePackages.qtdeclarative
     pkgs.qt6.qtdeclarative
   ];
+
   shellHook = ''
     # Required for qmlls to find the correct type declarations
     export QMLLS_BUILD_DIRS=${pkgs.kdePackages.qtdeclarative}/lib/qt-6/qml/:${pkgs.quickshell}/lib/qt-6/qml/
