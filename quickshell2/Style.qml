@@ -16,7 +16,6 @@ QtObject {
     property int modulePaddingX: 12
     property int trayPaddingX: 15
     property int moduleContentYOffset: 0
-    property int barTextYOffset: 0
     property int trayIconYOffset: 0
 
     // Workspaces
@@ -24,12 +23,11 @@ QtObject {
     property bool workspaceShowNamed: false
     property bool workspaceUseNames: false
     property int workspaceButtonMinWidth: 24
-    property int workspaceButtonHeight: 24
-    property int workspaceButtonPaddingX: 8
-    property int workspaceButtonGap: 2
+    property int workspaceButtonPaddingX: 12
+    property int workspaceButtonGap: 0
     property int workspaceModulePaddingX: 5
     property int workspaceFontSize: 13
-    property int workspaceFocusedFontWeight: 700
+    property int workspaceFocusedFontWeight: 600
 
     // Tray
     property int trayIconSize: 17
@@ -39,7 +37,7 @@ QtObject {
     // Player module
     property int playerButtonMinWidth: 0
     property int playerButtonMaxWidth: 200
-    property int playerIconSize: 15
+    property int playerIconSize: 20
     property int playerTextMaxChars: 42
 
     // Player popup
@@ -67,7 +65,7 @@ QtObject {
 
     // Notifications module
     property int notificationButtonWidth: 42
-    property int notificationIconSize: 16
+    property int notificationIconSize: 20
 
     // Notifications popup
     property int notificationPopupMinWidth: 430
@@ -84,9 +82,19 @@ QtObject {
     property int notificationToggleWidth: 52
     property int notificationToggleHeight: 28
 
+    // Notification toasts
+    property int notificationToastWidth: 360
+    property int notificationToastGap: 8
+    property int notificationToastPadding: 12
+    property int notificationToastImageSize: 52
+    property int notificationToastAppIconSize: 30
+    property int notificationToastMaxVisible: 4
+    property int notificationToastDurationMs: 5000
+    property int notificationToastHoverMargin: 4
+
     // Bluetooth module
     property int bluetoothButtonWidth: 42
-    property int bluetoothIconSize: 16
+    property int bluetoothIconSize: 20
 
     // Bluetooth popup
     property int bluetoothPopupMinWidth: 430
@@ -120,7 +128,7 @@ QtObject {
 
     // Audio module
     property int audioButtonMinWidth: 70
-    property int audioIconSize: 12
+    property int audioIconSize: 16
     property real audioMaxVolume: 1.5
 
     // Audio popup
@@ -139,9 +147,19 @@ QtObject {
 
     // Network module
     property int networkButtonWidth: 42
-    property int networkIconSize: 16
+    property int networkIconSize: 20
     property bool networkWifiScanAlways: false
     property int networkWifiRefreshIntervalMs: 10000
+
+    // Power menu module
+    property int powerButtonWidth: 34
+    property int powerIconSize: 13
+    property int powerPopupMinWidth: 300
+    property int powerPopupMaxWidth: 360
+    property int powerPopupPadding: 14
+    property int powerPopupSectionGap: 12
+    property int powerRowHeight: 42
+    property int powerConfirmWidth: 104
 
     // Network popup
     property int popupGap: 8
@@ -174,6 +192,8 @@ QtObject {
     property color popupBorder: "#34344d"
     property color popupRowHover: "#2625252d"
     property color popupMutedForeground: "#a0aad5"
+    property color notificationToastBackground: "#cc000008"
+    property color notificationToastHoverBackground: "#cc25252d"
 
     // macOS-ish popup controls
     property color playerPanelBackground: "#2025252d"
@@ -246,6 +266,15 @@ QtObject {
     property string wifiStrength2Icon: "󰤢"
     property string wifiStrength3Icon: "󰤥"
     property string wifiStrength4Icon: "󰤨"
+
+    // Nerd Font power icons
+    property string powerIcon: " "
+    property string powerShutdownIcon: "⏻"
+    property string powerRebootIcon: ""
+    property string powerLockIcon: "󰌾"
+    property string powerLogoutIcon: "󰍃"
+    property string powerSleepIcon: "󰤄"
+    property string powerConfirmIcon: "󰄬"
 
     // Clock
     property string clockFormat: "dd MMM   hh:mm"

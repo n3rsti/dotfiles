@@ -1,7 +1,6 @@
 pragma ComponentBehavior: Bound
 
 import QtQuick
-import QtQml
 import Quickshell
 import Quickshell.Hyprland
 import ".."
@@ -21,7 +20,7 @@ ModuleBox {
 
     function filteredWorkspaces() {
         const values = Hyprland.workspaces.values || [];
-        let result = [];
+        const result = [];
 
         for (let i = 0; i < values.length; i++) {
             const workspace = values[i];
@@ -56,23 +55,22 @@ ModuleBox {
         id: workspaceButton
 
         required property var workspace
-
-        readonly property bool focused: workspace !== null && Hyprland.focusedWorkspace !== null && Hyprland.focusedWorkspace.id === workspace.id
-
-        readonly property bool urgent: workspace !== null && workspace.urgent
-
-        width: Math.max(Style.workspaceButtonMinWidth, workspaceLabel.implicitWidth + Style.workspaceButtonPaddingX * 2)
-        height: Style.workspaceButtonHeight
-
-        function labelText() {
+        readonly property string label: {
             if (!workspace)
                 return "";
 
             if (Style.workspaceUseNames && workspace.name && workspace.name.length > 0)
                 return workspace.name.replace("special:", "");
 
-            return workspace.id;
+            return String(workspace.id);
         }
+
+        readonly property bool focused: workspace !== null && Hyprland.focusedWorkspace !== null && Hyprland.focusedWorkspace.id === workspace.id
+
+        readonly property bool urgent: workspace !== null && workspace.urgent
+
+        width: Math.max(Style.workspaceButtonMinWidth, workspaceLabel.implicitWidth + Style.workspaceButtonPaddingX * 2)
+        height: workspacesModule.height
 
         Rectangle {
             anchors.fill: parent
@@ -93,7 +91,7 @@ ModuleBox {
 
             anchors.fill: parent
 
-            text: workspaceButton.labelText()
+            text: workspaceButton.label
 
             textPixelSize: Style.workspaceFontSize
             textHorizontalAlignment: Text.AlignHCenter

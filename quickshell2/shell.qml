@@ -15,6 +15,67 @@ ShellRoot {
     id: shell
 
     property bool notificationsDnd: false
+    property int nextToastId: 1
+    property var notificationToasts: []
+
+    function toastDurationMs(notification) {
+        if (notification && notification.expireTimeout && notification.expireTimeout > 0)
+            return Math.max(3000, Math.min(15000, notification.expireTimeout));
+
+        return Style.notificationToastDurationMs;
+    }
+
+    function removeToast(toastId) {
+        let result = [];
+
+        for (let i = 0; i < notificationToasts.length; i++) {
+            const entry = notificationToasts[i];
+
+            if (entry && entry.toastId !== toastId)
+                result.push(entry);
+        }
+
+        notificationToasts = result;
+    }
+
+    function removeToastForNotification(notificationId) {
+        let result = [];
+
+        for (let i = 0; i < notificationToasts.length; i++) {
+            const entry = notificationToasts[i];
+
+            if (entry && entry.notificationId !== notificationId)
+                result.push(entry);
+        }
+
+        notificationToasts = result;
+    }
+
+    function pushToast(notification) {
+        if (!notification || notificationsDnd)
+            return;
+
+        removeToastForNotification(notification.id);
+
+        let result = notificationToasts.slice();
+
+        result.unshift({
+            "toastId": nextToastId++,
+            "notificationId": notification.id,
+            "notification": notification,
+            "durationMs": toastDurationMs(notification)
+        });
+
+        if (result.length > Style.notificationToastMaxVisible)
+            result = result.slice(0, Style.notificationToastMaxVisible);
+
+        notificationToasts = result;
+    }
+
+    onNotificationsDndChanged: {
+        if (notificationsDnd)
+            notificationToasts = [];
+    }
 
     Component.onCompleted: {
         Hyprland.refreshMonitors();
@@ -41,6 +102,7 @@ ShellRoot {
 
         onNotification: function(notification) {
             notification.tracked = true;
+            shell.pushToast(notification);
         }
     }
 
@@ -67,6 +129,23 @@ ShellRoot {
 
             Item {
                 anchors.fill: parent
+
+                NotificationToasts {
+                    anchors.top: parent.top
+                    anchors.right: parent.right
+
+                    toastEnabled: Quickshell.screens.length > 0 && bar.screen === Quickshell.screens[0]
+                    toastEntries: shell.notificationToasts
+
+                    onDismissToastRequested: function(toastId) {
+                        shell.removeToast(toastId);
+                    }
+
+                    onDismissNotificationRequested: function(notification) {
+                        if (notification)
+                            notification.dismiss();
+                    }
+                }
 
                 BarSection {
                     anchors.left: parent.left
@@ -116,6 +195,8 @@ ShellRoot {
                     }
 
                     NetworkModule {}
+
+                    PowerMenuModule {}
                 }
             }
         }

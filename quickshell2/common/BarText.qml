@@ -9,12 +9,11 @@ Text {
     property int textPixelSize: Style.fontSize
     property int textWeight: Style.fontWeight
     property int textHorizontalAlignment: icon ? Text.AlignHCenter : Text.AlignLeft
-    property int textYOffset: Style.barTextYOffset
 
     property color normalColor: Style.foreground
     property color hoverColor: Style.foregroundHover
 
-    height: Style.moduleHeight
+    height: parent ? parent.height : implicitHeight
 
     color: hovered ? hoverColor : normalColor
 
@@ -24,8 +23,4 @@ Text {
 
     verticalAlignment: Text.AlignVCenter
     horizontalAlignment: textHorizontalAlignment
-
-    transform: Translate {
-        y: root.textYOffset
-    }
 }
