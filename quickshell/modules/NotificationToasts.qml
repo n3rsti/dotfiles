@@ -12,12 +12,58 @@ Item {
     required property var anchorWindow
     required property var toastEntries
     property bool toastEnabled: true
+    property bool blockGenericPlaceholderNotifications: true
+
+    readonly property var visibleToastEntries: filteredToastEntries()
 
     signal dismissToastRequested(int toastId)
     signal dismissNotificationRequested(var notification)
 
     width: 0
     height: 0
+
+    function hasText(value) {
+        return value !== undefined && value !== null && String(value).trim().length > 0;
+    }
+
+    function isGenericPlaceholderNotification(notification) {
+        if (!blockGenericPlaceholderNotifications || !notification)
+            return false;
+
+        return !hasText(notification.appName)
+            && !hasText(notification.desktopEntry)
+            && !hasText(notification.summary)
+            && !hasText(notification.body);
+    }
+
+    function shouldDisplayNotification(notification) {
+        if (!notification)
+            return false;
+
+        if (isGenericPlaceholderNotification(notification))
+            return false;
+
+        return true;
+    }
+
+    function filteredToastEntries() {
+        const values = toastRoot.toastEntries || [];
+        let result = [];
+
+        for (let i = 0; i < values.length; i++) {
+            const entry = values[i];
+
+            if (!entry || !entry.notification)
+                continue;
+
+            if (!shouldDisplayNotification(entry.notification))
+                continue;
+
+            result.push(entry);
+        }
+
+        return result;
+    }
 
     function directImageSource(value) {
         if (!value || value.length === 0)
@@ -143,7 +189,7 @@ Item {
         height: toastBackground.implicitHeight
 
         color: "transparent"
-        visible: toastRoot.toastEnabled && toastRoot.toastEntries.length > 0
+        visible: toastRoot.toastEnabled && toastRoot.visibleToastEntries.length > 0
 
         Rectangle {
             id: toastBackground
@@ -163,7 +209,7 @@ Item {
                 spacing: Style.notificationToastGap
 
                 Repeater {
-                    model: toastRoot.toastEntries
+                    model: toastRoot.visibleToastEntries
 
                     ToastCard {
                         required property var modelData

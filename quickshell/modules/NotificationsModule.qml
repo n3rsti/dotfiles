@@ -14,6 +14,7 @@ Item {
     required property var notificationServer
     property bool dnd: false
     property bool useBackground: true
+    property bool blockGenericPlaceholderNotifications: true
 
     signal dndToggleRequested
 
@@ -23,6 +24,30 @@ Item {
     width: notificationButton.width
     height: notificationButton.height
 
+    function hasText(value) {
+        return value !== undefined && value !== null && String(value).trim().length > 0;
+    }
+
+    function isGenericPlaceholderNotification(notification) {
+        if (!blockGenericPlaceholderNotifications || !notification)
+            return false;
+
+        return !hasText(notification.appName)
+            && !hasText(notification.desktopEntry)
+            && !hasText(notification.summary)
+            && !hasText(notification.body);
+    }
+
+    function shouldDisplayNotification(notification) {
+        if (!notification)
+            return false;
+
+        if (isGenericPlaceholderNotification(notification))
+            return false;
+
+        return true;
+    }
+
     function sortedNotifications() {
         const values = notificationRoot.notificationServer.trackedNotifications.values || [];
         let result = [];
@@ -31,6 +56,9 @@ Item {
             const notification = values[i];
 
             if (!notification)
+                continue;
+
+            if (!shouldDisplayNotification(notification))
                 continue;
 
             result.push(notification);

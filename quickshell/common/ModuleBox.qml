@@ -5,12 +5,15 @@ import ".."
 Rectangle {
     id: box
 
+    signal clicked()
+
     default property alias content: contentRow.data
     property alias contentSpacing: contentRow.spacing
 
     property int paddingX: Style.modulePaddingX
     property bool hovered: hoverHandler.hovered
     property bool useBackground: true
+    property bool clickable: false
 
     implicitWidth: contentRow.implicitWidth + paddingX * 2
     implicitHeight: Style.moduleHeight
@@ -49,5 +52,14 @@ Rectangle {
 
         height: parent.height
         spacing: Style.moduleGap
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        enabled: box.clickable
+        acceptedButtons: Qt.LeftButton
+        cursorShape: enabled ? Qt.PointingHandCursor : Qt.ArrowCursor
+
+        onClicked: box.clicked()
     }
 }
