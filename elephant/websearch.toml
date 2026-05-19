@@ -1,0 +1,9 @@
+name_pretty = "Websearch"
+icon = "edit-find-symbolic"
+
+[[entries]]
+name = "Websearch"
+default = true
+prefix = "ddg"
+url = "https://duckduckgo.com/?q=%TERM%"
+icon = "edit-find-symbolic"
