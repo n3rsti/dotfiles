@@ -3,6 +3,7 @@ vim.pack.add({
 	"https://github.com/rcarriga/nvim-dap-ui",
 	"https://github.com/theHamsta/nvim-dap-virtual-text",
 	"https://github.com/leoluz/nvim-dap-go",
+	"https://github.com/mfussenegger/nvim-dap-python",
 	"https://github.com/nvim-neotest/nvim-nio",
 })
 
@@ -13,6 +14,7 @@ ui.setup()
 
 require("nvim-dap-virtual-text").setup()
 require("dap-go").setup()
+require("dap-python").setup("python3")
 
 vim.keymap.set("n", "<space>b", dap.toggle_breakpoint)
 vim.keymap.set("n", "<space>gb", dap.run_to_cursor)
