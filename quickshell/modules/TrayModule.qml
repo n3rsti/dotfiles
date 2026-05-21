@@ -14,8 +14,29 @@ ModuleBox {
     paddingX: Style.trayPaddingX
     contentSpacing: Style.trayIconGap
 
+    function directIconSource(icon) {
+        if (!icon || icon.length === 0)
+            return "";
+
+        if (icon.includes("?path=")) {
+            const parts = icon.split("?path=");
+            const name = parts[0];
+            const path = parts[1];
+            const fileName = name.substring(name.lastIndexOf("/") + 1);
+            return "file://" + path + "/" + fileName;
+        }
+
+        if (icon.startsWith("image://") || icon.startsWith("file://"))
+            return icon;
+
+        if (icon.startsWith("/"))
+            return "file://" + icon;
+
+        return Quickshell.iconPath(icon, true);
+    }
+
     Repeater {
-        model: SystemTray.items ? SystemTray.items.values : []
+        model: SystemTray.items
 
         TrayIconButton {
             required property var modelData
@@ -31,40 +52,23 @@ ModuleBox {
         width: Style.trayIconButtonSize
         height: Style.moduleHeight
 
-        function iconSource(icon) {
-            if (!icon)
-                return "";
+        function rootMenuHandle() {
+            if (!trayItem || !trayItem.hasMenu || !trayItem.menu)
+                return null;
 
-            if (icon.includes("?path=")) {
-                const parts = icon.split("?path=");
-                const name = parts[0];
-                const path = parts[1];
-                const fileName = name.substring(name.lastIndexOf("/") + 1);
-                return "file://" + path + "/" + fileName;
-            }
-
-            return icon;
+            return trayItem.menu;
         }
 
         function openMenu() {
-            if (trayItem && trayItem.hasMenu && trayItem.menu) {
-                menuAnchor.open();
-                return true;
-            }
+            if (!trayItem || !trayItem.hasMenu || !rootMenuHandle())
+                return false;
 
-            return false;
+            rootMenuPopup.openFresh();
+            return true;
         }
 
-        QsMenuAnchor {
-            id: menuAnchor
-
-            menu: trayItem ? trayItem.menu : null
-
-            anchor {
-                item: trayButton
-                edges: Edges.Bottom | Edges.Left
-                gravity: Edges.Bottom | Edges.Right
-            }
+        function closeMenu() {
+            rootMenuPopup.closeFresh();
         }
 
         IconImage {
@@ -77,7 +81,7 @@ ModuleBox {
 
             asynchronous: true
             mipmap: true
-            source: trayButton.iconSource(trayItem ? trayItem.icon : "")
+            source: trayModule.directIconSource(trayItem ? trayItem.icon : "")
 
             backer.fillMode: Image.PreserveAspectFit
             opacity: status === Image.Ready ? 1 : 0.65
@@ -87,7 +91,7 @@ ModuleBox {
             anchors.fill: parent
             radius: Style.moduleRadius
             color: Style.moduleHoverOverlay
-            opacity: mouseArea.containsMouse ? 1 : 0
+            opacity: mouseArea.containsMouse || rootMenuPopup.visible ? 1 : 0
 
             Behavior on opacity {
                 NumberAnimation {
@@ -110,17 +114,28 @@ ModuleBox {
                     return;
 
                 if (mouse.button === Qt.LeftButton) {
-                    if (trayItem.onlyMenu) {
+                    if (trayItem.onlyMenu)
                         trayButton.openMenu();
-                    } else {
+                    else
                         trayItem.activate();
-                    }
                 } else if (mouse.button === Qt.RightButton) {
                     trayButton.openMenu();
                 } else if (mouse.button === Qt.MiddleButton) {
                     trayItem.secondaryActivate();
                 }
             }
+        }
+
+        TrayMenuPopup {
+            id: rootMenuPopup
+
+            anchorItem: trayButton
+            menuHandle: trayButton.rootMenuHandle()
+            closeAllMenus: function () {
+                trayButton.closeMenu();
+            }
+            iconSourceResolver: trayModule.directIconSource
+            rootMenu: true
         }
     }
 }
