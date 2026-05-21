@@ -131,7 +131,7 @@ ShellRoot {
                 anchors.fill: parent
 
                 NotificationToasts {
-                    anchorWindow: bar
+                    screen: bar.screen
                     toastEnabled: Quickshell.screens.length > 0 && bar.screen === Quickshell.screens[0]
                     toastEntries: shell.notificationToasts
 

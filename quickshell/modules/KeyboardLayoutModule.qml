@@ -273,7 +273,6 @@ Item {
             id: layoutText
 
             hovered: keyboardMouseArea.containsMouse
-            textWeight: 700
             text: keyboardRoot.displayLayoutText()
         }
     }

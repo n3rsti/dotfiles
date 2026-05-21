@@ -2,6 +2,7 @@ pragma ComponentBehavior: Bound
 
 import QtQuick
 import Quickshell
+import Quickshell.Wayland._WlrLayerShell
 import Quickshell.Services.Notifications
 import Quickshell.Widgets
 import ".."
@@ -9,7 +10,7 @@ import ".."
 Item {
     id: toastRoot
 
-    required property var anchorWindow
+    required property var screen
     required property var toastEntries
     property bool toastEnabled: true
     property bool blockGenericPlaceholderNotifications: true
@@ -178,17 +179,33 @@ Item {
         return true;
     }
 
-    PopupWindow {
+    PanelWindow {
         id: toastWindow
 
-        anchor.window: toastRoot.anchorWindow
-        anchor.rect.x: anchorWindow.width - width - Style.edgeMargin
-        anchor.rect.y: anchorWindow.height + Style.popupGap
-
-        width: Style.notificationToastWidth
-        height: toastBackground.implicitHeight
-
+        screen: toastRoot.screen
         color: "transparent"
+        aboveWindows: true
+        focusable: false
+        exclusionMode: ExclusionMode.Ignore
+        exclusiveZone: 0
+
+        WlrLayershell.layer: WlrLayer.Overlay
+        WlrLayershell.namespace: "quickshell-notification-toasts"
+        WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
+
+        anchors {
+            top: true
+            right: true
+        }
+
+        margins {
+            top: Style.barHeight + Style.popupGap
+            right: Style.edgeMargin
+        }
+
+        implicitWidth: Style.notificationToastWidth
+        implicitHeight: toastBackground.implicitHeight
+
         visible: toastRoot.toastEnabled && toastRoot.visibleToastEntries.length > 0
 
         Rectangle {
