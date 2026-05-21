@@ -3,6 +3,7 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQml
 import Quickshell
+import Quickshell.Io
 import Quickshell.Networking
 import ".."
 import "../common"
@@ -11,6 +12,8 @@ Item {
     id: networkRoot
 
     property bool useBackground: true
+    property string wifiActionMessage: ""
+    property bool wifiActionIsError: false
 
     readonly property var wifiDevice: firstDevice(DeviceType.Wifi)
     readonly property var wiredDevice: firstDevice(DeviceType.Wired)
@@ -258,6 +261,42 @@ Item {
         scannerRestartTimer.restart();
     }
 
+    function clearWifiActionMessage() {
+        wifiActionMessage = "";
+        wifiActionIsError = false;
+    }
+
+    function setWifiStatusMessage(message, isError) {
+        wifiActionMessage = message;
+        wifiActionIsError = isError;
+    }
+
+    function connectToWifi(network) {
+        if (!network || network.connected)
+            return;
+
+        clearWifiActionMessage();
+        setWifiStatusMessage("Connecting to " + network.name + "...", false);
+        network.connect();
+    }
+
+    function connectionFailMessage(reason) {
+        switch (reason) {
+        case ConnectionFailReason.NoSecrets:
+            return "Password required for this Wi-Fi network.";
+        case ConnectionFailReason.WifiClientDisconnected:
+            return "The Wi-Fi device disconnected during the connection attempt.";
+        case ConnectionFailReason.WifiClientFailed:
+            return "The Wi-Fi device rejected the connection attempt.";
+        case ConnectionFailReason.WifiAuthTimeout:
+            return "Authentication timed out.";
+        case ConnectionFailReason.WifiNetworkLost:
+            return "The Wi-Fi network is no longer reachable.";
+        default:
+            return "Failed to connect to the Wi-Fi network.";
+        }
+    }
+
     function togglePopup() {
         networkPopup.visible = !networkPopup.visible;
 
@@ -289,6 +328,16 @@ Item {
         running: networkPopup.visible && networkRoot.wifiDevice !== null && Style.networkWifiRefreshIntervalMs > 0
 
         onTriggered: networkRoot.refreshWifiNetworks()
+    }
+
+    Process {
+        id: wifiSettingsProcess
+        command: ["nmgui"]
+    }
+
+    Process {
+        id: networkSettingsProcess
+        command: ["nm-connection-editor"]
     }
 
     ModuleBox {
@@ -532,6 +581,44 @@ Item {
                         }
                     }
                 }
+
+                Text {
+                    width: parent.width
+                    visible: networkRoot.wifiActionMessage.length > 0
+                    text: networkRoot.wifiActionMessage
+                    color: networkRoot.wifiActionIsError ? Style.recordingForeground : Style.popupMutedForeground
+                    font.family: Style.fontFamily
+                    font.pixelSize: Style.popupSmallFontSize
+                    font.weight: Style.fontWeight
+                    wrapMode: Text.WordWrap
+                }
+
+                Row {
+                    width: parent.width
+                    spacing: 8
+
+                    PillButton {
+                        width: Math.floor((parent.width - parent.spacing) / 2)
+                        labelText: "Wi-Fi settings"
+                        iconText: Style.wifiDisconnectedIcon
+
+                        onPressed: {
+                            wifiSettingsProcess.startDetached();
+                            networkPopup.visible = false;
+                        }
+                    }
+
+                    PillButton {
+                        width: parent.width - x
+                        labelText: "Network settings"
+                        iconText: Style.wiredConnectedIcon
+
+                        onPressed: {
+                            networkSettingsProcess.startDetached();
+                            networkPopup.visible = false;
+                        }
+                    }
+                }
             }
         }
     }
@@ -619,6 +706,27 @@ Item {
 
             anchors.fill: parent
             hoverEnabled: true
+            cursorShape: Qt.PointingHandCursor
+
+            onClicked: networkRoot.connectToWifi(networkRow.network)
+        }
+
+        Connections {
+            target: networkRow.network
+
+            function onConnectedChanged() {
+                if (!networkRow.network || !networkRow.network.connected)
+                    return;
+
+                networkRoot.setWifiStatusMessage("Connected to " + networkRow.network.name + ".", false);
+            }
+
+            function onConnectionFailed(reason) {
+                if (!networkRow.network)
+                    return;
+
+                networkRoot.setWifiStatusMessage(networkRoot.connectionFailMessage(reason), true);
+            }
         }
     }
 }
