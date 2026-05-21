@@ -175,6 +175,8 @@ ShellRoot {
                     anchors.rightMargin: Style.edgeMargin
                     anchors.verticalCenter: parent.verticalCenter
 
+                    KeyboardLayoutModule {}
+
                     BrightnessModule {
                         inhibitorWindow: bar
                     }

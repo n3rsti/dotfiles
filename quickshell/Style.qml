@@ -152,6 +152,17 @@ QtObject {
     property bool networkWifiScanAlways: false
     property int networkWifiRefreshIntervalMs: 10000
 
+    // Keyboard layout module
+    property int keyboardButtonMinWidth: 74
+    property int keyboardIconSize: 16
+    property int keyboardPopupMinWidth: 220
+    property int keyboardPopupMaxWidth: 300
+    property int keyboardPopupPadding: 14
+    property int keyboardPopupSectionGap: 12
+    property int keyboardRowHeight: 38
+    property int keyboardRowRadius: 12
+    property int keyboardRadioSize: 16
+
     // Power menu module
     property int powerButtonWidth: 34
     property int powerIconSize: 13
@@ -299,6 +310,7 @@ QtObject {
     property string wifiStrength2Icon: "󰤢"
     property string wifiStrength3Icon: "󰤥"
     property string wifiStrength4Icon: "󰤨"
+    property string keyboardIcon: "󰌌"
 
     // Nerd Font power icons
     property string powerIcon: " "
