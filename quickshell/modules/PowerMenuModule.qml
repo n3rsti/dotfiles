@@ -127,8 +127,8 @@ Item {
             margins.top: Style.popupGap
         }
 
-        width: Math.min(Style.powerPopupMaxWidth, Math.max(Style.powerPopupMinWidth, powerPopupBackground.implicitWidth))
-        height: powerPopupBackground.implicitHeight
+        implicitWidth: Math.min(Style.powerPopupMaxWidth, Math.max(Style.powerPopupMinWidth, powerPopupBackground.implicitWidth))
+        implicitHeight: powerPopupBackground.implicitHeight
 
         color: "transparent"
         visible: false

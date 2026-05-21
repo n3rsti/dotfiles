@@ -376,9 +376,8 @@ Item {
             margins.top: Style.popupGap
         }
 
-        width: Math.min(Style.networkPopupMaxWidth, Math.max(Style.networkPopupMinWidth, networkPopupBackground.implicitWidth))
-
-        height: networkPopupBackground.implicitHeight
+        implicitWidth: Math.min(Style.networkPopupMaxWidth, Math.max(Style.networkPopupMinWidth, networkPopupBackground.implicitWidth))
+        implicitHeight: networkPopupBackground.implicitHeight
 
         color: "transparent"
         visible: false

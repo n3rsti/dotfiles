@@ -223,9 +223,8 @@ Item {
             margins.top: Style.popupGap
         }
 
-        width: Math.min(Style.playerPopupMaxWidth, Math.max(Style.playerPopupMinWidth, playerPopupBackground.implicitWidth))
-
-        height: playerPopupBackground.implicitHeight
+        implicitWidth: Math.min(Style.playerPopupMaxWidth, Math.max(Style.playerPopupMinWidth, playerPopupBackground.implicitWidth))
+        implicitHeight: playerPopupBackground.implicitHeight
 
         color: "transparent"
         visible: false

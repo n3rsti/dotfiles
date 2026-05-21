@@ -276,9 +276,8 @@ Item {
             margins.top: Style.popupGap
         }
 
-        width: Math.min(Style.bluetoothPopupMaxWidth, Math.max(Style.bluetoothPopupMinWidth, bluetoothPopupBackground.implicitWidth))
-
-        height: bluetoothPopupBackground.implicitHeight
+        implicitWidth: Math.min(Style.bluetoothPopupMaxWidth, Math.max(Style.bluetoothPopupMinWidth, bluetoothPopupBackground.implicitWidth))
+        implicitHeight: bluetoothPopupBackground.implicitHeight
 
         color: "transparent"
         visible: false

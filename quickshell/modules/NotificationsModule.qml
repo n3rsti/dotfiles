@@ -298,9 +298,8 @@ Item {
             margins.top: Style.popupGap
         }
 
-        width: Math.min(Style.notificationPopupMaxWidth, Math.max(Style.notificationPopupMinWidth, notificationPopupBackground.implicitWidth))
-
-        height: notificationPopupBackground.implicitHeight
+        implicitWidth: Math.min(Style.notificationPopupMaxWidth, Math.max(Style.notificationPopupMinWidth, notificationPopupBackground.implicitWidth))
+        implicitHeight: notificationPopupBackground.implicitHeight
 
         color: "transparent"
         visible: false

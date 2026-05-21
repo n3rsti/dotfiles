@@ -214,9 +214,8 @@ Item {
             margins.top: Style.popupGap
         }
 
-        width: Math.min(soundRoot.inputMode ? Style.inputPopupMaxWidth : Style.audioPopupMaxWidth, Math.max(soundRoot.inputMode ? Style.inputPopupMinWidth : Style.audioPopupMinWidth, popupBackground.implicitWidth))
-
-        height: popupBackground.implicitHeight
+        implicitWidth: Math.min(soundRoot.inputMode ? Style.inputPopupMaxWidth : Style.audioPopupMaxWidth, Math.max(soundRoot.inputMode ? Style.inputPopupMinWidth : Style.audioPopupMinWidth, popupBackground.implicitWidth))
+        implicitHeight: popupBackground.implicitHeight
 
         color: "transparent"
         visible: false

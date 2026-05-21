@@ -298,7 +298,7 @@ Item {
             margins.top: Style.popupGap
         }
 
-        width: Math.min(Style.keyboardPopupMaxWidth, Math.max(Style.keyboardPopupMinWidth, popupBackground.implicitWidth))
+        implicitWidth: Math.min(Style.keyboardPopupMaxWidth, Math.max(Style.keyboardPopupMinWidth, popupBackground.implicitWidth))
         implicitHeight: popupBackground.implicitHeight
 
         color: "transparent"

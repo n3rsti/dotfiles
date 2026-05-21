@@ -240,8 +240,8 @@ Item {
             margins.top: Style.popupGap
         }
 
-        width: Math.min(Style.brightnessPopupMaxWidth, Math.max(Style.brightnessPopupMinWidth, popupBackground.implicitWidth))
-        height: popupBackground.implicitHeight
+        implicitWidth: Math.min(Style.brightnessPopupMaxWidth, Math.max(Style.brightnessPopupMinWidth, popupBackground.implicitWidth))
+        implicitHeight: popupBackground.implicitHeight
 
         color: "transparent"
         visible: false
