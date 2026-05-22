@@ -11,16 +11,44 @@ Item {
     id: batteryRoot
 
     property bool useBackground: true
-    readonly property var device: UPower.displayDevice
-    readonly property bool available: device !== null && device.ready && device.isLaptopBattery && device.isPresent
+    readonly property var displayDevice: UPower.displayDevice
+    readonly property var batteryDevice: findBatteryDevice()
+    readonly property var device: usableDevice(displayDevice) ? displayDevice : batteryDevice
+    readonly property var healthDevice: batteryDevice !== null ? batteryDevice : device
+    readonly property bool available: usableDevice(device)
     readonly property bool charging: available && (device.state === UPowerDeviceState.Charging || device.state === UPowerDeviceState.PendingCharge)
     readonly property bool discharging: available && (device.state === UPowerDeviceState.Discharging || device.state === UPowerDeviceState.PendingDischarge)
-    readonly property int percentage: available ? Math.round(device.percentage) : 0
+    readonly property int percentage: available ? Math.round(percentValue(device.percentage)) : 0
     property string uptimeText: ""
 
     width: available ? batteryButton.width : 0
     height: batteryButton.height
     visible: available
+
+    function usableDevice(candidate) {
+        return candidate !== null && candidate.ready && candidate.isLaptopBattery && candidate.isPresent;
+    }
+
+    function findBatteryDevice() {
+        const devices = UPower.devices.values;
+
+        for (let i = 0; i < devices.length; i++) {
+            const candidate = devices[i];
+
+            if (usableDevice(candidate))
+                return candidate;
+        }
+
+        return null;
+    }
+
+    function percentValue(rawValue) {
+        if (!Number.isFinite(rawValue))
+            return 0;
+
+        const percent = rawValue <= 1 ? rawValue * 100 : rawValue;
+        return Math.max(0, Math.min(100, percent));
+    }
 
     function batteryIcon() {
         if (!available)
@@ -95,10 +123,10 @@ Item {
     }
 
     function healthText() {
-        if (!available || !device.healthSupported)
+        if (!available || healthDevice === null || !healthDevice.healthSupported)
             return "Unavailable";
 
-        return Math.round(device.healthPercentage) + "%";
+        return Math.round(percentValue(healthDevice.healthPercentage)) + "%";
     }
 
     function timeText() {

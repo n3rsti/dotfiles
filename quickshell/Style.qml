@@ -2,6 +2,7 @@ pragma Singleton
 
 import QtQuick
 import QtQml
+import "per-machine"
 
 QtObject {
 
@@ -13,10 +14,27 @@ QtObject {
     // Module geometry
     property int moduleHeight: 36
     property int moduleRadius: 13
-    property int modulePaddingX: 14
+    property int modulePaddingX: 12
     property int trayPaddingX: 15
     property int moduleContentYOffset: 0
     property int trayIconYOffset: 0
+
+    // Icon sizes
+    property int trayIconSize: Icons.trayIconSize
+    property int playerIconSize: Icons.playerIconSize
+    property int notificationIconSize: Icons.notificationIconSize
+    property int notificationAppIconSize: Icons.notificationAppIconSize
+    property int notificationToastAppIconSize: Icons.notificationToastAppIconSize
+    property int bluetoothIconSize: Icons.bluetoothIconSize
+    property int bluetoothDeviceIconSize: Icons.bluetoothDeviceIconSize
+    property int inputIconSize: Icons.inputIconSize
+    property int audioIconSize: Icons.audioIconSize
+    property int networkIconSize: Icons.networkIconSize
+    property int keyboardIconSize: Icons.keyboardIconSize
+    property int powerIconSize: Icons.powerIconSize
+    property int recordingIconSize: Icons.recordingIconSize
+    property int brightnessIconSize: Icons.brightnessIconSize
+    property int batteryIconSize: Icons.batteryIconSize
 
     // Workspaces
     property bool workspacesAllOutputs: true
@@ -30,14 +48,12 @@ QtObject {
     property int workspaceFocusedFontWeight: 600
 
     // Tray
-    property int trayIconSize: 17
     property int trayIconButtonSize: 20
     property int trayIconGap: 13
 
     // Player module
     property int playerButtonMinWidth: 0
     property int playerButtonMaxWidth: 200
-    property int playerIconSize: 16
     property int playerTextMaxChars: 42
 
     // Player popup
@@ -65,7 +81,6 @@ QtObject {
 
     // Notifications module
     property int notificationButtonWidth: 42
-    property int notificationIconSize: 20
 
     // Notifications popup
     property int notificationPopupMinWidth: 430
@@ -76,7 +91,6 @@ QtObject {
     property int notificationCardMinHeight: 76
     property int notificationCardRadius: 16
     property int notificationCardPadding: 12
-    property int notificationAppIconSize: 32
     property int notificationCloseButtonSize: 24
     property int notificationActionButtonHeight: 34
     property int notificationToggleWidth: 52
@@ -87,7 +101,6 @@ QtObject {
     property int notificationToastGap: 8
     property int notificationToastPadding: 12
     property int notificationToastImageSize: 52
-    property int notificationToastAppIconSize: 30
     property int notificationToastMaxVisible: 4
     property int notificationToastDurationMs: 8000
     property int notificationToastHoverMargin: 4
@@ -95,7 +108,6 @@ QtObject {
 
     // Bluetooth module
     property int bluetoothButtonWidth: 42
-    property int bluetoothIconSize: 20
 
     // Bluetooth popup
     property int bluetoothPopupMinWidth: 430
@@ -106,11 +118,9 @@ QtObject {
     property int bluetoothDeviceListMaxHeight: 260
     property int bluetoothSettingsButtonHeight: 36
     property int bluetoothToggleButtonHeight: 36
-    property int bluetoothDeviceIconSize: 20
 
     // Input module
     property int inputButtonMinWidth: 70
-    property int inputIconSize: 14
     property real inputMaxVolume: 1.5
 
     // Input popup
@@ -129,7 +139,6 @@ QtObject {
 
     // Audio module
     property int audioButtonMinWidth: 70
-    property int audioIconSize: 16
     property real audioMaxVolume: 1.5
 
     // Audio popup
@@ -148,13 +157,11 @@ QtObject {
 
     // Network module
     property int networkButtonWidth: 42
-    property int networkIconSize: 20
     property bool networkWifiScanAlways: false
     property int networkWifiRefreshIntervalMs: 10000
 
     // Keyboard layout module
     property int keyboardButtonMinWidth: 74
-    property int keyboardIconSize: 16
     property int keyboardPopupMinWidth: 220
     property int keyboardPopupMaxWidth: 300
     property int keyboardPopupPadding: 14
@@ -165,7 +172,6 @@ QtObject {
 
     // Power menu module
     property int powerButtonWidth: 34
-    property int powerIconSize: 13
     property int powerPopupMinWidth: 300
     property int powerPopupMaxWidth: 360
     property int powerPopupPadding: 14
@@ -174,11 +180,9 @@ QtObject {
     property int powerConfirmWidth: 104
 
     // Recording module
-    property int recordingIconSize: 14
     property color recordingForeground: "#ff5555"
 
     // Brightness module
-    property int brightnessIconSize: 20
     property color brightnessNightForeground: "#ffb86c"
     property color brightnessActiveBackground: "#c0caf5"
     property color brightnessActiveForeground: "#cc000008"
@@ -197,7 +201,6 @@ QtObject {
     property color brightnessToggleActiveHoverForeground: "#99000008"
 
     // Battery module
-    property int batteryIconSize: 18
     property int batteryButtonMinWidth: 74
     property int batteryPopupMinWidth: 300
     property int batteryPopupMaxWidth: 360
@@ -252,7 +255,7 @@ QtObject {
 
     // Font
     property string fontFamily: "Adwaita Sans"
-    property string iconFontFamily: "Symbols Nerd Font Mono"
+    property string iconFontFamily: "Adwaita Sans"
     property int fontSize: 12
     property int fontWeight: 500
     property int popupTitleFontSize: 13
@@ -270,7 +273,7 @@ QtObject {
 
     // Nerd Font notification icons
     property string notificationNoneIcon: "󰂚"
-    property string notificationSomeIcon: "󰂞"
+    property string notificationSomeIcon: "󰂞 "
     property string notificationDndIcon: "󰂛"
     property string notificationClearIcon: "󰎟"
     property string notificationCloseIcon: "󰅖"
@@ -306,10 +309,10 @@ QtObject {
     property string wiredNoLinkIcon: "󰈂"
     property string wifiOffIcon: "󰤯"
     property string wifiDisconnectedIcon: "󰤭"
-    property string wifiStrength1Icon: "󰤟"
-    property string wifiStrength2Icon: "󰤢"
-    property string wifiStrength3Icon: "󰤥"
-    property string wifiStrength4Icon: "󰤨"
+    property string wifiStrength1Icon: "󰤟 "
+    property string wifiStrength2Icon: "󰤢 "
+    property string wifiStrength3Icon: "󰤥 "
+    property string wifiStrength4Icon: "󰤨 "
     property string keyboardIcon: "󰌌"
 
     // Nerd Font power icons
