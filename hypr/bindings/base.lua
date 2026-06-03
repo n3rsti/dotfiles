@@ -27,6 +27,7 @@ local keyboardBrightnessPlaceholder = "swayosd-client --custom-message=xd --cust
 
 require("bindings.path-of-exile")
 require("bindings.windows")
+require("bindings.noctalia")
 
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(browser))
