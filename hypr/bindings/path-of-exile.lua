@@ -22,3 +22,5 @@ hl.bind(
 	hl.dsp.exec_cmd("~/.config/dotfiles/scripts/path-of-exile/poe_type.sh /monastery"),
 	{ non_consuming = true }
 )
+
+-- hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd("~/.config/dotfiles/scripts/path-of-exile/poe_enter.sh"))

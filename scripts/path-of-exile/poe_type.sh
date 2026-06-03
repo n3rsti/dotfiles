@@ -3,7 +3,7 @@
 
 export YDOTOOL_SOCKET=/run/ydotoold/socket
 
-if hyprctl activewindow -j | jq -e '.title == "Path of Exile" or .title == "Awakened PoE Trade"' > /dev/null; then
+if hyprctl activewindow -j | jq -e '.title == "Path of Exile" or .title == "Awakened PoE Trade" or .title == "Path of Exile 2" or .title == "Exiled Exchange 2"' > /dev/null; then
     ydotool key 28:1 28:0 -d 0
     ydotool type $1 -d 0 -H 0
     sleep 0.01

@@ -66,7 +66,7 @@ hl.window_rule({
 
 hl.window_rule({
 	name = "apt-rule",
-	match = { class = "^(awakened-poe-trade|Awakened-poe-trade)$" },
+	match = { class = "^(awakened-poe-trade|Awakened-poe-trade|exiled-exchange-2)$" },
 	float = true,
 	border_size = 0,
 	no_blur = true,
