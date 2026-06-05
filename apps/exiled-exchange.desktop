@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Exiled Exchange
 Exec=~/Downloads/Exiled-Exchange-*.AppImage --ozone-platform=x11
+Icon=exiled-exchange
 Terminal=false
 Type=Application
