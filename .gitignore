@@ -1,3 +1,4 @@
 .direnv
 wallpapers/current.jpg
 quickshell/per-machine/Icons.qml
+hypr/override.lua

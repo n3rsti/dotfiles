@@ -93,6 +93,12 @@ hl.window_rule({
 	fullscreen = true,
 })
 
+hl.window_rule({
+	name = "opaque",
+	match = { class = "^(com.mitchellh.ghostty)$" },
+	opacity = "1.0 override 1.0 override",
+})
+
 hl.window_rule({ match = { class = "^(Rofi)$" }, stay_focused = true })
 hl.window_rule({ match = { class = "^(steam_app_238960)" }, tile = true })
 

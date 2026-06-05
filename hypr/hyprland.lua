@@ -4,9 +4,10 @@ require("looks.layers")
 require("bindings.base")
 require("hardware.input")
 require("system.envs")
-require("looks.windows")
 require("looks.base")
 require("looks.noctalia")
+require("looks.windows")
+-- require("override")
 
 hl.config({
 	xwayland = {
