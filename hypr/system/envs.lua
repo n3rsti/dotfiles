@@ -1,5 +1,5 @@
-hl.env("XCURSOR_SIZE", "24")
-hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("XCURSOR_SIZE", "16")
+hl.env("HYPRCURSOR_SIZE", "16")
 hl.env("YDOTOOL_SOCKET", "/run/ydotoold/socket")
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_TYPE", "wayland")

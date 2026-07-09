@@ -95,7 +95,8 @@ hl.window_rule({
 
 hl.window_rule({
 	name = "opaque",
-	match = { class = "^(com.mitchellh.ghostty)$" },
+	match = { class = "^(com.mitchellh.ghostty|steam_app_2694490)$" },
+
 	opacity = "1.0 override 1.0 override",
 })
 
