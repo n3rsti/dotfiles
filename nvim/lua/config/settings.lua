@@ -35,14 +35,14 @@ vim.o.undofile = true
 
 vim.o.winborder = "rounded"
 
-vim.o.list = true
-vim.opt.listchars = {
-	tab = "» ",
-	trail = "·",
-	extends = "›",
-	precedes = "‹",
-	nbsp = "␣",
-}
+-- vim.o.list = true
+-- vim.opt.listchars = {
+-- 	tab = "» ",
+-- 	trail = "·",
+-- 	extends = "›",
+-- 	precedes = "‹",
+-- 	nbsp = "␣",
+-- }
 
 vim.o.scrolloff = 10
 vim.o.wrap = false

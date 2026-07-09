@@ -18,6 +18,12 @@ require("blink.cmp").setup({
 	},
 
 	completion = {
+		trigger = {
+			-- show_in_snippet = false,
+			-- show_on_accept_on_trigger_character = false,
+			-- show_on_trigger_character = false,
+			show_on_blocked_trigger_characters = { " ", "\n", "\t", ">" },
+		},
 		documentation = {
 			auto_show = true,
 			auto_show_delay_ms = 0,
